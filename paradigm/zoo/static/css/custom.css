@@ -1,0 +1,13 @@
+header {
+    background-color: #eee;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+.jumbotron {
+    margin-top: 50px;
+    max-height: 175px;
+    margin-left: 50px;
+}

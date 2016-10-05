@@ -1,3 +1,9 @@
+<!--
+    base.html
+    description: base template for all pages
+    created by: ann keenan
+-->
+
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +21,7 @@
         
         <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
         <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-        <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans|Raleway" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato|Roboto" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/custom.css' %}">
         <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
         {% block css %}
@@ -74,6 +80,7 @@
         {% endblock cdn_js %}
 
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
         {% block js %}
         {% endblock %}
     {% endblock %}

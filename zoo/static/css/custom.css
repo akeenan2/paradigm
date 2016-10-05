@@ -1,9 +1,24 @@
-header {
-    background-color: #eee;
+/* 
+    custom.css
+    description: custom css style
+    created by: ann keenan
+*/
+
+.navbar {
+    font-family: 'Josefin Sans', sans-serif;
 }
 
-body {
-    font-family: 'Raleway', sans-serif;
+header {
+    background-color: #eee;
+    font-family: 'Lato', sans-serif;
+}
+
+footer {
+    font-family: 'Lato', sans-serif;
+}
+
+section {
+    font-family: 'Roboto', sans-serif;
 }
 
 .jumbotron {

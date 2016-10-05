@@ -1,7 +1,2 @@
-bin/*
-include/*
-local/*
-lib/*
 *.DS_Store
 *.pyc
-*.sqlite3

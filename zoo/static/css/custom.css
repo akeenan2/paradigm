@@ -1,28 +1,44 @@
-/* 
+/*
     custom.css
     description: custom css style
     created by: ann keenan
 */
 
-.navbar {
-    font-family: 'Josefin Sans', sans-serif;
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
 }
 
 header {
+    font-family: 'Josefin Slab', serif;
     background-color: #eee;
-    font-family: 'Lato', sans-serif;
-}
-
-footer {
-    font-family: 'Lato', sans-serif;
 }
 
 section {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+footer {
+    font-family: 'Josefin Slab', serif;
+}
+
+.navbar {
+    font-family: 'Josefin Slab', serif;
 }
 
 .jumbotron {
     margin-top: 50px;
     max-height: 175px;
-    margin-left: 50px;
 }
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+}
+

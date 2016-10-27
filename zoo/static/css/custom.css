@@ -14,8 +14,14 @@ body {
 }
 
 header {
+    margin-top: 55px;
     font-family: 'Josefin Slab', serif;
     background-color: #eee;
+}
+@media (min-width: 768px) {
+    header {
+        margin-top: 50px;
+    }
 }
 
 section {
@@ -31,7 +37,12 @@ footer {
 }
 
 .jumbotron {
-    max-height: 175px;
+    max-height: 150px;
+}
+@media (min-width: 768px) {
+    .jumbotron {
+        max-height 175px;
+    }
 }
 
 .footer {
@@ -42,7 +53,6 @@ footer {
 }
 
 .fit {
-    margin-top: 50px;
     max-width: 100%;
     max-height: 500px;
     margin: auto;

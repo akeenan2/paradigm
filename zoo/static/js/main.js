@@ -1,8 +1,4 @@
-/* 
-    custom.js
-    description: custom js style
-    created by: ann keenan
-*/
+/* main.js */
 
 $(document).ready(function () {
     $(".navbar-nav li a").click(function(event) {

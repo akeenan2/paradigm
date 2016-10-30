@@ -4,4 +4,5 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 
 def index(request):
-    return render(request, 'zoo/index.html')
+    query_results = Zoo.objects.all()
+    return render(request, 'zoo/index.html', {'query_results': query_results})

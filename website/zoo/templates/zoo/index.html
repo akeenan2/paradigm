@@ -8,5 +8,19 @@
 {% block jumbotron_description %}Zootopia{% endblock %}
 
 {% block content %}
-<h3>Welcome!</h3>
+<h3>Zoos</h3>
+
+    {% for item in query_results %}
+    <tr> 
+        <td>{{ item.zoo_name }}</td>
+        <td>{{ item.city }}</td>
+        <td>{{ item.state }}</td>
+        <td>{{ item.address }}</td>
+        <td>{{ item.latitude }}</td>
+        <td>{{ item.longitude }}</td>
+        <td>{{ item.num_animals }}</td>
+        <td>{{ item.acres }}</td>
+    </tr>
+    {% endfor %}
+
 {% endblock %}

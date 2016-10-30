@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from .models import Zoo, Species, Biomes, Exhibits, Family
+from .models import Zoo, Species, Biome, Exhibit, Family
 
 def index(request):
     return render(requst)

@@ -1,4 +1,4 @@
-create table Biomes (
+create table Biome (
     habitat varchar(20) primary key,
     description varchar(200)
 );
@@ -46,7 +46,7 @@ create table Exhibit (
     foreign key (species) references Species(species)
 );
 
-load data local infile 'biomes.csv' into table Biomes
+load data local infile 'biome.csv' into table Biome
     fields terminated by ','
     lines terminated by '\n'
     (habitat,description);

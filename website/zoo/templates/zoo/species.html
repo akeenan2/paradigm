@@ -2,9 +2,9 @@
 
 {% extends "layouts/base.html" %}
 
-{% block page_title %}{{ species.species }}{% endblock %}
+{% block page_title %}{{ species_name }}{% endblock %}
 
-{% block jumbotron_name %}{{ species.common_name }}{% endblock %}
+{% block jumbotron_name %}{{ species_name }}{% endblock %}
 {% block jumbotron_description %}{{ species.species }}{% endblock %}
 
 {% block content %}
@@ -18,7 +18,7 @@
 <h3>Information</h3>
 <strong>Region:<strong> {{ species.region }}<br>
 <strong>Habitat:<strong> {{ species.habitat }}<br>
-<strong>Lifespan:<strong> {{ species.lifespan }}<br>
+<strong>Lifespan:<strong> {{ species.lifespan }} years<br>
 <strong>Status:</strong> {{ species.status }}
 
 {% endblock %}

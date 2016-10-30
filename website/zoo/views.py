@@ -13,5 +13,5 @@ def zoo(request,zoo_id):
     return render(request, 'zoo/zoo.html', {'zoo': zoo})
 
 def species(request,species_id):
-    species = Zoo.objects.get(id=species_id)
+    species = Species.objects.get(id=species_id)
     return render(request, 'zoo/species.html', {'species': species})

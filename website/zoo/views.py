@@ -12,12 +12,12 @@ def list_zoos(request):
     return render(request,'zoo/list_zoos.html',{'list_zoos':list_zoos})
 
 def zoo(request,zoo_id):
-    zoo = Zoo.objects.get(id=zoo_id)[0]
+    zoo = Zoo.objects.get(id=zoo_id)
     list_species = Exhibit.objects.filter(zoo_name=zoo.zoo_name).select_related()
     return render(request,'zoo/zoo.html',{'zoo':zoo},{'list_species':list_species})
 
 def species(request,species_id):
-    species = Species.objects.get(id=species_id)[0]
+    species = Species.objects.get(id=species_id)
     species_name = species.common_name.split(';')[0]
     return render(request,'zoo/species.html',{'species': species,'species_name': species_name})
 

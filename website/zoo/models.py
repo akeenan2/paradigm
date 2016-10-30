@@ -20,8 +20,8 @@ class Biomes(models.Model):
 
 
 class Exhibit(models.Model):
-    zoo_name = models.CharField(max_length=100)
-    species = models.CharField(max_length=100)
+    zoo_name = models.ForeignKey('Zoo', models.DO_NOTHING, db_column='zoo_name')
+    species = models.ForeignKey('Species', models.DO_NOTHING, db_column='species')
 
     class Meta:
         managed = False
@@ -39,7 +39,7 @@ class Family(models.Model):
 
 
 class Species(models.Model):
-    species = models.CharField(max_length=100, blank=True, null=True)
+    species = models.CharField(unique=True, max_length=100, blank=True, null=True)
     common_name = models.CharField(max_length=200, blank=True, null=True)
     genus = models.CharField(max_length=50, blank=True, null=True)
     familia = models.CharField(max_length=50, blank=True, null=True)
@@ -56,7 +56,7 @@ class Species(models.Model):
 
 
 class Zoo(models.Model):
-    zoo_name = models.CharField(max_length=25, blank=True, null=True)
+    zoo_name = models.CharField(unique=True, max_length=25, blank=True, null=True)
     city = models.CharField(max_length=200, blank=True, null=True)
     state = models.CharField(max_length=2, blank=True, null=True)
     address = models.CharField(max_length=100, blank=True, null=True)
@@ -67,7 +67,7 @@ class Zoo(models.Model):
     hour_open = models.CharField(max_length=5, blank=True, null=True)
     hour_close = models.CharField(max_length=5, blank=True, null=True)
     annual_visitors = models.IntegerField(blank=True, null=True)
-    website = models.CharField(max_length=100, blank=True, null=True)
+    website = models.CharField(unique=True, max_length=100, blank=True, null=True)
 
     class Meta:
         managed = False

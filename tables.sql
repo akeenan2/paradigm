@@ -41,7 +41,6 @@ create table Species (
 create table Exhibit (
     zoo_name varchar(100),
     species varchar(100),
-    primary key (zoo_name,species),
     foreign key (zoo_name) references Zoo(zoo_name),
     foreign key (species) references Species(species)
 );

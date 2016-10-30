@@ -9,20 +9,18 @@
 
 {% block content %}
 
-<table class="table table-striped table-bordered">
-    <thead>
-        <tr>
-            <td>Address</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                {{ zoo.address }}<br>
-                {{ zoo.city }}, {{ zoo.state }}
-            </td>
-        </tr>
-    </tbody>
-</table>
+<h3>Basic Information</h3>
+{{ zoo.address }}<br>
+{{ zoo.city }}, {{ zoo.state }}<br>
+<strong>Hours:</strong> {{ zoo.hour_open }} - {{ zoo.hour_close }}<br>
+
+
+<h3>Statistics</h3>
+<strong>Number of Animals:<strong> {{ zoo.num_animals }}<br>
+<strong>Annual Visitors:<strong> {{ zoo.annual_visitors }}
+<strong>Acres:</strong> {{ zoo.acres }}<br>
+
+<h3>More Information</h3>
+<a href="{{ zoo.website }}">{{ zoo.zoo_name }} Official Website</a>
 
 {% endblock %}

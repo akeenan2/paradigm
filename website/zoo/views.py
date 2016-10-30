@@ -22,4 +22,6 @@ def species(request,species_id):
 
 def list_species(request,common_name="all",genus="all",familia="all",ordo="all",classis="all",region="all",habitat="all",lifespan=-1,status="all"):
     list_species = Species.objects.all()
+    for species in list_species:
+        species.common_name = species.common_name.split(';')[0]
     return render(request, 'zoo/list_species.html', {'list_species': list_species})

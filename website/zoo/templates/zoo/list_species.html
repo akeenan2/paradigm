@@ -8,8 +8,7 @@
 {% block jumbotron_description %}A listing of all searcheable species.{% endblock %}
 
 {% block content %}
-
-{% for species in list_species %}
+<br>
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -18,12 +17,13 @@
         </tr>
     </thead>
     <tbody>
+    {% for species in list_species %}
         <tr>
-            <td><a href="/zoo/{{ species.id }}">{{ species.species_name }}</a></td>
+            <td><a href="/zoo/{{ species.id }}">{{ species.species }}</a></td>
             <td>{{ species.common_name }}</td>
         </tr>
+    {% endfor %}
     </tbody>
 </table>
-{% endfor %}
 
 {% endblock %}

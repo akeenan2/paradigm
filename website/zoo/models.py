@@ -50,7 +50,7 @@ class Species(models.Model):
 
 
 class Zoo(models.Model):
-    zoo_name = models.CharField(max_length=25)
+    zoo_name = models.CharField(primary_key=True, max_length=25)
     city = models.CharField(max_length=200)
     state = models.CharField(max_length=2, blank=True, null=True)
     address = models.CharField(max_length=100, blank=True, null=True)
@@ -66,8 +66,6 @@ class Zoo(models.Model):
     class Meta:
         managed = False
         db_table = 'Zoo'
-        unique_together = (('zoo_name', 'city'),)
-
 
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=80)

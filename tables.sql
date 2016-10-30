@@ -9,7 +9,7 @@ create table Family (
 );
 
 create table Zoo (
-    zoo_name varchar(25),
+    zoo_name varchar(25) primary key,
     city varchar(200),
     state char(2),
     address varchar(100),
@@ -20,8 +20,7 @@ create table Zoo (
     hour_open char(5),
     hour_close char(5),
     annual_visitors int,
-    website varchar(100),
-    primary key (zoo_name,city)
+    website varchar(100)
 );
 
 create table Species (
@@ -45,27 +44,27 @@ create table Exhibit (
     foreign key (species) references Species(species)
 );
 
-load data local infile 'biomes' into table Biomes
+load data local infile 'biomes.csv' into table Biomes
     fields terminated by ','
     lines terminated by '\n'
     (habitat,description);
 
-load data local infile 'family' into table Family
+load data local infile 'family.csv' into table Family
     fields terminated by ','
     lines terminated by '\n'
     (family,description);
 
-load data local infile 'zoo' into table Zoo
+load data local infile 'zoo.csv' into table Zoo
     fields terminated by ','
     lines terminated by '\n'
     (zoo_name,city,state,address,latitude,longitude,num_animals,acres,hour_open,hour_close,annual_visitors,website);
 
-load data local infile 'species' into table Species
+load data local infile 'species.csv' into table Species
     fields terminated by ','
     lines terminated by '\n'
     (species,common_name,genus,familia,ordo,classis,region,habitat,lifespan,status);
 
-load data local infile 'exhibit' into table Exhibit
+load data local infile 'exhibit.csv' into table Exhibit
     fields terminated by ','
     lines terminated by '\n'
     (zoo_name,species);

@@ -20,6 +20,24 @@
 <strong>Annual Visitors:<strong> {{ zoo.annual_visitors }}
 <strong>Acres:</strong> {{ zoo.acres }}<br>
 
+<h3>Exhibits</h3>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <td>Species</td>
+            <td>Common Name</td>
+        </tr>
+    </thead>
+    <tbody>
+    {% for species in list_species %}
+        <tr>
+            <td><a href="/species/{{ species.id }}">{{ species.species }}</a></td>
+            <td>{{ species.common_name }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
 <h3>More Information</h3>
 <a href="{{ zoo.website }}">{{ zoo.zoo_name }} Official Website</a>
 

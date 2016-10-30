@@ -2,26 +2,27 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from .models import Zoo, Species, Biome, Exhibit, Family
+from .models import Zoo,Species,Biome,Exhibit,Family
 
 def index(request):
-    return render(request, 'zoo/index.html')
+    return render(request,'zoo/index.html')
 
 def list_zoos(request):
     list_zoos = Zoo.objects.all()
-    return render(request, 'zoo/list_zoos.html', {'list_zoos': list_zoos})
+    return render(request,'zoo/list_zoos.html',{'list_zoos':list_zoos})
 
 def zoo(request,zoo_id):
     zoo = Zoo.objects.get(id=zoo_id)
-    return render(request, 'zoo/zoo.html', {'zoo': zoo})
+    list_species = Exhibit.objects.filter(zoo_name=zoo.zoo_name).select_related()
+    return render(request,'zoo/zoo.html',{'zoo':zoo},{'list_species':list_species})
 
 def species(request,species_id):
     species = Species.objects.get(id=species_id)
     species_name = species.common_name.split(';')[0]
-    return render(request, 'zoo/species.html', {'species': species, 'species_name': species_name})
+    return render(request,'zoo/species.html',{'species': species,'species_name': species_name})
 
-def list_species(request,common_name="all",genus="all",familia="all",ordo="all",classis="all",region="all",habitat="all",lifespan=-1,status="all"):
+def list_species(request):
     list_species = Species.objects.all()
     for species in list_species:
         species.common_name = species.common_name.split(';')[0]
-    return render(request, 'zoo/list_species.html', {'list_species': list_species})
+    return render(request,'zoo/list_species.html',{'list_species':list_species})

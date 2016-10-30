@@ -50,7 +50,6 @@
         </nav>
 
         <header>
-        <img src="" class="fit header-img">
         <div class="container">
             <div class="jumbotron">
                 <h2>{% block jumbotron_name %}{% endblock %}</h2>
@@ -77,15 +76,6 @@
         <script src="{% static 'js/jquery.min.js' %}"></script>
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
         <script src="{% static 'js/main.js' %}"></script>
-        <script>
-        $(window).on("resize", function() {
-            if ($(window).width() >= 768) {
-                $(".header-img").attr("src", "{% static 'img/background.png' %}");
-            } else {
-                $(".header-img").attr("src", "{% static 'img/background-mobile.png' %}");
-            }
-        }).resize();
-        </script>
         {% block js %}
         {% endblock %}
     </body>

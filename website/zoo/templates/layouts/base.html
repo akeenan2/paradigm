@@ -23,8 +23,7 @@
         {% block css %}
         {% endblock %}
     </head>
-    <body "{% block body_class %}{% endblock %}" {% block body_attributes %}{% endblock %}>
-    {% block body %}
+    <body>
         <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <!-- toggle grouped (for mobile display) -->
@@ -73,10 +72,7 @@
         {% block footer %}{% endblock footer %}
         </footer>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        {% block cdn_js %}
-        {% endblock cdn_js %}
-
+        <script src="{% static 'js/jquery.min.js' %}"></script>
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
         <script src="{% static 'js/main.js' %}"></script>
         <script>
@@ -90,6 +86,5 @@
         </script>
         {% block js %}
         {% endblock %}
-    {% endblock %}
     </body>
 </html>

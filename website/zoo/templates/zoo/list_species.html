@@ -19,7 +19,7 @@
     <tbody>
     {% for species in list_species %}
         <tr>
-            <td><a href="/zoo/{{ species.id }}">{{ species.species }}</a></td>
+            <td><a href="/species/{{ species.id }}">{{ species.species }}</a></td>
             <td>{{ species.common_name }}</td>
         </tr>
     {% endfor %}

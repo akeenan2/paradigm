@@ -23,6 +23,9 @@ def species(request,species_id):
     return render(request,'zoo/species.html',{'species': species,'species_name': species_name})
 
 def list_species(request):
+    if request.method == 'POST':
+        if request.POST.get('delete'):
+            Species.objects.filter(id__in=request.POST.getlist('species')).delete()
     list_species = Species.objects.all()
     for species in list_species:
         species.common_name = species.common_name.split(';')[0]

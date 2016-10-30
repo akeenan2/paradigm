@@ -9,21 +9,21 @@
 
 {% block content %}
 <br>
-<table class="table table-striped table-bordered">
-    <thead>
+<form name="update" method="post">
+    <input type="submit" name="delete" value="Delete Items" />
+    <table class="table table-striped table-bordered">
         <tr>
-            <td>Species</td>
-            <td>Common Name</td>
+            <th>ID</th>
+            <th>Species</th>
+            <th>Common Name</th>
         </tr>
-    </thead>
-    <tbody>
-    {% for species in list_species %}
+        {% for species in list_species %}
         <tr>
+            <td><input type="checkbox" value="{{ species.id }}" id="species"></td>
             <td><a href="/species/{{ species.id }}">{{ species.species }}</a></td>
             <td>{{ species.common_name }}</td>
         </tr>
-    {% endfor %}
-    </tbody>
-</table>
-
+        {% endfor %}
+    </table>
+</form>
 {% endblock %}

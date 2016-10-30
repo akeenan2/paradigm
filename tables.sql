@@ -9,7 +9,8 @@ create table Family (
 );
 
 create table Zoo (
-    zoo_name varchar(25) primary key,
+    id int primary key auto_increment,
+    zoo_name varchar(25),
     city varchar(200),
     state char(2),
     address varchar(100),
@@ -24,7 +25,8 @@ create table Zoo (
 );
 
 create table Species (
-    species varchar(100) primary key,
+    id int primary key auto_increment,
+    species varchar(100),
     common_name varchar(200),
     genus varchar(50),
     familia varchar(50),

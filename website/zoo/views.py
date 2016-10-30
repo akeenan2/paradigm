@@ -5,5 +5,9 @@ from django.shortcuts import render
 from .models import Zoo
 
 def index(request):
-    query_results = Zoo.objects.all()
-    return render(request, 'zoo/index.html', {'query_results': query_results})
+    zoos = Zoo.objects.all()
+    return render(request, 'zoos.html', {'zoos': zoos})
+
+def zoo(request,zoo_id):
+    zoo = Zoo.objects.get(id=zoo_id)
+    return render(request, 'zoo.html', {'zoo': zoo})

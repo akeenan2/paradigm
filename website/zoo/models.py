@@ -10,13 +10,13 @@ from __future__ import unicode_literals
 from django.db import models
 
 
-class Biomes(models.Model):
+class Biome(models.Model):
     habitat = models.CharField(primary_key=True, max_length=20)
     description = models.CharField(max_length=200, blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'Biomes'
+        db_table = 'Biome'
 
 
 class Exhibit(models.Model):

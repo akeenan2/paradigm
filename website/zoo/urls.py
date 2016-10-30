@@ -8,5 +8,5 @@ from . import views
 app_name = 'zoo'
 urlpatterns = [
     url(r'^$', views.index),
-    url(r'^/zoo/(?P<zoo_id>[0-9]*)/$', views.zoo),
+    url(r'^zoo/(?P<zoo_id>[0-9]*)/$', views.zoo),
 ]

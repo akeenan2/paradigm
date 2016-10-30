@@ -2,9 +2,11 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from .models import Zoo, Species, Biome
+from .models import Zoo, Species, Biomes, Exhibits, Family
 
 def index(request):
+    return render(requst)
+def list_zoos(request):
     list_zoos = Zoo.objects.all()
     return render(request, 'zoo/list_zoos.html', {'list_zoos': list_zoos})
 

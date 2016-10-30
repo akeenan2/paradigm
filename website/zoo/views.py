@@ -5,7 +5,8 @@ from django.shortcuts import render
 from .models import Zoo, Species, Biome, Exhibit, Family
 
 def index(request):
-    return render(requst)
+    return render(request, 'zoo/index.html')
+
 def list_zoos(request):
     list_zoos = Zoo.objects.all()
     return render(request, 'zoo/list_zoos.html', {'list_zoos': list_zoos})

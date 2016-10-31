@@ -58,8 +58,6 @@ function redirect(species) {
     var _species = species.replace(/ /g,'_');
     window.location.replace('/species/'+_species+'/');
 }
-$(document).ready(function() {
-    $('#pagination').DataTable();
-} );
+
 </script>
 {% endblock %}

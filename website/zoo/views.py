@@ -13,8 +13,7 @@ def list_zoos(request):
 
 def zoo(request,zoo_id):
     zoo = Zoo.objects.get(id=zoo_id)
-    list_species = Exhibit.objects.filter(zoo_name__zoo_name=zoo.zoo_name).select_related('specie')
-    #list_species = Species.objects.raw('SELECT * FROM Species, Exhibit WHERE Species.species=Exhibit.species');
+    exhibits = Exhibit.objects.filter(zoo_name__zoo_name=zoo.zoo_name).select_related('species')
     return render(request,'zoo/zoo.html',{'zoo':zoo},{'list_species':list_species})
 
 def species(request,species_id):

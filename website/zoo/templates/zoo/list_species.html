@@ -8,34 +8,25 @@
 {% block jumbotron_description %}A listing of all searcheable species.{% endblock %}
 
 {% block content %}
+
 <br>
-<div class="container">
-    <form name="update" method="post">{% csrf_token %}
-    </form>
-</div>
-<div class="container">
-    <table class="table table-striped table-bordered">
-        <tr>
-            <th>Species</th>
-            <th>Common Name</th>
-        </tr>
-        {% for species in list_species %}
-        <tr>
-            <td><a href="{{ species.species }}" id="redirect">{{ species.species }}</a></td>
-            <td>{{ species.common_name }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</div>
+<form id="species_form" method="post">{% csrf_token %}
+    <div class="container">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>Species</th>
+                <th>Common Name</th>
+            </tr>
+            {% for species in list_species %}
+            <tr>
+                <input type="hidden" value="{{ species.species }}" name="redirect">
+                <td><a href="" onclick="$('#species_form').submit(); return false;">{{ species.species }}</a></td>
+                <td>{{ species.common_name }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</form>
+
 {% endblock %}
 
-{% block js %}
-$(function() {
-    $("#redirect").on("click",function(e) {
-        e.preventDefault(); // cancel the link itself
-        $.post(this.href,function(data) {
-            $("#someContainer").html(data);
-        });
-    });
-});
-{% endblock %}

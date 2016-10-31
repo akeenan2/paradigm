@@ -13,6 +13,6 @@ urlpatterns = [
     url(r'^zoo/(?P<zoo_id>[0-9]+)/add/$',views.zoo_add),
     url(r'^zoo/(?P<zoo_id>[0-9]+)/update/$',views.update_zoo),
     url(r'^species/$',views.list_species),
-    url(r'^species/(?P<species>\w+)/$',views.species),
-    url(r'^species/(?P<species>\w+)/update/$',views.update_species),
+    url(r'^species/(?P<_species>\w+)/$',views.species),
+    url(r'^species/(?P<_species>\w+)/update/$',views.update_species),
 ]

@@ -39,7 +39,7 @@ class Family(models.Model):
 
 
 class Species(models.Model):
-    species = models.CharField(unique=True, max_length=100, blank=True, null=True)
+    species = models.CharField(primary_key=True, max_length=100)
     common_name = models.CharField(max_length=200, blank=True, null=True)
     genus = models.CharField(max_length=50, blank=True, null=True)
     familia = models.CharField(max_length=50, blank=True, null=True)

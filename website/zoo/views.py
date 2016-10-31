@@ -48,7 +48,7 @@ def update_zoo(request,zoo_id):
     zoo = Zoo.objects.get(id=zoo_id)
     if request.method == 'POST':
         with connection.cursor() as cursor:
-            cursor.execute('UPDATE Zoo SET zoo_name=%s,city=%s,state=%s,address=%s,latitude=%s,longitude=%s,num_animals=%s,acres=%s,hour_open=%s,hour_close=%s,annual_visitors=%s,website=%s WHERE id=%s',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("latitude"),request.POST.get("longitude"),request.POST.get("num_animals"),request.POST.get("acres"),request.POST.get("hour_open"),request.POST.get("hour_close"),request.POST.get("annual_visitors"),request.POST.get("website")])
+            cursor.execute('UPDATE Zoo SET zoo_name=%s,city=%s,state=%s,address=%s,latitude=%s,longitude=%s,num_animals=%s,acres=%s,hour_open=%s,hour_close=%s,annual_visitors=%s,website=%s WHERE id=%s',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("latitude"),request.POST.get("longitude"),request.POST.get("num_animals"),request.POST.get("acres"),request.POST.get("hour_open"),request.POST.get("hour_close"),request.POST.get("annual_visitors"),request.POST.get("website"),zoo_id])
         return HttpResponseRedirect('/zoo/'+zoo_id+'/')
     return render(request,'zoo/update_zoo.html',{'zoo':zoo})
 
@@ -64,6 +64,11 @@ def list_species(request):
     return render(request,'zoo/list_species.html',{'list_species':list_species})
 
 def species(request,_species):
+    if request.method == 'POST':
+        if request.POST.get('update'):
+            species = request.POST.get('update');
+            _species = species.replace(" ","_")
+            return HttpResponseRedirect('/species/'+_species+'/update/')
     species = Species.objects.get(species = _species.replace("_"," "))
     species_name = species.common_name.split(';')[0]
     with connection.cursor() as cursor:
@@ -74,7 +79,7 @@ def species(request,_species):
 def update_species(request,_species):
     species = Species.objects.get(species=_species.replace("_"," "))
     if request.method == 'POST':
-        with connection.cursor as cursor:
+        with connection.cursor() as cursor:
             cursor.execute('UPDATE Species SET species=%s,common_name=%s,genus=%s,familia=%s,ordo=%s,classis=%s,region=%s,habitat=%s,lifespan=%s,status=%s WHERE species=%s',[request.POST.get("species"),request.POST.get("common_name"),request.POST.get("genus"),request.POST.get("familia"),request.POST.get("ordo"),request.POST.get("classis"),request.POST.get("region"),request.POST.get("habitat"),request.POST.get("lifespan"),request.POST.get("status"),_species.replace("_"," ")])
             return HttpResponseRedirect('/species/'+_species+'/')
     species_name = species.common_name.split(';')[0]

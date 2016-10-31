@@ -25,8 +25,7 @@ create table Zoo (
 );
 
 create table Species (
-    id int(11) primary key auto_increment,
-    species varchar(100) unique,
+    species varchar(100) primary key,
     common_name varchar(200),
     genus varchar(50),
     familia varchar(50),

@@ -35,9 +35,9 @@
         </tr>
         {% for species in list_species %}
         <tr>
-            <td><input type="checkbox" value="{{ species.1 }}" name="species"></td>
-            <td><a href="/species/{{ species.0 }}">{{ species.1 }}</a></td>
-            <td>{{ species.2 }}</td>
+            <td><input type="checkbox" value="{{ species.0 }}" name="species"></td>
+            <td><a href="{{ species.0 }}" id="redirect">{{ species.0 }}</a></td>
+            <td>{{ species.1 }}</td>
         </tr>
         {% endfor %}
     </table>
@@ -45,4 +45,15 @@
 <h3>More Information</h3>
 <a href="{{ zoo.website }}">{{ zoo.zoo_name }} Official Website</a>
 
+{% endblock %}
+
+{% block js %}
+$(function() {
+    $("#redirect").on("click",function(e) {
+        e.preventDefault(); // cancel the link itself
+        $.post(this.href,function(data) {
+            $("#someContainer").html(data);
+        });
+    });
+});
 {% endblock %}

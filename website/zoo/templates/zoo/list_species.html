@@ -21,10 +21,21 @@
         </tr>
         {% for species in list_species %}
         <tr>
-            <td><a href="/species/{{ species.id }}">{{ species.species }}</a></td>
+            <td><a href="{{ species.species }}" id="redirect">{{ species.species }}</a></td>
             <td>{{ species.common_name }}</td>
         </tr>
         {% endfor %}
     </table>
 </div>
+{% endblock %}
+
+{% block js %}
+$(function() {
+    $("#redirect").on("click",function(e) {
+        e.preventDefault(); // cancel the link itself
+        $.post(this.href,function(data) {
+            $("#someContainer").html(data);
+        });
+    });
+});
 {% endblock %}

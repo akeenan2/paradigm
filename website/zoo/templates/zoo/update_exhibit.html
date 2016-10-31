@@ -1,4 +1,4 @@
-<!-- zoo_add.html -->
+<!-- update_exhibit.html -->
 
 {% extends "layouts/base.html" %}
 
@@ -11,7 +11,7 @@
 
 <br>
 <form method="post">{% csrf_token %}
-    <input class="btn btn-default" type="submit" name="add" value="Add Selected Species"/><br><br>
+    <input class="btn btn-default" type="submit" name="operation" value="{{ operation }}"/><br><br>
     <table class="table table-striped table-bordered">
         <tr>
             <th>Select</th>

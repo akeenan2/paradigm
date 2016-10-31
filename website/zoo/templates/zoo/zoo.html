@@ -36,10 +36,7 @@
     {% for species in list_species %}
     <tr>
         <td>
-            <form method="post" id="{{ species.0 }}">{% csrf_token %}
-                <input type="hidden" value="{{ species.0 }}" name="redirect">
-            </form>
-            <a href="" onclick="$('#{{ species.0 }}').submit(); return false;">{{ species.0 }}</a>
+            <a href="" id="{{ species.0 }}">{{ species.0 }}</a>
         </td>
         <td>{{ species.1 }}</td>
     </tr>
@@ -50,4 +47,17 @@
 <a href="{{ zoo.website }}">{{ zoo.zoo_name }} Official Website</a>
 
 {% endblock %}
+
+{% block js %}
+<script>
+$(function() {
+    $("#{{ species.0 }}").click(function() {
+        var _species = "{{ species.0 }}".replace(/ /g,"_");
+        $(this).attr("href","/species/"+_species+"/");
+    });
+});
+</script>
+{% endblock %}
+
+
 

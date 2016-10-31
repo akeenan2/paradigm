@@ -18,31 +18,27 @@ def zoo(request,zoo_id):
     zoo = Zoo.objects.get(id=zoo_id)
     if request.method == 'POST':
         if request.POST.get('delete'):
-            with connection.cursor() as cursor:
-                for species in request.POST.getlist('species'):
-                    cursor.execute('DELETE FROM Exhibit WHERE zoo_name=%s AND species=%s',[zoo.zoo_name,species])
-            zoo = Zoo.objects.get(id=zoo_id)
+            return HttpResponseRedirect('/zoo/'+zoo_id+'/delete/')
         elif request.POST.get('add'):
             return HttpResponseRedirect('/zoo/'+zoo_id+'/add/')
-        elif request.POST.get('redirect'):
-            species = request.POST.get('redirect');
-            _species = species.replace(" ","_")
-            return HttpResponseRedirect('/species/'+_species+'/')
     with connection.cursor() as cursor:
         cursor.execute('SELECT Species.species,Species.common_name FROM Species,Exhibit WHERE Species.species=Exhibit.species AND Exhibit.zoo_name=%s',[zoo.zoo_name])
         list_species = cursor.fetchall()
     return render(request,'zoo/zoo.html',{'zoo':zoo,'list_species':list_species})
 
-def zoo_add(request,zoo_id):
+def update_exhibit(request,zoo_id,operation):
     list_species = Species.objects.all()
     zoo = Zoo.objects.get(id=zoo_id)
     if request.method == 'POST':
         if request.POST.get('add'):
             with connection.cursor() as cursor:
                 for species in request.POST.getlist('species'):
-                    cursor.execute('INSERT INTO Exhibit(species,zoo_name) VALUES(%s,%s)',[species,zoo.zoo_name])
+                    if operation == 'add':
+                        cursor.execute('INSERT INTO Exhibit(species,zoo_name) VALUES(%s,%s)',[species,zoo.zoo_name])
+                    elif operation == 'delete':
+                        cursor.execute('DELETE FROM Exhibit WHERE zoo_name=%s AND species=%s',[zoo.zoo_name,species])
         return HttpResponseRedirect('/zoo/'+zoo_id+'/')
-    return render(request,'zoo/zoo_add.html',{'zoo':zoo,'list_species':list_species})
+    return render(request,'zoo/zoo_add.html',{'zoo':zoo,'list_species':list_species,'operation':operation})
 
 def update_zoo(request,zoo_id):
     zoo = Zoo.objects.get(id=zoo_id)
@@ -53,11 +49,6 @@ def update_zoo(request,zoo_id):
     return render(request,'zoo/update_zoo.html',{'zoo':zoo})
 
 def list_species(request):
-    if request.method == 'POST':
-        if request.POST.get('redirect'):
-            species = request.POST.get('redirect');
-            _species = species.replace(" ","_")
-            return HttpResponseRedirect('/species/'+_species+'/')
     list_species = Species.objects.all()
     for species in list_species:
         species.common_name = species.common_name.split(';')[0]

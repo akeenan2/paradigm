@@ -21,10 +21,7 @@
         {% for species in list_species %}
         <tr>
             <td>
-                <form id="{{ species.species }}" method="post">{% csrf_token %}
-                    <input type="hidden" value="{{ species.species }}" name="redirect">
-                    <a href="" onclick="$('#{{ species.species }}').submit(); return false;">{{ species.species }}</a>
-                </form>
+                <a href="" id="{{ species.species }}">{{ species.species }}</a>
             </td>
             <td>{{ species.common_name }}</td>
         </tr>
@@ -34,3 +31,13 @@
 
 {% endblock %}
 
+{% block js %}
+<script>
+$(function() {
+    $("#{{ species.species }}").click(function() {
+        var _species = "{{ species.species }}".replace(/ /g,"_");
+        $(this).attr("href","/species/"+_species+"/");
+    });
+});
+</script>
+{% endblock %}

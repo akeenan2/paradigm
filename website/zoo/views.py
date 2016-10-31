@@ -13,7 +13,7 @@ def list_zoos(request):
 
 def zoo(request,zoo_id):
     zoo = Zoo.objects.get(id=zoo_id)
-    list_species = Species.objects.raw('SELECT * FROM Species JOIN Exhibit USING (species) WHERE zoo_name='+zoo.zoo_name);
+    list_species = Species.objects.raw('SELECT * FROM Species, Exhibit WHERE Species.species=Exhibit.species AND Exhibit.zoo_name='+zoo.zoo_name);
     return render(request,'zoo/zoo.html',{'zoo':zoo},{'list_species':list_species})
 
 def species(request,species_id):

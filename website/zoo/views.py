@@ -28,6 +28,12 @@ def zoo(request,zoo_id):
 
 def update_exhibit(request,zoo_id,operation):
     list_species = Species.objects.all()
+    with connection.cursor() as cursor:
+        if operation == 'add':
+            cusor.execute('SELECT Species.species,Species.common_name FROM Species, (SELECT Species.species FROM Species,Exhibit,Zoo WHERE Exhibit.species=Species.species AND Exhibit.zoo_name=Zoo.zoo_name)S WHERE Species.species!=S.species')
+        elif operation == 'delete':
+            cusor.execute('SELECT species,common_name FROM Species,Exhibit,Zoo WHERE Exhibit.species=Species.species AND Exhibit.zoo_name=Zoo.zoo_name')
+        list_species = cursor.fetchall()
     zoo = Zoo.objects.get(id=zoo_id)
     if request.method == 'POST':
         if request.POST.get('operation'):

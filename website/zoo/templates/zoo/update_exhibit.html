@@ -26,9 +26,9 @@
         </tr>
         {% for species in list_species %}
         <tr>
-            <td><input type="checkbox" value="{{ species.species }}" name="species"></td>
-            <td>{{ species.species }}</td>
-            <td>{{ species.common_name }}</td>
+            <td><input type="checkbox" value="{{ species.0 }}" name="species"></td>
+            <td>{{ species.0 }}</td>
+            <td>{{ species.1 }}</td>
         </tr>
         {% endfor %}
     </table>

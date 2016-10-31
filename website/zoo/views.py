@@ -13,7 +13,7 @@ def list_zoos(request):
 
 def zoo(request,zoo_id):
     zoo = Zoo.objects.get(id=zoo_id)
-    list_species = Exhibit.objects.filter(zoo_name=zoo.zoo_name).prefetch_related('species__exhibit_set','species_set')
+    list_species = Species.objects.filter(species__exhibit__zoo_name=zoo.zoo_name)
     return render(request,'zoo/zoo.html',{'zoo':zoo},{'list_species':list_species})
 
 def species(request,species_id):
@@ -26,7 +26,8 @@ def list_species(request):
         if request.POST.get('delete'):
             species = Species.objects.filter(id__in=request.POST.getlist('species'))
             for s in species:
-                Exhibit.objects.get(species_name=s) 
+                Exhibit.objects.get(species=s).delete()
+                s.delete()
     list_species = Species.objects.all()
     for species in list_species:
         species.common_name = species.common_name.split(';')[0]

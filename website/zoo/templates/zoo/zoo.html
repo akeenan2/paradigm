@@ -28,38 +28,24 @@
     <input class="btn btn-default" type="submit" name="add" value="Add Species"/>
     <input class="btn btn-default" type="submit" name="remove" value="Remove Species"/><br><br>
 </form>
-<table class="table table-striped table-bordered">
-<thead>
-    <tr>
-        <th>Scientific Name</th>
-        <th>Common Name</th>
-    </tr>
-</thead>
-<tbody>
-    {% for species in list_species %}
-    <tr>
-        <td>
-            <a href="" onclick="redirect('{{ species.0 }}'); return false;">{{ species.0 }}</a>
-        </td>
-        <td id="common_name">{{ species.1 }}</td>
-    </tr>
-    {% endfor %}
+<table id="pagination" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Scientific Name</th>
+            <th>Common Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for species in list_species %}
+        <tr>
+            <td>
+                <a href="" onclick="redirect('{{ species.0 }}'); return false;">{{ species.0 }}</a>
+            </td>
+            <td id="common_name">{{ species.1 }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
-<div id="pager" class="pager">
-    <form>
-        <i class="fa fa-arrow-left" aria-hidden="true" class="first"></i>
-        <i class="fa fa-arrow-left" aria-hidden="true" class="prev"></i>
-        <input type="text" class="pagedisplay"/>
-        <i class="fa fa-arrow-right" aria-hidden="true" class="next"></i>
-        <i class="fa fa-arrow-right" aria-hidden="true" class="last"></i>
-        <select class="pagesize">
-            <option selected="selected"  value="10">10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-            <option  value="40">40</option>
-        </select>
-    </form>
-</div>
 
 
 <h3>More Information</h3>

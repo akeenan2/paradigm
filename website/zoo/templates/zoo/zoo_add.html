@@ -11,7 +11,7 @@
 
 <br>
 <form method="post">{% csrf_token %}
-    <input class="btn btn-default" type="submit" name="add" value="Add Selected Species"/>
+    <input class="btn btn-default" type="submit" name="add" value="Add Selected Species"/><br><br>
     <table class="table table-striped table-bordered">
         <tr>
             <th>Select</th>
@@ -20,9 +20,9 @@
         </tr>
         {% for species in list_species %}
         <tr>
-            <td><input type="checkbox" value="{{ species.1 }}" name="species"></td>
-            <td>{{ species.1 }}</td>
-            <td>{{ species.2 }}</td>
+            <td><input type="checkbox" value="{{ species.species }}" name="species"></td>
+            <td>{{ species.species }}</td>
+            <td>{{ species.common_name }}</td>
         </tr>
         {% endfor %}
     </table>

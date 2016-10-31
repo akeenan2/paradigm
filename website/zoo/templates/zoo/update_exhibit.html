@@ -30,19 +30,23 @@
             Remove Selected Species
         {% endif %}
     "/><br><br>
-    <table class="table table-striped table-bordered">
-        <tr>
-            <th>Select</th>
-            <th>Species</th>
-            <th>Common Name</th>
-        </tr>
-        {% for species in list_species %}
-        <tr>
-            <td><input type="checkbox" value="{{ species.0 }}" name="species"></td>
-            <td>{{ species.0 }}</td>
-            <td>{{ species.1 }}</td>
-        </tr>
-        {% endfor %}
+    <table id="pagination" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Species</th>
+                <th>Common Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for species in list_species %}
+            <tr>
+                <td><input type="checkbox" value="{{ species.0 }}" name="species"></td>
+                <td>{{ species.0 }}</td>
+                <td>{{ species.1 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 </form>
 

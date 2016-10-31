@@ -21,4 +21,20 @@
 <strong>Lifespan:<strong> {{ species.lifespan }} years<br>
 <strong>Status:</strong> {{ species.status }}
 
+<h3>Exhibits</h3>
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+    </tr>
+    {% for zoo in list_zoos %}
+    <tr>
+        <td><a href="/zoo/{{ zoo.id }}">{{ zoo.zoo_name }}</a></td>
+        <td>
+            {{ zoo.address }}<br>
+            {{ zoo.city }}, {{ zoo.state }}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
 {% endblock %}

@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- coding:utf-8 -*-
 from __future__ import unicode_literals
 
 from django.shortcuts import render
@@ -19,7 +19,7 @@ def zoo(request,zoo_id):
 def species(request,species_id):
     species = Species.objects.get(id=species_id)
     species_name = species.common_name.split(';')[0]
-    return render(request,'zoo/species.html',{'species': species,'species_name': species_name})
+    return render(request,'zoo/species.html',{'species':species,'species_name':species_name,'list_zoos':list_zoos})
 
 def list_species(request):
     if request.method == 'POST':

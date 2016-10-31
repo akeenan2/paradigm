@@ -10,23 +10,27 @@
 {% block content %}
 
 <br>
-<form id="species_form" method="post">{% csrf_token %}
-    <div class="container">
-        <table class="table table-striped table-bordered">
-            <tr>
-                <th>Species</th>
-                <th>Common Name</th>
-            </tr>
-            {% for species in list_species %}
-            <tr>
-                <input type="hidden" value="{{ species.species }}" name="redirect">
-                <td><a href="" onclick="$('#species_form').submit(); return false;">{{ species.species }}</a></td>
-                <td>{{ species.common_name }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
-</form>
+<div class="container">
+</div>
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>Species</th>
+            <th>Common Name</th>
+        </tr>
+        {% for species in list_species %}
+        <tr>
+            <td>
+                <form id="{{ species.species }}" method="post">{% csrf_token %}
+                    <input type="hidden" value="{{ species.species }}" name="redirect">
+                    <a href="" onclick="$('#{{ species.species }}').submit(); return false;">{{ species.species }}</a>
+                </form>
+            </td>
+            <td>{{ species.common_name }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 
 {% endblock %}
 

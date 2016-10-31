@@ -26,25 +26,26 @@
 <h3>Species Exhibits</h3>
 <form method="post" id="species_form">{% csrf_token %}
     <input class="btn btn-default" type="submit" name="add" value="Add Species"/>
-    <input class="btn btn-default" type="submit" name="delete" value="Delete Selected Species"/><br><br>
-    <table class="table table-striped table-bordered">
-        <tr>
-            <th>Select</th>
-            <th>Species</th>
-            <th>Common Name</th>
-        </tr>
-        {% for species in list_species %}
-        <tr>
-            <td><input type="checkbox" value="{{ species.0 }}" name="species"></td>
-            <td>
-                <input type="hidden" value="{{ species.0 }}" name="redirect">
-                <a href="" onclick="$('#species_form').submit(); return false;">{{ species.0 }}</a>
-            </td>
-            <td>{{ species.1 }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <input class="btn btn-default" type="submit" name="delete" value="Delete Species"/><br><br>
 </form>
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>Scientific Name</th>
+        <th>Common Name</th>
+    </tr>
+    {% for species in list_species %}
+    <tr>
+        <td>
+            <form method="post" id="{{ species.0 }}">{% csrf_token %}
+                <input type="hidden" value="{{ species.0 }}" name="redirect">
+            </form>
+            <a href="" onclick="$('#{{ species.0 }}').submit(); return false;">{{ species.0 }}</a>
+        </td>
+        <td>{{ species.1 }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
 <h3>More Information</h3>
 <a href="{{ zoo.website }}">{{ zoo.zoo_name }} Official Website</a>
 

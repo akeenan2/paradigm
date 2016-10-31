@@ -33,7 +33,7 @@
 
 {% block js %}
 <script>
-$(function() {
+$(document).ready(function(){
     $("#{{ species.species }}").click(function() {
         var _species = "{{ species.species }}".replace(/ /g,"_");
         $(this).attr("href","/species/"+_species+"/");

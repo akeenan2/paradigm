@@ -30,7 +30,7 @@ def update_exhibit(request,zoo_id,operation):
     list_species = Species.objects.all()
     zoo = Zoo.objects.get(id=zoo_id)
     if request.method == 'POST':
-        if request.POST.get('add'):
+        if request.POST.get('operation'):
             with connection.cursor() as cursor:
                 for species in request.POST.getlist('species'):
                     if operation == 'add':
@@ -38,7 +38,7 @@ def update_exhibit(request,zoo_id,operation):
                     elif operation == 'delete':
                         cursor.execute('DELETE FROM Exhibit WHERE zoo_name=%s AND species=%s',[zoo.zoo_name,species])
         return HttpResponseRedirect('/zoo/'+zoo_id+'/')
-    return render(request,'zoo/zoo_add.html',{'zoo':zoo,'list_species':list_species,'operation':operation})
+    return render(request,'zoo/update_exhibit.html',{'zoo':zoo,'list_species':list_species,'operation':operation})
 
 def update_zoo(request,zoo_id):
     zoo = Zoo.objects.get(id=zoo_id)

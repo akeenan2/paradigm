@@ -11,7 +11,13 @@
 
 <br>
 <form method="post">{% csrf_token %}
-    <input class="btn btn-default" type="submit" name="operation" value="{{ operation }}"/><br><br>
+    <input class="btn btn-default" type="submit" name="operation" value="
+        {% if operation == 'add' %}
+            Add Selected Species
+        {% elif operation == 'delete' %}
+            Delete Selected Species
+        {% endif %}
+    "/><br><br>
     <table class="table table-striped table-bordered">
         <tr>
             <th>Select</th>

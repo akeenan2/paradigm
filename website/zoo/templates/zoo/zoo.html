@@ -50,7 +50,7 @@
 
 {% block js %}
 <script>
-$(function() {
+$(document).ready(function(){
     $("#{{ species.0 }}").click(function() {
         var _species = "{{ species.0 }}".replace(/ /g,"_");
         $(this).attr("href","/species/"+_species+"/");

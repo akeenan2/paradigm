@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from django.db import connection, connections
 from django.http import HttpResponseRedirect
+from math import ceil
 from .models import Zoo,Species,Biome,Exhibit,Family
 from .update import *
 
@@ -17,22 +18,36 @@ def list_zoos(request):
 def zoo(request,zoo_id):
     zoo = Zoo.objects.get(id=zoo_id)
     if request.method == 'POST':
-        if request.POST.get('delete'):
-            return HttpResponseRedirect('/zoo/'+zoo_id+'/delete/')
+        if request.POST.get('remove'):
+            return HttpResponseRedirect('/zoo/'+zoo_id+'/remove/')
         elif request.POST.get('add'):
             return HttpResponseRedirect('/zoo/'+zoo_id+'/add/')
     with connection.cursor() as cursor:
         cursor.execute('SELECT Species.species,Species.common_name FROM Species,Exhibit WHERE Species.species=Exhibit.species AND Exhibit.zoo_name=%s',[zoo.zoo_name])
         list_species = cursor.fetchall()
-    return render(request,'zoo/zoo.html',{'zoo':zoo,'list_species':list_species})
+    num_species = len(list_species)
+    num_pages = int(ceil(num_species/species_per_page));
+    if curr_page - 2 >= 1 and curr_page + 2 <= num_pages: # middle
+        min_page = curr_page - 2
+        max_page = curr_page + 3
+    elif curr_page - 2 < 1: # beginning
+        min_page = 1
+        max_page = 6
+    else: # end
+        min_page = num_pages - 4
+        max_page = num_pages + 1
+    page_range = range(min_page,max_page)
+    lower_bound = (curr_page-1) * species_per_page
+    list_species = list_species[lower_bound:lower_bound+species_per_page]
+    return render(request,'zoo/zoo.html',{'zoo':zoo,'list_species':list_species,'page_range':page_range,'curr_page':curr_page,'num_pages':num_pages})
 
 def update_exhibit(request,zoo_id,operation):
     list_species = Species.objects.all()
     with connection.cursor() as cursor:
         if operation == 'add':
-            cusor.execute('SELECT Species.species,Species.common_name FROM Species, (SELECT Species.species FROM Species,Exhibit,Zoo WHERE Exhibit.species=Species.species AND Exhibit.zoo_name=Zoo.zoo_name)S WHERE Species.species!=S.species')
-        elif operation == 'delete':
-            cusor.execute('SELECT species,common_name FROM Species,Exhibit,Zoo WHERE Exhibit.species=Species.species AND Exhibit.zoo_name=Zoo.zoo_name')
+            cursor.execute('SELECT Species.species,Species.common_name FROM Species WHERE Species.species NOT IN (SELECT Species.species FROM Species,Exhibit,Zoo WHERE Exhibit.species=Species.species AND Exhibit.zoo_name=Zoo.zoo_name)')
+        elif operation == 'remove':
+            cursor.execute('SELECT Species.species,Species.common_name FROM Species,Exhibit,Zoo WHERE Exhibit.species=Species.species AND Exhibit.zoo_name=Zoo.zoo_name')
         list_species = cursor.fetchall()
     zoo = Zoo.objects.get(id=zoo_id)
     if request.method == 'POST':
@@ -41,9 +56,9 @@ def update_exhibit(request,zoo_id,operation):
                 for species in request.POST.getlist('species'):
                     if operation == 'add':
                         cursor.execute('INSERT INTO Exhibit(species,zoo_name) VALUES(%s,%s)',[species,zoo.zoo_name])
-                    elif operation == 'delete':
+                    elif operation == 'remove':
                         cursor.execute('DELETE FROM Exhibit WHERE zoo_name=%s AND species=%s',[zoo.zoo_name,species])
-        return HttpResponseRedirect('/zoo/'+zoo_id+'/')
+        return HttpResponseRedirect('/zoo/'+zoo_id+'/1/')
     return render(request,'zoo/update_exhibit.html',{'zoo':zoo,'list_species':list_species,'operation':operation})
 
 def update_zoo(request,zoo_id):
@@ -51,7 +66,7 @@ def update_zoo(request,zoo_id):
     if request.method == 'POST':
         with connection.cursor() as cursor:
             cursor.execute('UPDATE Zoo SET zoo_name=%s,city=%s,state=%s,address=%s,latitude=%s,longitude=%s,num_animals=%s,acres=%s,hour_open=%s,hour_close=%s,annual_visitors=%s,website=%s WHERE id=%s',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("latitude"),request.POST.get("longitude"),request.POST.get("num_animals"),request.POST.get("acres"),request.POST.get("hour_open"),request.POST.get("hour_close"),request.POST.get("annual_visitors"),request.POST.get("website"),zoo_id])
-        return HttpResponseRedirect('/zoo/'+zoo_id+'/')
+        return HttpResponseRedirect('/zoo/'+zoo_id+'/1/')
     return render(request,'zoo/update_zoo.html',{'zoo':zoo})
 
 def list_species(request):

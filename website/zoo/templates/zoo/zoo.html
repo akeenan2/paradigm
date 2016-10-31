@@ -38,7 +38,7 @@
     <tbody>
         {% for species in list_species %}
         <tr>
-            <td>{{ species.0 }}</td>
+            <td><a href="" onclick="redirect('{{ species.0 }}'); return false;">{{ species.0 }}</a></td>
             <td>{{ species.1 }}</td>
         </tr>
         {% endfor %}
@@ -58,6 +58,5 @@ function redirect(species) {
     var _species = species.replace(/ /g,'_');
     window.location.replace('/species/'+_species+'/');
 }
-
 </script>
 {% endblock %}

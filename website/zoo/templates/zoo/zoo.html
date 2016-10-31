@@ -56,11 +56,5 @@ function redirect(species) {
     window.location.replace('/species/'+_species+'/');
 }
 
-$(document).ready(function() { 
-    $("table") 
-    .tablesorter({widthFixed: true, widgets: ['zebra']}) 
-    .tablesorterPager({container: $("#pager")});
-});
-
 </script>
 {% endblock %}

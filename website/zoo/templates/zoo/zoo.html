@@ -35,16 +35,12 @@
             <th>Common Name</th>
         </tr>
     </thead>
-    <tbody>
-        {% for species in list_species %}
+    <tbody>{% for species in list_species %}
         <tr>
-            <td>
-                <a href="" onclick="redirect('{{ species.0 }}'); return false;">{{ species.0 }}</a>
-            </td>
-            <td id="common_name">{{ species.1 }}</td>
+            <td><a href="" onclick="redirect('{{ species.0 }}'); return false;">{{ species.0 }}</a></td>
+            <td>{{ species.1 }}</td>
         </tr>
-        {% endfor %}
-    </tbody>
+    {% endfor %}</tbody>
 </table>
 
 

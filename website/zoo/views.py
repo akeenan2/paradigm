@@ -13,7 +13,7 @@ def list_zoos(request):
 
 def zoo(request,zoo_id):
     zoo = Zoo.objects.get(id=zoo_id)
-    list_species = Species.objects.filter(exhibit__zoo_name=zoo.zoo_name)
+    list_species = Exhibit.objects.select_related().get(zoo_name=zoo.zoo_name)
     return render(request,'zoo/zoo.html',{'zoo':zoo},{'list_species':list_species})
 
 def species(request,species_id):

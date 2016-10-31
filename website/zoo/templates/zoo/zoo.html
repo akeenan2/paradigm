@@ -16,12 +16,12 @@
 
 
 <h3>Statistics</h3>
-<strong>Number of Animals:<strong> {{ zoo.num_animals }}<br>
-<strong>Annual Visitors:<strong> {{ zoo.annual_visitors }}
+<strong>Number of Animals:</strong> {{ zoo.num_animals }}<br>
+<strong>Annual Visitors:</strong> {{ zoo.annual_visitors }}
 <strong>Acres:</strong> {{ zoo.acres }}<br>
 
 <h3>Species Exhibits</h3>
-<form name="update" method="post">{% csrf_token %}
+<form method="post">{% csrf_token %}
     <input type="submit" name="delete" value="Delete Items" />
     <table class="table table-striped table-bordered">
         <tr>

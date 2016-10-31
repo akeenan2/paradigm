@@ -1,0 +1,29 @@
+<!-- update_species.html -->
+
+{% extends "layouts/base.html" %}
+
+{% block page_title %}Update {{ species_name }}{% endblock %}
+
+{% block jumbotron_name %}Update {{ species_name }}{% endblock %}
+{% block jumbotron_description %}Update species information.{% endblock %}
+
+{% block content %}
+<br>
+<div class="container">
+    <form method="post">{% csrf_token %}
+        <h3>Classification</h3>
+        <strong>Class </strong><input name="classis" type="text" class="form-control" value="{{ species.classis }}" placeholder="class"><br>
+        <strong>Order </strong><input name="ordo" type="text" class="form-control" value="{{ species.ordo }}" placeholder="class"><br>
+        <strong>Family </strong><input name="familia" type="text" class="form-control" value="{{ species.familia }}" placeholder="class"><br>
+        <strong>Genus </strong><input name="genus" type="text" class="form-control" value="{{ species.genus }}" placeholder="class">
+
+        <h3>Information</h3>
+        <strong>Region: </strong><input name="region" type="text" class="form-control" value="{{ species.region }}" placeholder="class"><br>
+        <strong>Habitat: </strong><input name="habitat" type="text" class="form-control" value="{{ species.habitat }}" placeholder="class"><br>
+        <strong>Lifespan: </strong><input name="lifespan" type="text" class="form-control" value="{{ species.lifespan }}" placeholder="class"> years<br>
+        <strong>Status: </strong><input name="status" type="text" class="form-control" value="{{ species.status }}" placeholder="class">
+        
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+{% endblock %}

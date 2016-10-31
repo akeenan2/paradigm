@@ -80,7 +80,17 @@
         <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="{% static 'js/main.js' %}"></script>
+        <script>
+        $(document).ready(function () {
+            $(".navbar-nav li a").click(function(event) {
+                $(".navbar-collapse").collapse('hide');
+            });
+        });
+
+        $(document).ready(function() {
+            $('#pagination').DataTable();
+        });
+        </script>
         {% block js %}
         {% endblock %}
     </body>

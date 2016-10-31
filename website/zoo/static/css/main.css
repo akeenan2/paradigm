@@ -54,24 +54,3 @@ footer {
     margin: auto;
     display: block;
 }
-
-/* unvisited link */
-a:link {
-    color: #59c1a3;
-}
-
-/* visited link */
-a:visited {
-    color: #459880;
-}
-
-/* mouse over link */
-a:hover {
-    color: #80d2ba;
-}
-
-/* selected link */
-a:active {
-    color: #46a086;
-}
-

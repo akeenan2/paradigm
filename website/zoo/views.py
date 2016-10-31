@@ -21,9 +21,18 @@ def zoo(request,zoo_id):
         list_species = cursor.fetchall()
     return render(request,'zoo/zoo.html',{'zoo':zoo,'list_species':list_species})
 
+def update_zoo(request,zoo_id):
+    if request.method == 'POST':
+        print 'post'
+    zoo= Zoo.objects.get(id=zoo_id)
+    return render(request,'zoo/update_zoo.html',{'zoo':zoo})
+
 def species(request,species_id):
     species = Species.objects.get(id=species_id)
     species_name = species.common_name.split(';')[0]
+    with connection.cursor() as cursor:
+        cursor.execute('SELECT Zoo.id,Zoo.zoo_name,Zoo.city,Zoo.state,Zoo.address FROM Zoo,Exhibit WHERE Zoo.zoo_name=Exhibit.zoo_name AND Exhibit.species=%s',[species.species])
+        list_zoos = cursor.fetchall()
     return render(request,'zoo/species.html',{'species':species,'species_name':species_name,'list_zoos':list_zoos})
 
 def list_species(request):

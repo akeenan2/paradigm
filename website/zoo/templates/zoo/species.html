@@ -29,10 +29,10 @@
     </tr>
     {% for zoo in list_zoos %}
     <tr>
-        <td><a href="/zoo/{{ zoo.id }}">{{ zoo.zoo_name }}</a></td>
+        <td><a href="/zoo/{{ zoo.0 }}">{{ zoo.1 }}</a></td>
         <td>
-            {{ zoo.address }}<br>
-            {{ zoo.city }}, {{ zoo.state }}
+            {{ zoo.4 }}<br>
+            {{ zoo.2 }}, {{ zoo.3 }}
         </td>
     </tr>
     {% endfor %}

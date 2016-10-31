@@ -21,23 +21,23 @@
 <strong>Acres:</strong> {{ zoo.acres }}<br>
 
 <h3>Exhibits</h3>
-<table class="table table-striped table-bordered">
-    <thead>
+<form name="update" method="post">{% csrf_token %}
+    <input type="submit" name="delete" value="Delete Items" />
+    <table class="table table-striped table-bordered">
         <tr>
-            <td>Species</td>
-            <td>Common Name</td>
+            <th>Select</th>
+            <th>Species</th>
+            <th>Common Name</th>
         </tr>
-    </thead>
-    <tbody>
-    {% for species in list_species %}
+        {% for species in list_species %}
         <tr>
+            <td><input type="checkbox" value="{{ species.id }}" name="species"></td>
             <td><a href="/species/{{ species.id }}">{{ species.species }}</a></td>
             <td>{{ species.common_name }}</td>
         </tr>
-    {% endfor %}
-    </tbody>
-</table>
-
+        {% endfor %}
+    </table>
+</form>
 <h3>More Information</h3>
 <a href="{{ zoo.website }}">{{ zoo.zoo_name }} Official Website</a>
 

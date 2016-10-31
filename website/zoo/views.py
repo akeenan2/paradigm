@@ -30,14 +30,20 @@ def zoo(request,zoo_id):
     return render(request,'zoo/zoo.html',{'zoo':zoo,'list_species':list_species})
 
 def zoo_add(request,zoo_id):
+    list_species = Species.objects.all()
+    zoo = Zoo.objects.get(id=zoo_id)
     if request.method == 'POST':
         if request.POST.get('add'):
             with connection.cursor() as cursor:
+                for species in request.POST.getlist('species'):
+                    cursor.execute('INSERT INTO Exhibit (species,zoo_name) VALUES (%s,%s)',[zoo.zoo_name,species])
+    return render(request,'zoo/zoo_add.html',{'zoo':zoo,'list_species':list_species})
 
 def update_zoo(request,zoo_id):
     zoo = Zoo.objects.get(id=zoo_id)
     if request.method == 'POST':
-        save_zoo(request=request,zoo_id=zoo_id)
+        with connection.cursor() as cursor:
+        cursor.execute('UPDATE Zoo SET zoo_name=%s,city=%s,state=%s,address=%s,latitude=%s,longitude=%s,num_animals=%s,acres=%s,hour_open=%s,hour_close=%s,annual_visitors=%s,website=%s WHERE id=%s',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("latitude"),request.POST.get("longitude"),request.POST.get("num_animals"),request.POST.get("acres"),request.POST.get("hour_open"),request.POST.get("hour_close"),request.POST.get("annual_visitors"),request.POST.get("website")])
         return HttpResponseRedirect('/zoo/'+zoo_id+'/')
     return render(request,'zoo/update_zoo.html',{'zoo':zoo})
 
@@ -58,7 +64,7 @@ def species(request,species_id):
 def update_species(request,species_id):
     species = Species.objects.get(id=species_id)
     if request.method == 'POST':
-        save_species(request=request,species_id=species_id)
+        cursor.execute('UPDATE Species SET species=%s,common_name=%s,genus=%s,familia=%s,ordo=%s,classis=%s,region=%s,habitat=%s,lifespan=%s,status=%s WHERE id=%s',[request.POST.get("species"),request.POST.get("common_name"),request.POST.get("genus"),request.POST.get("familia"),request.POST.get("ordo"),request.POST.get("classis"),request.POST.get("region"),request.POST.get("habitat"),request.POST.get("lifespan"),request.POST.get("status")])
         return HttpResponseRedirect('/species/'+species_id+'/')
     species_name = species.common_name.split(';')[0]
     return render(request,'zoo/update_species.html',{'species':species,'species_name':species_name})

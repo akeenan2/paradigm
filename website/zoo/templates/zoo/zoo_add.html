@@ -1,0 +1,31 @@
+<!-- zoo_add.html -->
+
+{% extends "layouts/base.html" %}
+
+{% block page_title %}Add Species{% endblock %}
+
+{% block jumbotron_name %}Add species{% endblock %}
+{% block jumbotron_description %}Add species to the exhibits of {{ zoo.zoo_name }}.{% endblock %}
+
+{% block content %}
+
+<br>
+<form method="post">{% csrf_token %}
+    <input class="btn btn-default" type="submit" name="add" value="Add Selected Species"/>
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>Select</th>
+            <th>Species</th>
+            <th>Common Name</th>
+        </tr>
+        {% for species in list_species %}
+        <tr>
+            <td><input type="checkbox" value="{{ species.1 }}" name="species"></td>
+            <td>{{ species.1 }}</td>
+            <td>{{ species.2 }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+
+{% endblock %}

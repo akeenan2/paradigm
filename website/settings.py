@@ -20,7 +20,6 @@ ALLOWED_HOSTS = ['dsg1.crc.nd.edu']
 
 INSTALLED_APPS = [
     'zoo.apps.ZooConfig',
-    'mathfilters',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

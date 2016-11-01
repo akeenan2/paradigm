@@ -10,8 +10,8 @@ create table Family (
 
 create table Zoo (
     id int(11) primary key auto_increment,
-    zoo_name varchar(25) unique,
-    city varchar(200),
+    zoo_name varchar(100) unique,
+    city varchar(50),
     state char(2),
     address varchar(100),
     latitude float(10,6),

@@ -1,3 +1,6 @@
+Zootopia
+--------
+
 Team Paradigm
 
-Zootopia
+Ann Keenan, Annabel Aaman, Douglas Schmieder

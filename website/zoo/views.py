@@ -29,14 +29,14 @@ def zoo(request,zoo_id):
     return render(request,'zoo/zoo.html',{'zoo':zoo,'list_species':list_species,'num_species':num_species})
 
 def update_exhibit(request,zoo_id,operation):
+    zoo = Zoo.objects.get(id=zoo_id)
     list_species = Species.objects.all()
     with connection.cursor() as cursor:
         if operation == 'add':
-            cursor.execute('SELECT Species.species,Species.common_name FROM Species WHERE Species.species NOT IN (SELECT Species.species FROM Species,Exhibit,Zoo WHERE Exhibit.species=Species.species AND Exhibit.zoo_name=Zoo.zoo_name)')
+            cursor.execute('SELECT Species.species,Species.common_name FROM Species WHERE Species.species NOT IN (SELECT Species.species FROM Species,Exhibit,Zoo WHERE Exhibit.species=Species.species AND Exhibit.zoo_name=Zoo.zoo_name AND Exhibit.zoo_name=%s)',[zoo.zoo_name])
         elif operation == 'remove':
-            cursor.execute('SELECT Species.species,Species.common_name FROM Species,Exhibit,Zoo WHERE Exhibit.species=Species.species AND Exhibit.zoo_name=Zoo.zoo_name')
+            cursor.execute('SELECT Species.species,Species.common_name FROM Species,Exhibit,Zoo WHERE Exhibit.species=Species.species AND Exhibit.zoo_name=Zoo.zoo_name AND Exhibit.zoo_name=%s)',[zoo.zoo_name])
         list_species = cursor.fetchall()
-    zoo = Zoo.objects.get(id=zoo_id)
     if request.method == 'POST':
         if request.POST.get('operation'):
             with connection.cursor() as cursor:

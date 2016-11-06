@@ -1,166 +1,63 @@
-zoo_name,city,state,address,latitude,longitude,num_animals,acres,hour_open,hour_close,annual_visitors,website,
-Abilene Zoo,Abilene,TX,2070 Zoo Lane,32.439205,-99.690934,1100,13,9:00,17:00,175000,http://abilenezoo.org/,
-African Safari Wildlife Park,Port Clinton,OH,267 S Lightner Road,41.519513,-82.848223,300,100,10:00,17:00,150000,http://www.africansafariwildlifepark.com/index.cfm,
-Akron Zoo,Akron,OH,500 Edgewood Ave,41.078857,-81.54152,700,50,10:00,17:00,1000000,https://www.akronzoo.org/,
-Albuquerque Biological Park- Rio Grande Zoo,Albuquerque,NM,903 10th St SW,35.077359,-106.660599,900,64,9:00,17:00,1300000,https://www.cabq.gov/culturalservices/biopark/zoo,
-Alexandria Zoo,Alexandria,LA,3016 Masonic Dr.,31.288192,-92.457687,500,33,9:00,17:00,190000,http://www.thealexandriazoo.com/,
-Arizona Sonora Desert Museum,Tucson,AZ,2021 N Kinney Rd. ,32.244022,-111.168163,12370,98,7:30,17:00,400000,http://www.desertmuseum.org/,
-Audubon Zoo,New Orleans,LA,6500 Magazine St. ,29.922655,-90.130334,2000,58,10:00,16:00,860000,http://audubonnatureinstitute.org/zoo,
-Bergen County Zoo,Paramus,NJ,216 Forest Ave,40.934628,-74.04827,,23,10:00,16:30,,http://www.co.bergen.nj.us/index.aspx?NID=437,
-Binder Park Zoo,Battle Creek,MI,7400 Division Dr. ,42.245549,-85.1534,600,433,9:00,17:00,,http://www.binderparkzoo.org/,
-Birmingham Zoo,Birmingham,AL,2630 Cahaba Rd.,33.485991,-86.779574,800,122,9:00,17:00,500000,https://www.birminghamzoo.com/,
-Blank Park Zoo,Des Moines,IA,7401 SW 9th St.,41.520118,-93.624485,1484,25,9:00,17:00,,http://www.blankparkzoo.com/,
-Boonshoft Museum of Discovery,Dayton,OH,2600 Deweese Pkwy,39.788811,-84.203324,,93990,9:00,17:00,365000,http://www.boonshoftmuseum.org/,
-Bramble Park Zoo,Watertown,SD,800 10th St NW,44.909225,-97.130553,500,15,10:00,16:00,60000,http://www.brambleparkzoo.com/,
-Brandywine Zoo,Wilmington,DE,1001 N Park Dr.,39.755823,-75.549161,150,12,10:00,16:00,80000,http://www.brandywinezoo.org/,
-BREC's Baton Rouge Zoo,Baton Rouge,LA,3601 Thomas Rd,30.562341,-91.159861,1900,125,9:30,16:00,255000,http://www.brzoo.org/,
-Brevard Zoo,Melbourne,FL,8225 N Wickham Rd,28.224979,-80.713877,550,75,9:30,17:00,360000,https://brevardzoo.org/,
-Bronx Zoo,Bronx,NY,2300 Southern Blvd,40.850595,-73.876998,4000,265,10:00,17:00,2000000,http://bronxzoo.com/,
-Brookgreen Gardens,Murrells Inlet,SC,1931 Brookgreen Garden Dr,33.530631,-79.089425,,9100,9:30,17:00,275000,http://www.brookgreen.org/,
-Buffalo Zoo,Buffalo,NY,300 Parkside Ave,42.938451,-78.851701,1200,23,10:00,16:00,415000,http://www.buffalozoo.org/,
-Busch Gardens Tampa,Tampa,FL,10165 N McKinley Dr,28.037091,-82.421227,2700,335,10:00,18:00,4300000,https://buschgardens.com/?&gclid=CjwKEAjw97K_BRCwmNTK26iM-hMSJABrkNtbXUcLZoQtCBW1jFFtijUclsodRSkgzqjRvLNmw9RQJBoC9W7w_wcB&dclid=CJOdofK4tc8CFVIWgQodlTMJWg,
-The Butterfly House,Chesterfield,MO,15193 Olive Blvd,38.664847,-90.542771,2000,16,10:00,16:00,,http://www.missouribotanicalgarden.org/visit/family-of-attractions/butterfly-house.aspx,
-Butterfly Pavilion,Westminster,CO,6252 W 104th Ave,39.887153,-105.066488,1200,11,9:00,17:00,,https://www.butterflies.org/,
-Buttonwood Park Zoo,New Bedford,MA,425 Hawthorn St.,41.630232,-70.951391,250,10,9:00,17:00,222000,https://www.bpzoo.org/,
-Caldwell Zoo,Tyler,TX,2203 W Martin Luther King Jr Blvd,32.37007,-95.325693,2000,85,9:00,16:00,260000,http://caldwellzoo.org/,
-California Science Center,Los Angeles,CA,700 Exposition Park Dr.,34.015865,-118.286119,,9.18,10:00,17:00,,http://californiasciencecenter.org/,
-Cameron Park Zoo,Waco,TX,1701 N 4th St,31.570057,-97.145314,1731,52,9:00,17:00,260000,http://www.cameronparkzoo.com/,
-Cape May County Park Zoo,Cape May Court House,NJ,707 U.S. 9,39.101976,-74.81123,550,85,10:00,16:30,,http://www.cmczoo.com/,
-Capron Park Zoo,Attleboro,MA,201 County St,41.93778,-71.297775,100,8,10:00,17:00,64000,http://www.capronparkzoo.com/,
-Central Florida Zoo,Sanford,FL,3755 US-17,28.824267,-81.312169,400,116,9:00,17:00,250000,http://www.centralfloridazoo.org/,
-Central Park Zoo,New York City,NY,64th St and 5th Ave,40.767786,-73.971855,,6.5,10:00,17:00,1100000,http://centralparkzoo.com/,
-Chahinkapa Zoo,Wahpeton,ND,1004 R J Hughes Dr.,46.274634,-96.59817,200,18,11:00,19:00,55000,http://www.chahinkapazoo.org/,
-Charles Paddock Zoo,Atascadero,CA,9100 Morro Rd,35.466838,-120.66973,100,5,10:00,17:00,70000,https://charlespaddockzoo.org/,
-Chattanooga Zoo at Warner Park,Chattanooga,TN,301 N Holtzclaw Ave,35.04265,-85.28212,860,13,9:00,17:00,215000,http://www.chattzoo.org/,
-Cheyenne Mountain Zoo,Colorado Springs,CO,4250 Cheyenne Mountain Zoo Rd,38.771812,-104.853296,750,140,9:00,17:00,600000,http://www.cmzoo.org/,
-Brookfield Zoo,Brookfield,IL,8400 W 31st St,41.834126,-87.833519,2300,216,10:00,17:00,2300000,https://www.czs.org/Brookfield-ZOO/Home,
-Children's Zoo at Celebration Square,Saginaw,MI,1730 S Washington Ave,43.411354,-83.952639,150,,10:00,17:00,75000,http://www.saginawzoo.com/,
-Cincinnati Zoo and Botanical Garden,Cincinnati,OH,3400 Vine St. ,39.14459,-84.508628,1896,528,10:00,17:00,1200000,http://cincinnatizoo.org/,
-Cleveland Metroparks Zoo,Cleveland,OH,3900 Wildlife Way,41.445537,-81.707966,3000,183,10:00,17:00,1300000,http://www.clevelandmetroparks.com/Zoo/Zoo.aspx,
-Clyde Peeling's Reptiland,Allenwood,PA,18628 US-15,41.130668,-76.912147,,0.14,10:00,17:00,,http://reptiland.com/,
-Columbus Zoo and Aquarium,Powell,OH,4850 W Powell Rd,40.156087,-83.118315,7000,580,9:00,17:00,2400000,https://www.columbuszoo.org/,
-Como Park Zoo and Conservatory,St Paul,MN,1225 Estabrook Dr.,44.982593,-93.153401,1700,384,10:00,18:00,2200000,http://www.comozooconservatory.org/,
-Connecticut's Beardsley Zoo,Bridgeport,CT,1875 Noble Ave,41.209421,-73.182249,305,18118.4,9:00,16:00,260000,http://www.beardsleyzoo.com/,
-Cosley Zoo,Wheaton,IL,1356 N Gary Ave,41.878192,-88.121147,125,5,9:00,17:00,125000,http://cosleyzoo.org/,
-CuriOdyssey,San Mateo,CA,1651 Coyote Point Dr.,37.590659,-122.319639,100,3,10:00,17:00,75000,http://curiodyssey.org/,
-Dakota Zoo,Bismark,ND,600 Riverside Park Rd,46.799324,-100.807877,600,15,13:00,17:00,130000,http://www.dakotazoo.org/,
-Dallas Zoo,Dallas,TX,650 S R L Thornton Fwy,32.744024,-96.814172,2000,106,9:00,17:00,915000,http://www.dallaszoo.com/,
-David Traylor Zoo of Emporia,Emporia,KA,75 Soden Road,38.384366,-96.177735,400,5,10:00,16:30,80000,https://zoo.emporia-kansas.gov/,
-Denver Zoo,Denver,CO,2300 Steele St,39.750394,-104.949141,4125,80,9:00,17:00,2000000,http://www.denverzoo.org/,
-Detroit Zoo,Detroit,MI,8450 W 10 Mile Rd,42.476841,-83.149303,3300,125,10:00,17:00,1300000,http://detroitzoo.org/,
-Dickerson Park Zoo,Springfield,MO,1401 W Norton Rd,37.254008,-93.306514,500,,9:00,17:00,220000,http://www.dickersonparkzoo.org/Zoo/,
-Discovery Cove,Orlando,FL,6000 Discovery Cove Way,28.406101,-81.459735,,,9:00,17:30,,https://discoverycove.com/,
-Disney's Animal Kingdom,Orlando,FL,2901 Osceola Pkwy,28.359738,-81.591313,,580,9:00,20:30,9700000,https://disneyworld.disney.go.com/destinations/animal-kingdom/,
-El Paso Zoo,El Paso,TX,4001 E Paisano Dr,31.769115,-106.444869,600,35,9:30,17:00,350000,http://www.elpasozoo.org/,
-Ellen Trout Zoo,Lufkin,TX,402 Zoo Cir,31.371821,-94.726071,700,15,9:00,17:00,130000,http://cityoflufkin.com/zoo/,
-Elmwood Park Zoo,Norristown,PA,1661 Harding Blvd,40.13283,-75.338678,300,80,10:00,17:00,550000,http://www.elmwoodparkzoo.org/,
-Erie Zoo,Erie,PA,423 W 38th St,42.097187,-80.075676,400,15,10:00,17:00,400000,https://www.eriezoo.org/,
-Fort Wayne Children's Zoo,Fort Wayne,IN,3411 Sherman Blvd,41.1067,-85.1542,1000,38,9:00,17:00,460000,http://kidszoo.org/,
-Fort Worth Zoo,Fort Worth,TX,1989 Colonial Pkwy,32.7253,-97.3556,5000,64,10:00,17:00,1000000,https://www.fortworthzoo.org/,
-Fossil Rim Wildlife Center,Glen Rose,TX,2299 County Road 2008,32.1795,-97.7972,1100,1700,8:30,16:30,230000,http://www.fossilrim.org/,
-Franklin Park Zoo,Boston,MA,1 Franklin Park Rd,42.3028,-71.0868,1000,72,10:00,17:00,320000,http://www.zoonewengland.org/franklin-park-zoo,
-Fresno Chaffee Zoo,Fresno,CA,894 W Belmont Ave,36.7529,-119.8222,694,39,9:00,16:00,530000,https://www.fresnochaffeezoo.org/,
-Gladys Porter Zoo,Brownsville,TX,500 E Ringgold St,25.9133,-97.4954,1500,31,9:00,17:00,400000,http://gpz.org/,
-Great Plains Zoo,Sioux Falls,SD,805 S Kiwanis Ave,43.5392,-96.7628,850,45,10:00,17:00,275000,http://www.greatzoo.org/,
-Greensboro Science Center,Greensboro,NC,4301 Lawndale Dr,36.1299,-79.8339,,27,9:00,17:00,280000,http://www.greensboroscience.org/,
-Greenville Zoo,Greenville,SC,150 Cleveland Park Dr,34.8475,-82.3859,,14,9:00,17:00,270000,http://www.greenvillezoo.com/,
-Grizzly & Wolf Discovery Center,West Yellowstone,MT,201 S Canyon St,44.6563,-111.099,24,13,8:30,19:00,150000,http://www.grizzlydiscoveryctr.org/,
-Happy Hollow Zoo,San Jose,CA,1300 Senter Rd,37.3254,-121.8616,150,16,10:00,16:00,430000,http://www.hhpz.org/,
-Henry Vilas Zoo,Madison,WI,702 S Randall Ave,43.06,-89.411,,28,9:30,17:00,725000,http://www.vilaszoo.org/,
-Henson Robinson Zoo,Springfield,IL,1100 E Lake Shore Dr,39.7275,-89.5828,300,87,10:00,17:00,85000,http://www.springfieldparks.org/facilities/hensonrobinsonzoo/,
-Houston Zoo,Houston,TX,6200 Hermann Park Dr,29.7161,-95.3901,6000,55,9:00,18:00,1800000,http://www.houstonzoo.org/,
-Hutchinson Zoo,Hutchinson,KA,6 Emerson Loop,38.0291,-97.9167,160,9,10:00,16:45,185000,http://www.hutchgov.com/817/Hutchinson-Zoo,
-Idaho Falls Zoo at Tautphaus Park,Idaho Falls,ID,2725 Carnival Way,43.4917,-112.0764,400,,9:00,17:00,125000,http://www.idahofallsidaho.gov/city/city-departments/parks-recreation/parks-recreation-zoo.html,
-Indianapolis Zoo,Indianapolis,IN,1200 W Washington St,39.768,-86.1806,3800,64,9:00,16:00,1250000,http://www.indianapoliszoo.com/SitePages/Home.aspx,
-International Crane Foundation,Baraboo,WI,E-11376 Shady Lane Rd,43.54678,-89.75584,100,225,9:00,17:00,25000,https://www.savingcranes.org/,
-Jacksonville Zoo and Gardens,Jacksonville,FL,370 Zoo Pkwy,30.4032,-81.6441,2400,117,9:00,17:00,800000,http://www.jacksonvillezoo.org/,
-John Ball Zoo,Grand Rapids,MI,1300 W. Fulton St,42.9622,-85.7046,1200,140,10:00,16:00,515000,http://www.jbzoo.org/,
-Kansas City Zoo,Kansas City,MO,6800 Zoo Dr,39.0065,-94.5277,1300,202,9:30,16:00,715000,https://www.kansascityzoo.org/,
-Lake Superior Zoo,Duluth,MN,7210 Fremont St,46.7258,-92.1905,,16,10:00,17:00,100000,http://www.lszooduluth.org/,
-Lee G. Simmons Conservation Park and Wildlife Safari,Ashland,NE,16406 292nd St,41.0097,-96.3026,,440,9:00,17:00,,http://www.wildlifesafaripark.com/,
-Lee Richardson Zoo,Garden City,KA,312 E Finnup Dr,37.9594,-100.8733,300,47,8:00,19:00,180000,http://leerichardsonzoo.org/,
-Lehigh Valley Zoo,Schnecksville,PA,5150 Game Preserve Rd,40.6586,-75.6257,275,29,10:00,16:00,125000,https://www.lvzoo.org/,
-Lincoln Children's Zoo,Lincoln,NE,1222 S 27th St,40.8006,-96.6795,300,10,10:00,17:00,185000,http://www.lincolnzoo.org/,
-Lincoln Park Zoo,Chicago,Il,2001 N Clark St,41.9211,-87.634,1100,35,10:00,17:00,3500000,http://www.lpzoo.org/,
-Lion Country Safari,Loxahatchee,FL,2003 Lion Country Safari Rd,26.7162,-80.3222,900,260,10:00,17:00,450000,https://www.lioncountrysafari.com/,
-Little Rock Zoo,Little Rock,AZ,1 Zoo Dr,34.7465,-92.3317,725,33,9:00,16:00,290000,http://www.littlerockzoo.com/,
-Living Desert Zoo and Gardens State Park,Carlsbad,NM,1504 Miehls Rd,32.4417,-104.277,430,1500,9:00,17:00,50000,http://www.emnrd.state.nm.us/SPD/livingdesertstatepark.html,
-The Living Desert Zoo and Gardens,Palm Desert,CA,47900 Portola Ave,33.7,-116.3735,,1200,8:00,13:30,350000,http://www.livingdesert.org/,
-Los Angeles Zoo,Los Angeles,CA,5333 Zoo Dr,34.1484,-118.2841,1100,133,10:00,17:00,1750000,http://www.lazoo.org/,
-Louisville Zoo,Louisville,KY,1100 Trevilian Way,38.2056,-85.7072,1700,135,10:00,17:00,870000,https://louisvillezoo.org/,
-Lowry Park Zoo,Tampa,FL,1101 W. Sligh Ave,28.013,-82.4694,1200,63,9:30,17:00,1100000,http://www.lowryparkzoo.org/,
-The Maryland Zoo in Baltimore,Baltimore,MD,1876 Mansion House Dr,39.3227,-76.6498,2000,135,10:00,16:00,400000,http://www.marylandzoo.org/,
-Memphis Zoo,Memphis,TN,2000 Prentiss Pl,35.1501,-89.9944,2800,70,9:00,17:00,1000000,http://www.memphiszoo.org/,
-Mesker Park Zoo and Botanic Garden,Evansville,IN,1545 Mesker Park Dr,37.9964,-87.6056,700,50,9:30,16:00,200000,http://www.meskerparkzoo.com/,
-Mill Mountain Zoo,Roanoke,VA,2404 Prospect Rd SE,37.2479,-79.9366,160,33,10:00,5:00,110000,http://www.mmzoo.org/,
-Miller Park Zoo,Bloomington,IL,1020 S Morris Ave,40.4696,-89.0051,,1100,9:30,16:30,100000,http://4.17.232.139/parks/Miller-Park-Zoo/about-the-zoo.htm,
-Milwaukee County Zoo,Milwaukee,WI,10001 W Bluemound Rd,43.0327,-88.0377,2500,200,9:00,16:30,1300000,http://www.milwaukeezoo.org/,
-Minnesota Zoo,Apple Valley,MN,13000 Zoo Blvd,44.7678,-93.1967,4700,485,9:00,16:00,1300000,http://mnzoo.org/,
-Moody Gardens,Galveston,TX,1 Hope Blvd,29.2727,-94.8513,9000,242,10:00,18:00,550000,http://www.moodygardens.com/,
-Museum of Life and Science,Durham,NC,433 W Murray Ave,36.02884,-78.89863,,84,10:00,17:00,440000,http://www.lifeandscience.org/,
-Museum of Science,Boston,MA,1 Science Pk,42.3677,-71.0709,100,,9:00,21:00,1500000,http://www.mos.org/,
-Naples Zoo,Naples,FL,1590 Goodlette-Frank Rd,26.1692,-81.7889,240,43,9:00,17:00,360000,http://napleszoo.org/,
-Nashville Zoo,Nashville,TN,3777 Nolensville Pike,36.09,-86.7337,2285,200,9:00,18:00,650000,https://www.nashvillezoo.org/,
-National Aviary,Pittsburgh,PA,700 Arch St,40.4536,-80.0103,600,1.5,10:00,17:00,100000,https://www.aviary.org/,
-North Carolina Zoo,Ashboro,NC,4401 Zoo Pkwy,35.6219,-79.7549,1600,550,9:00,17:00,750000,http://www.nczoo.org/,
-Northeastern Wisconsin Zoo,Suamico,WI,4378 Reforestation Rd,44.66,-88.0887,215,43,9:00,20:00,500000,http://newzoo.org/,
-Northwest Trek Wildlife Park,Eatonville,WA,11610 Trek Dr E,46.9147,-122.2762,202,723,9:30,16:00,210000,https://www.nwtrek.org/,
-Oakland Zoo,Oakland,CA,9777 Golf Links Rd,37.7499,-122.1467,440,100,10:00,16:00,650000,http://www.oaklandzoo.org/,
-Oglebay's Good Zoo,Wheeling,WV,465 Lodge Dr,40.10194,-80.66889,,35,10:00,16:00,115000,http://www.oglebay-resort.com/goodzoo/,
-Oklahoma City Zoo,Oklahoma City,OK,2000 Remington Pl,35.5235,-97.4725,1900,119,9:00,17:00,1000000,http://www.okczoo.org/,
-Omaha's Henry Doorly Zoo & Aquarium,Omaha,NE,3701 S 10th St,41.2249,-95.9266,,130,9:00,17:00,1700000,http://www.omahazoo.com/,
-Oregon Zoo,Portland,OR,4001 SW Canyon Rd,45.51,-122.7159,1955,64,9:30,16:00,1600000,http://www.oregonzoo.org/,
-Palm Beach Zoo at Dreher Park,West Palm Beach,FL,1301 Summit Boulevard,26.6661,-80.0687,700,23,9:00,17:00,314000,http://www.palmbeachzoo.org/,
-Peoria Zoo,Peoria,IL,2320 N Prospect Rd,40.7159,-89.5741,232,14,10:00,17:00,150000,https://www.peoriazoo.org,
-Philadelphia Zoo,Philadelphia,PA,3400 W Girard Ave,39.9715,-75.1963,2500,42,9:30,17:00,1350000,www.philadelphiazoo.org,
-The Phoenix Zoo,Phoenix,AZ,455 N Galvin Pkwy,33.451,-111.948,1400,125,9:00,17:00,800000,http://phoenixzoo.org/,
-Point Defiance Zoo and Aquarium,Tacoma,WA,5400 N Pearl St,47.305,-122.5215,300,27,9:30,16:00,900000,http://www.pdza.org,
-Potawatomi Zoo,South Bend,IN,500 S Greenlawn Ave,41.6695,-86.2183,400,23,10:00,17:00,200000,https://potawatomizoo.org,
-Potter Park Zoo,Lansing,MI,1301 S Pennsylvania Ave,42.7179,-84.5277,500,102,9:00,16:00,167000,www.potterparkzoo.org,
-Prospect Park Zoo,Brooklyn,NY,450 Flatbush Ave,40.6654,-73.9654,620,12,10:00,17:00,300000,https://prospectparkzoo.com/,
-Pueblo Zoo,Pueblo,CO,3455 Nuckolls Ave,38.2613,-104.6554,420,30,9:00,16:00,90000,www.pueblozoo.org/,
-Queens Zoo,Corona,NY,53-51 111th St,40.7444,-73.8497,75,18,10:00,17:00,,https://queenszoo.com/,
-Racine Zoological Gardens,Racine,WI,200 Goold St,42.748,-87.7826,100,32,9:00,18:00,85000,http://www.racinezoo.org/,
-Red River Zoo,Fargo,ND,4255 23rd Ave S,46.8446,-96.855,300,34,10:00,17:00,,http://redriverzoo.org/,
-Reid Park Zoo,Tucson,AZ,3400 E Zoo Ct,32.2099,-110.9207,500,24,8:00,15:00,600000,https://reidparkzoo.org/,
-Riverbanks Zoo,Columbia,SC,500 Wildlife Pkwy,34.0101,-81.0744,2000,170,9:00,17:00,1000000,http://www.riverbanks.org/,
-Riverside Discovery Center,Scottsbluff,NE,1600 S Beltline Hwy W,41.8565,-103.683,650,23,10:00,16:00,,http://riversidediscoverycenter.org/,
-Roger Williams Park Zoo,Providence,RI,1000 Elmwood Avenue,41.7904,-71.4148,100,40,10:00,16:00,650000,http://www.rwpzoo.org/,
-Rolling Hills Zoo,Salina,KA,625 N Hedville Rd,38.8526,-97.7642,100,65,9:00,16:00,,http://www.rollinghillswildlife.com/,
-Roosevelt Park Zoo,Minot,ND,1219 E Burdick Expy,48.2333,-101.2747,200,19,10:00,20:00,80000,http://www.rpzoo.com/,
-Rosamond Gifford Zoo,Syracuse,NY,One Conservation Pl,43.0431,-76.1813,700,43,10:00,17:30,350000,http://www.rosamondgiffordzoo.org/,
-Sacramento Zoo,Sacramento,CA,3930 W Land Park Dr,38.5396,-121.5038,500,14,9:00,16:00,500000,http://www.saczoo.org/,
-Safari West,Santa Rosa,CA,3115 Porter Creek Rd,38.557,-122.6957,850,400,9:00,16:00,60000,http://www.safariwest.com,
-Saint Louis Zoo,Saint Louis,MO,1 Government Dr,38.6339,-90.2913,15000,90,9:00,17:00,3000000,https://www.stlzoo.org/,
-Salisbury Zoo,Salisbury,MD,755 S Park Dr,38.3606,-75.5826,120,12,9:00,16:30,300000,https://www.salisburyzoo.org/,
-San Antonio Zoo,San Antonio,TX,3903 N St Mary's St,29.4621,-98.4737,3500,56,9:00,17:00,1000000,http://sazoo.org/,
-San Diego Zoo,San Diego,CA,2920 Zoo Dr,32.7353,-117.149,3500,100,9:00,18:00,3500000,http://zoo.sandiegozoo.org/,
-San Diego Zoo Safari Park,Escondido,CA,15500 San Pasqual Valley Road,33.0974,-116.9957,3000,1800,9:00,17:00,1300000,http://www.sdzsafaripark.org/,
-San Francisco Zoo,San Francisco,CA,1 Zoo Rd,37.733,-122.503,1000,100,10:00,17:00,800000,http://www.sfzoo.org/,
-Santa Ana Zoo,Santa Ana,CA,1801 E Chestnut Ave,33.7425,-117.8432,250,20,10:00,16:00,270000,http://www.santaanazoo.org/,
-Santa Barbara Zoo,Santa Barbara,CA,500 Ninos Dr,34.4204,-119.6664,500,30,10:00,17:00,500000,http://www.sbzoo.org/,
-Santa Fe College Teaching Zoo,Gainesville,FL,3000 NW 83 St,29.682,-82.4376,200,10,9:00,14:00,40000,http://www.sfcollege.edu/zoo/,
-Scovill Zoo,Decatur,IL,71 S Country Club Rd,39.8256,-88.9141,400,,9:30,17:00,85000,http://www.decatur-parks.org/scovill-zoo/,
-Sedgwick County Zoo,Wichita,KA,5555 Zoo Boulevard,37.7189,-97.4054,"2,500",247,8:30,17:00,600000,https://www.scz.org/,
-Seneca Park Zoo,Rochester,NY,2222 St. Paul Street,43.2074,-77.6232,300,15,10:00,16:00,425000,http://senecaparkzoo.org/,
-Sequoia Park Zoo,Eureka,CA,3414 W St,40.777,-124.1447,1700,5,10:00,17:00,,http://www.sequoiaparkzoo.net/,
-Smithsonian National Zoo,"NW, Washington",DC,3001 Connecticut Ave.,38.9296,-77.0498,1500,163,8:00,19:00,2000000,https://nationalzoo.si.edu/,
-Staten Island Zoo,Staten Island,NY,614 Broadway,40.6251,-74.1154,1400,8,10:00,16:45,,http://www.statenislandzoo.org/,
-Stone Zoo,Stoneham,MA,149 Pond St,42.4625,-71.0926,120,26,10:00,17:00,,http://www.zoonewengland.org/stone-zoo,
-Sunset Zoo,Manhattan,KA,2333 Oak St,39.177,-96.5957,330,48,9:30,17:00,100000,http://www.sunsetzoo.com/,
-Toledo Zoo,Toledo,OH,2700 Broadway St,41.6179,-83.5803,5100,48,10:00,17:00,1000000,https://www.toledozoo.org/,
-Topeka Zoo,Topeka,KA,636 SW Zoo Pkwy,39.0559,-95.7265,200,80,9:00,17:00,300000,http://topekazoo.org/,
-Trevor Zoo,Millbrook,NY,282 Millbrook School Rd,41.8507,-73.6184,180,6,9:00,17:00,,http://www.millbrook.org/page/school-life/trevor-zoo,
-Tulsa Zoo,Tulsa,OK,6421 E 36th St N,36.2134,-95.905,1500,85,9:00,17:00,600000,https://tulsazoo.org/,
-Turtle Back Zoo,West Orange,NJ,560 Northfield Ave,40.7675,-74.2803,850,20,10:00,16:30,755000,http://turtlebackzoo.com,
-Utah's Hogle Zoo,Salt Lake City,UT,2600 Sunnyside Ave S,40.7502,-111.8144,800,42,9:00,18:00,1200000,https://www.hoglezoo.org/,
-Virginia Zoo,Norfolk,VA,3500 Granby St,36.8763,-76.2783,350,53,10:00,17:00,500000,http://virginiazoo.org/,
-Wildlife Safari,Winston,OR,1790 Safari Rd,43.1409,-123.4275,600,600,9:00,17:00,150000,http://www.wildlifesafari.net/,
-The Wilds,Cumberland,OH,14000 International Rd,39.82571,-81.747637,300,9000,9:00,16:00,1200000,https://thewilds.columbuszoo.org/,
-Woodland Park Zoo,Seattle,WA,5500 Phinney Ave N,47.6682,-122.3508,1000,92,9:30,16:00,1000000,http://www.zoo.org/,
-The Zoo at Chehaw,Albany,GA,105 Chehaw Park Rd,31.6216,-84.1366,230,100,8:00,20:00,,http://chehaw.org/zoo,
-Zoo Atlanta,Atlanta,GA,800 Cherokee Ave SE,33.7341,-84.3723,1500,40,9:30,10:30,800000,http://www.zooatlanta.org/#,
-Zoo Boise,Boise,ID,355 Julia Davis Dr,43.6079,-116.2032,300,89,10:00,17:00,350000,http://zooboise.org/,
-Zoo Knoxville,Knoxville,TN,3500 Knoxville Zoo Dr,35.9995,-83.8884,800,53,9:30,10:30,400000,https://www.zooknoxville.org/,
-Zoo Miami,Miami,FL,12400 SW 152nd St,25.6071,-80.3993,3000,750,10:00,11:00,830000,http://www.zoomiami.org/,
-ZooAmerica North American Wildlife Park,Hershey,PA,201 Park Ave,40.288,-76.6515,200,11,10:00,11:00,550000,http://www.zooamerica.com/,
+Abilene Zoo,Abilene,TX,2070 Zoo Lane,32.439205,-99.690934,1100,13,9:00,17:00,175000,http://abilenezoo.org/
+Albuquerque Biological Park- Rio Grande Zoo,Albuquerque,NM,903 10th St SW,35.077359,-106.660599,900,64,9:00,17:00,1300000,https://www.cabq.gov/culturalservices/biopark/zoo
+Audubon Zoo,New Orleans,LA,6500 Magazine St. ,29.922655,-90.130334,2000,58,10:00,16:00,860000,http://audubonnatureinstitute.org/zoo
+Birmingham Zoo,Birmingham,AL,2630 Cahaba Rd.,33.485991,-86.779574,800,122,9:00,17:00,500000,https://www.birminghamzoo.com/
+Brandywine Zoo,Wilmington,DE,1001 N Park Dr.,39.755823,-75.549161,150,12,10:00,16:00,80000,http://www.brandywinezoo.org/
+BREC's Baton Rouge Zoo,Baton Rouge,LA,3601 Thomas Rd,30.562341,-91.159861,1900,125,9:30,16:00,255000,http://www.brzoo.org/
+Brevard Zoo,Melbourne,FL,8225 N Wickham Rd,28.224979,-80.713877,550,75,9:30,17:00,360000,https://brevardzoo.org/
+Bronx Zoo,Bronx,NY,2300 Southern Blvd,40.850595,-73.876998,4000,265,10:00,17:00,2000000,http://bronxzoo.com/
+Brookfield Zoo,Brookfield,IL,8400 W 31st St,41.834126,-87.833519,2300,216,10:00,17:00,2300000,https://www.czs.org/Brookfield-ZOO/Home
+Buffalo Zoo,Buffalo,NY,300 Parkside Ave,42.938451,-78.851701,1200,23,10:00,16:00,415000,http://www.buffalozoo.org/
+Busch Gardens Tampa,Tampa,FL,10165 N McKinley Dr,28.037091,-82.421227,2700,335,10:00,18:00,4300000,https://seaworldparks.com/en/buschgardens-tampa/
+Chahinkapa Zoo,Wahpeton,ND,1004 R J Hughes Dr.,46.274634,-96.59817,200,18,11:00,19:00,55000,http://www.chahinkapazoo.org/
+Cincinnati Zoo and Botanical Garden,Cincinnati,OH,3400 Vine St. ,39.14459,-84.508628,1896,528,10:00,17:00,1200000,http://cincinnatizoo.org/
+Cleveland Metroparks Zoo,Cleveland,OH,3900 Wildlife Way,41.445537,-81.707966,3000,183,10:00,17:00,1300000,http://www.clevelandmetroparks.com/Zoo/Zoo.aspx
+Como Park Zoo and Conservatory,St Paul,MN,1225 Estabrook Dr.,44.982593,-93.153401,1700,384,10:00,18:00,2200000,http://www.comozooconservatory.org/
+Connecticut's Beardsley Zoo,Bridgeport,CT,1875 Noble Ave,41.209421,-73.182249,305,18118.4,9:00,16:00,260000,http://www.beardsleyzoo.com/
+Dakota Zoo,Bismark,ND,600 Riverside Park Rd,46.799324,-100.807877,600,15,13:00,17:00,130000,http://www.dakotazoo.org/
+Dallas Zoo,Dallas,TX,650 S R L Thornton Fwy,32.744024,-96.814172,2000,106,9:00,17:00,915000,http://www.dallaszoo.com/
+Denver Zoo,Denver,CO,2300 Steele St,39.750394,-104.949141,4125,80,9:00,17:00,2000000,http://www.denverzoo.org/
+Detroit Zoo,Detroit,MI,8450 W 10 Mile Rd,42.476841,-83.149303,3300,125,10:00,17:00,1300000,http://detroitzoo.org/
+Fort Worth Zoo,Fort Worth,TX,1989 Colonial Pkwy,32.7253,-97.3556,5000,64,10:00,17:00,1000000,https://www.fortworthzoo.org/
+Franklin Park Zoo,Boston,MA,1 Franklin Park Rd,42.3028,-71.0868,1000,72,10:00,17:00,320000,http://www.zoonewengland.org/franklin-park-zoo
+Fresno Chaffee Zoo,Fresno,CA,894 W Belmont Ave,36.7529,-119.8222,694,39,9:00,16:00,530000,https://www.fresnochaffeezoo.org/
+Great Plains Zoo,Sioux Falls,SD,805 S Kiwanis Ave,43.5392,-96.7628,850,45,10:00,17:00,275000,http://www.greatzoo.org/
+Grizzly & Wolf Discovery Center,West Yellowstone,MT,201 S Canyon St,44.6563,-111.099,24,13,8:30,19:00,150000,http://www.grizzlydiscoveryctr.org/
+Happy Hollow Zoo,San Jose,CA,1300 Senter Rd,37.3254,-121.8616,150,16,10:00,16:00,430000,http://www.hhpz.org/
+Houston Zoo,Houston,TX,6200 Hermann Park Dr,29.7161,-95.3901,6000,55,9:00,18:00,1800000,http://www.houstonzoo.org/
+Indianapolis Zoo,Indianapolis,IN,1200 W Washington St,39.768,-86.1806,3800,64,9:00,16:00,1250000,http://www.indianapoliszoo.com/SitePages/Home.aspx
+Jacksonville Zoo,Jacksonville,FL,370 Zoo Pkwy,30.4032,-81.6441,2400,117,9:00,17:00,800000,http://www.jacksonvillezoo.org/
+John Ball Zoo,Grand Rapids,MI,1300 W. Fulton St,42.9622,-85.7046,1200,140,10:00,16:00,515000,http://www.jbzoo.org/
+Kansas City Zoo,Kansas City,MO,6800 Zoo Dr,39.0065,-94.5277,1300,202,9:30,16:00,715000,https://www.kansascityzoo.org/
+Lincoln Park Zoo,Chicago,IL,2001 N Clark St,41.9211,-87.634,1100,35,10:00,17:00,3500000,http://www.lpzoo.org/
+Los Angeles Zoo,Los Angeles,CA,5333 Zoo Dr,34.1484,-118.2841,1100,133,10:00,17:00,1750000,http://www.lazoo.org/
+Louisville Zoo,Louisville,KY,1100 Trevilian Way,38.2056,-85.7072,1700,135,10:00,17:00,870000,https://louisvillezoo.org/
+Memphis Zoo,Memphis,TN,2000 Prentiss Pl,35.1501,-89.9944,2800,70,9:00,17:00,1000000,http://www.memphiszoo.org/
+Milwaukee County Zoo,Milwaukee,WI,10001 W Bluemound Rd,43.0327,-88.0377,2500,200,9:00,16:30,1300000,http://www.milwaukeezoo.org/
+Minnesota Zoo,Apple Valley,MN,13000 Zoo Blvd,44.7678,-93.1967,4700,485,9:00,16:00,1300000,http://mnzoo.org/
+Moody Gardens,Galveston,TX,1 Hope Blvd,29.2727,-94.8513,9000,242,10:00,18:00,550000,http://www.moodygardens.com/
+Nashville Zoo,Nashville,TN,3777 Nolensville Pike,36.09,-86.7337,2285,200,9:00,18:00,650000,https://www.nashvillezoo.org/
+North Carolina Zoo,Ashboro,NC,4401 Zoo Pkwy,35.6219,-79.7549,1600,550,9:00,17:00,750000,http://www.nczoo.org/
+Oklahoma City Zoo,Oklahoma City,OK,2000 Remington Pl,35.5235,-97.4725,1900,119,9:00,17:00,1000000,http://www.okczoo.org/
+Oregon Zoo,Portland,OR,4001 SW Canyon Rd,45.51,-122.7159,1955,64,9:30,16:00,1600000,http://www.oregonzoo.org/
+Palm Beach Zoo at Dreher Park,West Palm Beach,FL,1301 Summit Boulevard,26.6661,-80.0687,700,23,9:00,17:00,314000,http://www.palmbeachzoo.org/
+Philadelphia Zoo,Philadelphia,PA,3400 W Girard Ave,39.9715,-75.1963,2500,42,9:30,17:00,1350000,www.philadelphiazoo.org
+Potawatomi Zoo,South Bend,IN,500 S Greenlawn Ave,41.6695,-86.2183,400,23,10:00,17:00,200000,https://potawatomizoo.org
+Riverbanks Zoo,Columbia,SC,500 Wildlife Pkwy,34.0101,-81.0744,2000,170,9:00,17:00,1000000,http://www.riverbanks.org/
+Sacramento Zoo,Sacramento,CA,3930 W Land Park Dr,38.5396,-121.5038,500,14,9:00,16:00,500000,http://www.saczoo.org/
+Saint Louis Zoo,Saint Louis,MO,1 Government Dr,38.6339,-90.2913,15000,90,9:00,17:00,3000000,https://www.stlzoo.org/
+San Antonio Zoo,San Antonio,TX,3903 N St Mary's St,29.4621,-98.4737,3500,56,9:00,17:00,1000000,http://sazoo.org/
+San Diego Zoo,San Diego,CA,2920 Zoo Dr,32.7353,-117.149,3500,100,9:00,18:00,3500000,http://zoo.sandiegozoo.org/
+San Francisco Zoo,San Francisco,CA,1 Zoo Rd,37.733,-122.503,1000,100,10:00,17:00,800000,http://www.sfzoo.org/
+Sedgwick County Zoo,Wichita,KA,5555 Zoo Boulevard,37.7189,-97.4054,"2,500",247,8:30,17:00,600000,https://www.scz.org/
+Smithsonian National Zoo,"NW, Washington",DC,3001 Connecticut Ave.,38.9296,-77.0498,1500,163,8:00,19:00,2000000,https://nationalzoo.si.edu/
+The Maryland Zoo in Baltimore,Baltimore,MD,1876 Mansion House Dr,39.3227,-76.6498,2000,135,10:00,16:00,400000,http://www.marylandzoo.org/
+The Phoenix Zoo,Phoenix,AZ,455 N Galvin Pkwy,33.451,-111.948,1400,125,9:00,17:00,800000,http://phoenixzoo.org/
+Toledo Zoo,Toledo,OH,2700 Broadway St,41.6179,-83.5803,5100,48,10:00,17:00,1000000,https://www.toledozoo.org/
+Tulsa Zoo,Tulsa,OK,6421 E 36th St N,36.2134,-95.905,1500,85,9:00,17:00,600000,https://tulsazoo.org/
+Turtle Back Zoo,West Orange,NJ,560 Northfield Ave,40.7675,-74.2803,850,20,10:00,16:30,755000,http://turtlebackzoo.com
+Utah's Hogle Zoo,Salt Lake City,UT,2600 Sunnyside Ave S,40.7502,-111.8144,800,42,9:00,18:00,1200000,https://www.hoglezoo.org/
+Woodland Park Zoo,Seattle,WA,5500 Phinney Ave N,47.6682,-122.3508,1000,92,9:30,16:00,1000000,http://www.zoo.org/
+Zoo Atlanta,Atlanta,GA,800 Cherokee Ave SE,33.7341,-84.3723,1500,40,9:30,10:30,800000,http://www.zooatlanta.org/#
+Zoo Boise,Boise,ID,355 Julia Davis Dr,43.6079,-116.2032,300,89,10:00,17:00,350000,http://zooboise.org/
+Zoo Miami,Miami,FL,12400 SW 152nd St,25.6071,-80.3993,3000,750,10:00,11:00,830000,http://www.zoomiami.org/

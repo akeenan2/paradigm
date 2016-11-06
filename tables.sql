@@ -1,10 +1,14 @@
-create table Biome (
+create table Habitat (
     habitat varchar(20) primary key,
     description varchar(200)
 );
 
-create table Family (
-    family varchar(25) primary key,
+create table Classification (
+    family varchar(50) primary key,
+    ordr varchar(50),
+    class varchar(50),
+    phylum varchar(50),
+    kingdom varchar(50),
     description varchar(200)
 );
 
@@ -28,12 +32,9 @@ create table Species (
     species varchar(100) primary key,
     common_name varchar(200),
     genus varchar(50),
-    familia varchar(50),
-    ordo varchar(50),
-    classis varchar(50),
+    family varchar(50),
     region varchar(100),
     habitat varchar(200),
-    lifespan int(11),
     status char(2)
 );
 
@@ -45,15 +46,15 @@ create table Exhibit (
     foreign key (species) references Species(species)
 );
 
-load data local infile 'biome.csv' into table Biome
+load data local infile 'habitat.csv' into table Biome
     fields terminated by ','
     lines terminated by '\n'
     (habitat,description);
 
-load data local infile 'family.csv' into table Family
+load data local infile 'clasification.csv' into table Family
     fields terminated by ','
     lines terminated by '\n'
-    (family,description);
+    (family,ordr,class,phylum,kingdom,description);
 
 load data local infile 'zoo.csv' into table Zoo
     fields terminated by ','
@@ -63,7 +64,7 @@ load data local infile 'zoo.csv' into table Zoo
 load data local infile 'species.csv' into table Species
     fields terminated by ','
     lines terminated by '\n'
-    (species,common_name,genus,familia,ordo,classis,region,habitat,lifespan,status);
+    (species,common_name,genus,family,region,habitat,status);
 
 load data local infile 'exhibit.csv' into table Exhibit
     fields terminated by ','

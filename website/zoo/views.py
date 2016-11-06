@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.db import connection, connections
 from django.http import HttpResponseRedirect
 from math import ceil
-from .models import Zoo,Species,Biome,Exhibit,Family
+from .models import Zoo,Species,Classification,Exhibit,Habitat
 from .update import *
 
 def index(request):

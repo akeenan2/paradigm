@@ -3,13 +3,17 @@ from __future__ import unicode_literals
 from django.db import models
 
 
-class Biome(models.Model):
-    habitat = models.CharField(primary_key=True, max_length=20)
+class Classification(models.Model):
+    family = models.CharField(primary_key=True, max_length=50)
+    ordr = models.CharField(max_length=50, blank=True, null=True)
+    class_field = models.CharField(db_column='class', max_length=50, blank=True, null=True)  # Field renamed because it was a Python reserved word.
+    phylum = models.CharField(max_length=50, blank=True, null=True)
+    kingdom = models.CharField(max_length=50, blank=True, null=True)
     description = models.CharField(max_length=200, blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'Biome'
+        db_table = 'Classification'
 
 
 class Exhibit(models.Model):
@@ -22,25 +26,22 @@ class Exhibit(models.Model):
         unique_together = (('zoo_name', 'species'),)
 
 
-class Family(models.Model):
-    family = models.CharField(primary_key=True, max_length=25)
+class Habitat(models.Model):
+    habitat = models.CharField(primary_key=True, max_length=20)
     description = models.CharField(max_length=200, blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'Family'
+        db_table = 'Habitat'
 
 
 class Species(models.Model):
     species = models.CharField(primary_key=True, max_length=100)
     common_name = models.CharField(max_length=200, blank=True, null=True)
     genus = models.CharField(max_length=50, blank=True, null=True)
-    familia = models.CharField(max_length=50, blank=True, null=True)
-    ordo = models.CharField(max_length=50, blank=True, null=True)
-    classis = models.CharField(max_length=50, blank=True, null=True)
+    family = models.CharField(max_length=50, blank=True, null=True)
     region = models.CharField(max_length=100, blank=True, null=True)
     habitat = models.CharField(max_length=200, blank=True, null=True)
-    lifespan = models.IntegerField(blank=True, null=True)
     status = models.CharField(max_length=2, blank=True, null=True)
 
     class Meta:
@@ -49,8 +50,8 @@ class Species(models.Model):
 
 
 class Zoo(models.Model):
-    zoo_name = models.CharField(unique=True, max_length=25, blank=True, null=True)
-    city = models.CharField(max_length=200, blank=True, null=True)
+    zoo_name = models.CharField(unique=True, max_length=100, blank=True, null=True)
+    city = models.CharField(max_length=50, blank=True, null=True)
     state = models.CharField(max_length=2, blank=True, null=True)
     address = models.CharField(max_length=100, blank=True, null=True)
     latitude = models.FloatField(blank=True, null=True)

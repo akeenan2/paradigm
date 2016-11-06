@@ -13,10 +13,8 @@
     <form method="post">{% csrf_token %}
         <h3>Classification</h3>
         <strong>Species </strong><input name="species" type="text" class="form-control" value="{{ species.species }}" placeholder="class"><br>
-        <strong>Common Name(s) </strong><input name="common_name" type="text" class="form-control" value="{{     species.common_name }}" placeholder="class"><br>
-        <strong>Class </strong><input name="classis" type="text" class="form-control" value="{{ species.classis }}" placeholder="class"><br>
-        <strong>Order </strong><input name="ordo" type="text" class="form-control" value="{{ species.ordo }}" placeholder="class"><br>
-        <strong>Family </strong><input name="familia" type="text" class="form-control" value="{{ species.familia }}" placeholder="class"><br>
+        <strong>Common Name(s) </strong><input name="common_name" type="text" class="form-control" value="{{ species.common_name }}" placeholder="class"><br>
+        <strong>Family </strong><input name="family" type="text" class="form-control" value="{{ species.family }}" placeholder="class"><br>
         <strong>Genus </strong><input name="genus" type="text" class="form-control" value="{{ species.genus }}" placeholder="class"><br>
 
         <h3>Information</h3>

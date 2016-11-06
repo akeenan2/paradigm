@@ -68,18 +68,19 @@ def species(request,_species):
             species = request.POST.get('update');
             _species = species.replace(" ","_")
             return HttpResponseRedirect('/species/'+_species+'/update/')
-    species = Species.objects.get(species = _species.replace("_"," "))
+    species = Species.objects.get(species=_species.replace("_"," "))
+    classification = Classification.objects.get(family=species.family);
     species_name = species.common_name.split(';')[0]
     with connection.cursor() as cursor:
         cursor.execute('SELECT Zoo.id,Zoo.zoo_name,Zoo.city,Zoo.state,Zoo.address FROM Zoo,Exhibit WHERE Zoo.zoo_name=Exhibit.zoo_name AND Exhibit.species=%s',[species.species])
         list_zoos = cursor.fetchall()
-    return render(request,'zoo/species.html',{'species':species,'species_name':species_name,'list_zoos':list_zoos})
+    return render(request,'zoo/species.html',{'species':species,'species_name':species_name,'classification':classification,'list_zoos':list_zoos})
 
 def update_species(request,_species):
     species = Species.objects.get(species=_species.replace("_"," "))
     if request.method == 'POST':
         with connection.cursor() as cursor:
-            cursor.execute('UPDATE Species SET species=%s,common_name=%s,genus=%s,familia=%s,ordo=%s,classis=%s,region=%s,habitat=%s,lifespan=%s,status=%s WHERE species=%s',[request.POST.get("species"),request.POST.get("common_name"),request.POST.get("genus"),request.POST.get("familia"),request.POST.get("ordo"),request.POST.get("classis"),request.POST.get("region"),request.POST.get("habitat"),request.POST.get("lifespan"),request.POST.get("status"),_species.replace("_"," ")])
+            cursor.execute('UPDATE Species SET species=%s,common_name=%s,genus=%s,family=%s,region=%s,habitat=%s,lifespan=%s,status=%s WHERE species=%s',[request.POST.get("species"),request.POST.get("common_name"),request.POST.get("genus"),request.POST.get("family"),request.POST.get("region"),request.POST.get("habitat"),request.POST.get("lifespan"),request.POST.get("status"),_species.replace("_"," ")])
             return HttpResponseRedirect('/species/'+_species+'/')
     species_name = species.common_name.split(';')[0]
     return render(request,'zoo/update_species.html',{'species':species,'species_name':species_name})

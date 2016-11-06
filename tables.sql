@@ -46,12 +46,12 @@ create table Exhibit (
     foreign key (species) references Species(species)
 );
 
-load data local infile 'habitat.csv' into table Biome
+load data local infile 'habitat.csv' into table Habitat
     fields terminated by ','
     lines terminated by '\n'
     (habitat,description);
 
-load data local infile 'clasification.csv' into table Family
+load data local infile 'classification.csv' into table Classification
     fields terminated by ','
     lines terminated by '\n'
     (family,ordr,class,phylum,kingdom,description);

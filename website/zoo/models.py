@@ -6,9 +6,9 @@ from django.db import models
 class Classification(models.Model):
     family = models.CharField(primary_key=True, max_length=50)
     ordr = models.CharField(max_length=50, blank=True, null=True)
-    class_field = models.CharField(db_column='class', max_length=50, blank=True, null=True)  # Field renamed because it was a Python reserved word.
-    phylum = models.CharField(max_length=50, blank=True, null=True)
-    kingdom = models.CharField(max_length=50, blank=True, null=True)
+    clss = models.CharField(max_length=50, blank=True, null=True)
+    phylm = models.CharField(max_length=50, blank=True, null=True)
+    kingdm = models.CharField(max_length=50, blank=True, null=True)
     description = models.CharField(max_length=200, blank=True, null=True)
 
     class Meta:

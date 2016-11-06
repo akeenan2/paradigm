@@ -6,9 +6,9 @@ create table Habitat (
 create table Classification (
     family varchar(50) primary key,
     ordr varchar(50),
-    class varchar(50),
-    phylum varchar(50),
-    kingdom varchar(50),
+    clss varchar(50),
+    phylm varchar(50),
+    kingdm varchar(50),
     description varchar(200)
 );
 
@@ -54,7 +54,7 @@ load data local infile 'habitat.csv' into table Habitat
 load data local infile 'classification.csv' into table Classification
     fields terminated by ','
     lines terminated by '\n'
-    (family,ordr,class,phylum,kingdom,description);
+    (family,ordr,clss,phylm,kingdm,description);
 
 load data local infile 'zoo.csv' into table Zoo
     fields terminated by ','

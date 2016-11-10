@@ -1,4 +1,3 @@
-zoo_name,city,state,address,latitude,longitude,num_animals,acres,hour_open,hour_close,annual_visitors,website,
 Abilene Zoo,Abilene,TX,2070 Zoo Lane,32.439205,-99.690934,1100,13,9:00,17:00,175000,http://abilenezoo.org/,
 Rio Grande Zoo,Albuquerque,NM,903 10th St SW,35.077359,-106.660599,900,64,9:00,17:00,1300000,https://www.cabq.gov/culturalservices/biopark/zoo,
 Audubon Zoo,New Orleans,LA,6500 Magazine St. ,29.922655,-90.130334,2000,58,10:00,16:00,860000,http://audubonnatureinstitute.org/zoo,

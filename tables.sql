@@ -1,3 +1,9 @@
+drop table Exhibit;
+drop table Zoo;
+drop table Classification;
+drop table Habitat;
+drop table Species;
+
 create table Habitat (
     habitat varchar(20) primary key,
     description varchar(200)

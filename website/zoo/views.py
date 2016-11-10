@@ -6,30 +6,36 @@ from django.db import connection, connections
 from django.http import HttpResponseRedirect
 from math import ceil
 from .models import Zoo,Species,Classification,Exhibit,Habitat
-from .update import *
 
 def index(request):
     return render(request,'zoo/index.html')
 
 def list_zoos(request):
+# select all the objects in the list of zoos
     list_zoos = Zoo.objects.all()
     return render(request,'zoo/list_zoos.html',{'list_zoos':list_zoos})
 
-def zoo(request,zoo_id):
-    zoo = Zoo.objects.get(id=zoo_id)
+def zoo(request,_zoo_name):
+# replace the underscores with spaces
+    zoo_name = _zoo_name.replace("_"," ");
+# select all objects from the Zoo database with the given zoo name
+    zoo = Zoo.objects.get(zoo_name=zoo_name)
+# if a post request was submitted
     if request.method == 'POST':
         if request.POST.get('remove'):
-            return HttpResponseRedirect('/zoo/'+zoo_id+'/remove/')
+            return HttpResponseRedirect('/zoo/'+_zoo_name+'/remove/')
         elif request.POST.get('add'):
-            return HttpResponseRedirect('/zoo/'+zoo_id+'/add/')
+            return HttpResponseRedirect('/zoo/'+_zoo_name+'/add/')
+# query the database for the zoo's animal exhibits
     with connection.cursor() as cursor:
         cursor.execute('SELECT Species.species,Species.common_name FROM Species,Exhibit WHERE Species.species=Exhibit.species AND Exhibit.zoo_name=%s',[zoo.zoo_name])
         list_species = cursor.fetchall()
     num_species = len(list_species)
     return render(request,'zoo/zoo.html',{'zoo':zoo,'list_species':list_species,'num_species':num_species})
 
-def update_exhibit(request,zoo_id,operation):
-    zoo = Zoo.objects.get(id=zoo_id)
+def update_exhibit(request,_zoo_name,operation):
+    zoo_name = _zoo_name.replace("_"," ");
+    zoo = Zoo.objects.get(zoo_name=zoo_name)
     list_species = Species.objects.all()
     with connection.cursor() as cursor:
         if operation == 'add':
@@ -45,19 +51,22 @@ def update_exhibit(request,zoo_id,operation):
                         cursor.execute('INSERT INTO Exhibit(species,zoo_name) VALUES(%s,%s)',[species,zoo.zoo_name])
                     elif operation == 'remove':
                         cursor.execute('DELETE FROM Exhibit WHERE zoo_name=%s AND species=%s',[zoo.zoo_name,species])
-        return HttpResponseRedirect('/zoo/'+zoo_id+'/')
+        return HttpResponseRedirect('/zoo/'+zoo_name+'/')
     return render(request,'zoo/update_exhibit.html',{'zoo':zoo,'list_species':list_species,'operation':operation})
 
-def update_zoo(request,zoo_id):
-    zoo = Zoo.objects.get(id=zoo_id)
+def update_zoo(request,_zoo_name):
+    zoo_name = _zoo_name.replace("_"," ");
+    zoo = Zoo.objects.get(zoo_name=zoo_name)
     if request.method == 'POST':
         with connection.cursor() as cursor:
-            cursor.execute('UPDATE Zoo SET zoo_name=%s,city=%s,state=%s,address=%s,latitude=%s,longitude=%s,num_animals=%s,acres=%s,hour_open=%s,hour_close=%s,annual_visitors=%s,website=%s WHERE id=%s',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("latitude"),request.POST.get("longitude"),request.POST.get("num_animals"),request.POST.get("acres"),request.POST.get("hour_open"),request.POST.get("hour_close"),request.POST.get("annual_visitors"),request.POST.get("website"),zoo_id])
-        return HttpResponseRedirect('/zoo/'+zoo_id+'/')
+            cursor.execute('UPDATE Zoo SET zoo_name=%s,city=%s,state=%s,address=%s,latitude=%s,longitude=%s,num_animals=%s,acres=%s,hour_open=%s,hour_close=%s,annual_visitors=%s,website=%s WHERE zoo_name=%s',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("latitude"),request.POST.get("longitude"),request.POST.get("num_animals"),request.POST.get("acres"),request.POST.get("hour_open"),request.POST.get("hour_close"),request.POST.get("annual_visitors"),request.POST.get("website"),zoo_name])
+        return HttpResponseRedirect('/zoo/'+zoo_name+'/')
     return render(request,'zoo/update_zoo.html',{'zoo':zoo})
 
 def list_species(request):
     list_species = Species.objects.all()
+    if request.method == 'POST':
+        list_species = Species.objects.get()
     for species in list_species:
         species.common_name = species.common_name.split(';')[0]
     return render(request,'zoo/list_species.html',{'list_species':list_species})
@@ -72,7 +81,7 @@ def species(request,_species):
     classification = Classification.objects.get(family=species.family);
     species_name = species.common_name.split(';')[0]
     with connection.cursor() as cursor:
-        cursor.execute('SELECT Zoo.id,Zoo.zoo_name,Zoo.city,Zoo.state,Zoo.address FROM Zoo,Exhibit WHERE Zoo.zoo_name=Exhibit.zoo_name AND Exhibit.species=%s',[species.species])
+        cursor.execute('SELECT Zoo.zoo_name,Zoo.city,Zoo.state,Zoo.address FROM Zoo,Exhibit WHERE Zoo.zoo_name=Exhibit.zoo_name AND Exhibit.species=%s',[species.species])
         list_zoos = cursor.fetchall()
     return render(request,'zoo/species.html',{'species':species,'species_name':species_name,'classification':classification,'list_zoos':list_zoos})
 

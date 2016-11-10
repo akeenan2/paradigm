@@ -13,8 +13,7 @@ create table Classification (
 );
 
 create table Zoo (
-    id int(11) primary key auto_increment,
-    zoo_name varchar(100) unique,
+    zoo_name varchar(100) primary key,
     city varchar(50),
     state char(2),
     address varchar(100),

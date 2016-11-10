@@ -9,9 +9,9 @@ app_name = 'zoo'
 urlpatterns = [
     url(r'^$',views.index),
     url(r'^zoo/$',views.list_zoos),
-    url(r'^zoo/(?P<zoo_id>[0-9]+)/$',views.zoo),
-    url(r'^zoo/(?P<zoo_id>[0-9]+)/(?P<operation>add|remove)/$',views.update_exhibit),
-    url(r'^zoo/(?P<zoo_id>[0-9]+)/update/$',views.update_zoo),
+    url(r'^zoo/(?P<_zoo_name>.[^/]+)/$',views.zoo),
+    url(r'^zoo/(?P<_zoo_name>.[^/]+)/(?P<operation>add|remove)/$',views.update_exhibit),
+    url(r'^zoo/(?P<_zoo_name>.[^/]+)/update/$',views.update_zoo),
     url(r'^species/$',views.list_species),
     url(r'^species/(?P<_species>\w+)/$',views.species),
     url(r'^species/(?P<_species>\w+)/update/$',views.update_species),

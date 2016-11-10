@@ -20,7 +20,7 @@
 <strong>Acres:</strong> {{ zoo.acres }}<br>
 
 <br>
-<a href="/zoo/{{ zoo.id }}/update/" class="btn btn-default">Update</a>
+<a href="" onclick="change_button('/zoo/','{{ zoo.zoo_name }}','/update/'); return false;" class="btn btn-default">Update</a>
 <br>
 
 <h3>Species Exhibits</h3>
@@ -38,7 +38,7 @@
     <tbody>
         {% for species in list_species %}
         <tr>
-            <td><a href="" onmouseover="change_link(this,'/species/');">{{ species.0 }}</a></td>
+            <td><a href="" onclick="change_link(this,'/species/'); return false;">{{ species.0 }}</a></td>
             <td>{{ species.1 }}</td>
         </tr>
         {% endfor %}

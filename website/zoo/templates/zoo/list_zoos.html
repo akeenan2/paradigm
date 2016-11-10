@@ -19,7 +19,7 @@
     <tbody>
         {% for zoo in list_zoos %}
         <tr>
-            <td><a href="" onmouseover="change_link(this,'/zoo/');">{{ zoo.zoo_name }}</a></td>
+            <td><a href="" onclick="change_link(this,'/zoo/'); return false;">{{ zoo.zoo_name }}</a></td>
             <td>
                 {{ zoo.address }}<br>
                 {{ zoo.city }}, {{ zoo.state }}

@@ -13,6 +13,6 @@ urlpatterns = [
     url(r'^zoo/(?P<_zoo_name>.[^/]+)/(?P<operation>add|remove)/$',views.update_exhibit),
     url(r'^zoo/(?P<_zoo_name>.[^/]+)/update/$',views.update_zoo),
     url(r'^species/$',views.list_species),
-    url(r'^species/(?P<_species>\w+)/$',views.species),
-    url(r'^species/(?P<_species>\w+)/update/$',views.update_species),
+    url(r'^species/(?P<_species>.[^/]+)/$',views.species),
+    url(r'^species/(?P<_species>.[^/]+)/update/$',views.update_species),
 ]

@@ -9,12 +9,92 @@
 
 {% block content %}
 
+<div id="overlay-habitats" class="overlay hide">
+    <div class="box">
+        <div class="title">Habitats</div>
+        <a href="" class="close-btn" onclick="hide_overlay('habitats'); return false;">&times;</a>
+        <div class="text">
+            {% for habitat in habitats_desc %}
+            <div class="row left-margin">
+                <div class="col-sm-4"> 
+                    {{ habitat.habitat }}
+                </div>
+                <div class="col-sm-8">
+                    {{ habitat.description }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="background"></div>
+</div>
+
+<div id="overlay-regions" class="overlay hide">
+    <div class="box">
+        <div class="title">Regions</div>
+        <a href="" class="close-btn" onclick="hide_overlay('regions'); return false;">&times;</a>
+        <div class="text">
+            {% for region in regions_desc %}
+            <div class="row left-margin">
+                <div class="col-sm-4"> 
+                    {{ region.region }}
+                </div>
+                <div class="col-sm-8">
+                    {{ region.description }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="background"></div>
+</div>
+
+<div id="overlay-statuses" class="overlay hide">
+    <div class="box">
+        <div class="title">Status</div>
+        <a href="" class="close-btn" onclick="hide_overlay('statuses'); return false;">&times;</a>
+        <div class="text">
+            {% for status in statuses_desc %}
+            <div class="row left-margin">
+                <div class="col-sm-4"> 
+                    {{ status.status }}
+                </div>
+                <div class="col-sm-8">
+                    {{ status.description }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="background"></div>
+</div>
+
+<div id="overlay-families" class="overlay hide">
+    <div class="box">
+        <div class="title">Families</div>
+        <a href="" class="close-btn" onclick="hide_overlay('families'); return false;">&times;</a>
+        <div class="text">
+            {% for family in families_desc %}
+            <div class="row left-margin">
+                <div class="col-sm-4"> 
+                    {{ family.family }}
+                </div>
+                <div class="col-sm-8">
+                    {{ family.description }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="background"></div>
+</div>
+
 <br>
 <h4>Search Options</h4>
 <form id="refine-search" method="post">{% csrf_token %}
     <div class="form-group row left-margin">
         <div class="col-sm-3 col-xs-6">
-            <label for="habitats">Habitat:</label>
+            <label for="habitats">Habitat:</label>  <a href="" onclick="show_overlay('habitats'); return false;">(?)</a>
             <select multiple class="form-control" name="habitats" id="habitats">
             {% for habitat in select_habitats %}
                 <option selected="selected">{{ habitat }}</option>
@@ -25,7 +105,7 @@
             </select>
         </div>
         <div class="col-sm-3 col-xs-6">
-            <label for="regions">Region:</label>
+            <label for="regions">Region:</label>  <a href="" onclick="show_overlay('regions'); return false;">(?)</a>
             <select multiple class="form-control" name="regions" id="regions">
             {% for region in select_regions %}
                 <option selected="selected">{{ region }}</option>
@@ -36,7 +116,7 @@
             </select>
         </div>
         <div class="col-sm-2 col-xs-4">
-            <label for="statuses">Status:</label>
+            <label for="statuses">Status:</label>  <a href="" onclick="show_overlay('statuses'); return false;">(?)</a>
             <select multiple class="form-control" name="statuses" id="statuses">
             {% for status in select_statuses %}
                 <option selected="selected">{{ status }}</option>
@@ -47,7 +127,7 @@
             </select>
         </div>
         <div class="col-sm-4 col-xs-8">
-            <label for="families">Family:</label>
+            <label for="families">Family:</label>  <a href="" onclick="show_overlay('families'); return false;">(?)</a>
             <select multiple class="form-control" name="families" id="families">
             {% for family in select_families %}
                 <option selected="selected">{{ family }}</option>
@@ -60,7 +140,7 @@
     </div>
     <div class="form-group row left-margin">
         <div class="col-sm-12">
-            <input class="btn btn-default" type="submit" name="update" value="Update"/>
+            <input class="btn btn-primary" type="submit" name="update" value="Update"/>
             <input class="btn btn-default" type="submit" name="reset" value="Reset"/>
         </div>
     </div>

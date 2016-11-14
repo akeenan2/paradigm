@@ -54,3 +54,69 @@ footer {
     margin: auto;
     display: block;
 }
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay .hide {
+    display: none;
+}
+
+.overlay .box {
+    position: fixed;
+    background-color: #eee;
+    border-radius: 5px;
+    top: 100px;
+    left: 50%; 
+    max-height: 300px;
+    width: 400px;
+    margin-left: -200px;
+    z-index: 7;
+}
+
+.overlay .title {
+    font-family: 'Josefin Slab', serif;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 20px;
+    z-index: 9;
+}
+
+.overlay .close-btn {
+    position: absolute;
+    top: -20px;
+    right: 10px;
+    font-size: 60px;
+    z-index: 9;
+}
+
+.overlay .text {
+    position: relative;
+    background-color: #f8f8f8;
+    top: 50px;
+    left: 50%; 
+    max-height: 300px;
+    width: 400px;
+    margin-left: -200px;
+    z-index: 8;
+    padding: 10px;
+    overflow: scroll;
+}
+
+.overlay .background{
+    position: absolute; 
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background-color: #000;
+    opacity: 0.5;
+    z-index: 6;
+    top: 0;
+    left: 0;
+}

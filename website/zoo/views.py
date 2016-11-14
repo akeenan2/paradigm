@@ -136,7 +136,28 @@ def list_species(request):
         print query # debug
         cursor.execute(query)
         list_species = cursor.fetchall()
-    return render(request,'zoo/list_species.html',{'list_species':list_species,'families':families,'habitats':habitats,'regions':regions,'statuses':statuses,'select_families':select_families,'select_habitats':select_habitats,'select_regions':select_regions,'select_statuses':select_statuses})
+# descriptions
+    habitats_desc = Habitat.objects.all()
+    regions_desc = Region.objects.all()
+    statuses_desc = Status.objects.all()
+    families_desc = Classification.objects.all()
+# variables to pass into html
+    context = {
+        'list_species':list_species,
+        'families':families,
+        'habitats':habitats,
+        'regions':regions,
+        'statuses':statuses,
+        'select_families':select_families,
+        'select_habitats':select_habitats,
+        'select_regions':select_regions,
+        'select_statuses':select_statuses,
+        'habitats_desc':habitats_desc,
+        'regions_desc':regions_desc,
+        'statuses_desc':statuses_desc,
+        'families_desc':families_desc
+    }
+    return render(request,'zoo/list_species.html',context)
 
 def species(request,_species):
     if request.method == 'POST':

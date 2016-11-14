@@ -92,16 +92,16 @@ def list_species(request):
         if select_habitats:
             habitats = set(habitats) - set(select_habitats)
             for habitat in select_habitats[:-1]:
-                conditions = conditions + ' Species.habitat="' + habitat + '" OR'
-            conditions = conditions + ' Species.habitat="' + select_habitats[-1] + '"'
+                conditions = conditions + ' Species.habitat LIKE "%' + habitat + '%" OR'
+            conditions = conditions + ' Species.habitat LIKE "%' + select_habitats[-1] + '%"'
     # if a region was selected
         if select_regions:
             regions = set(regions) - set(select_regions)
             if conditions: # add an and to connect conditions
                 conditions = conditions + ' AND';
             for region in select_regions[:-1]:
-                conditions = conditions + ' Species.region="' + region + '" OR'
-            conditions = conditions + ' Species.region="' + select_regions[-1] + '"';
+                conditions = conditions + ' Species.region LIKE "%' + region + '%" OR'
+            conditions = conditions + ' Species.region LIKE "%' + select_regions[-1] + '%"';
     # if a status was selected
         if select_statuses:
             statuses = set(statuses) - set(select_statuses)
@@ -117,8 +117,8 @@ def list_species(request):
             # select all family scientific names given the description
                 query = 'SELECT Classification.family FROM Classification WHERE';
                 for family in select_families[:-1]:
-                    query = query + ' Classification.description LIKE "%' + family + '%" OR'
-                query = query + ' Classification.description LIKE "%' + select_families[-1] + '%"'
+                    query = query + ' Classification.description="' + family + '" OR'
+                query = query + ' Classification.description="' + select_families[-1] + '"'
                 cursor.execute(query)
                 select_families_sci = cursor.fetchall()
             if conditions:

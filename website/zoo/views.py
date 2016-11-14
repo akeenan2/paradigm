@@ -74,7 +74,7 @@ def list_species(request):
     habitats = Habitat.objects.values_list('habitat',flat=True)
     regions = Region.objects.values_list('region',flat=True)
     statuses = Status.objects.values_list('status',flat=True)
-    families = Classification.objects.values_list('description',flat=True)
+    families = Classification.objects.values_list('family',flat=True)
     select_habitats = []
     select_regions = []
     select_statuses = []
@@ -92,7 +92,7 @@ def list_species(request):
         # if a habitat was selected
             if select_habitats:
             # remove selected habitats from list of habitats (so as to display seperately)
-                habitats = set(habitats) - set(select_habitats)
+                habitats = sorted(set(habitats) - set(select_habitats))
             # add parenthesis to seperate the lists
                 conditions = conditions + ' ('
                 for habitat in select_habitats[:-1]:
@@ -100,7 +100,8 @@ def list_species(request):
                 conditions = conditions + 'Species.habitat LIKE "%' + select_habitats[-1] + '%")'
         # if a region was selected
             if select_regions:
-                regions = set(regions) - set(select_regions)
+                regions = sorted(set(regions) - set(select_regions))
+                regions.sort()
                 if conditions: # add an and to connect conditions
                     conditions = conditions + ' AND';
                 conditions = conditions + ' ('
@@ -109,7 +110,7 @@ def list_species(request):
                 conditions = conditions + 'Species.region LIKE "%' + select_regions[-1] + '%")';
         # if a status was selected
             if select_statuses:
-                statuses = set(statuses) - set(select_statuses)
+                statuses = sorted(set(statuses) - set(select_statuses))
             # if a condition was selected before, concatenate new list to end
                 if conditions:
                     conditions = conditions + ' AND';
@@ -119,21 +120,13 @@ def list_species(request):
                 conditions = conditions + 'Species.status="' + select_statuses[-1] + '")'
         # if a family was selected
             if select_families:
-                families = set(families) - set(select_families)
-                with connection.cursor() as cursor:
-                # select all family scientific names given the description
-                    query = 'SELECT Classification.family FROM Classification WHERE';
-                    for family in select_families[:-1]:
-                        query = query + ' Classification.description="' + family + '" OR'
-                    query = query + ' Classification.description="' + select_families[-1] + '"'
-                    cursor.execute(query)
-                    select_families_sci = cursor.fetchall()
+                families = sorted(set(families) - set(select_families))
                 if conditions:
                     conditions = conditions + ' AND';
                 conditions = conditions + ' ('
-                for family in select_families_sci[:-1]:
-                    conditions = conditions + 'Species.family="' + family[0] + '" OR '
-                conditions = conditions + 'Species.family="' + select_families_sci[-1][0] +'")'
+                for family in select_families[:-1]:
+                    conditions = conditions + 'Species.family="' + family + '" OR '
+                conditions = conditions + 'Species.family="' + select_families[-1] +'")'
         # if selected conditions, add to the query
             if conditions:
                 conditions = ' WHERE' + conditions;

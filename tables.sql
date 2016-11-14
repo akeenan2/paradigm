@@ -18,6 +18,16 @@ create table Classification (
     description varchar(200)
 );
 
+create table Status (
+    status char(2),
+    description varchar(25)
+);
+
+create table Region (
+    region varchar(25),
+    description varchar(50)
+);
+
 create table Zoo (
     zoo_name varchar(100) primary key,
     city varchar(50),
@@ -41,6 +51,7 @@ create table Species (
     region varchar(100),
     habitat varchar(200),
     status char(2)
+    foreign key (status) references Status(status)
 );
 
 create table Exhibit (
@@ -61,6 +72,16 @@ load data local infile 'classification.csv' into table Classification
     lines terminated by '\n'
     (family,ordr,clss,phylm,kingdm,description);
 
+load data local infile 'status.csv' into table Status
+    fields terminated by ','
+    lines terminated by '\n'
+    (status,description);
+
+load data local infile 'region.csv' into table Region
+    fields terminated by ','
+    lines terminated by '\n'
+    (region,description);
+
 load data local infile 'zoo.csv' into table Zoo
     fields terminated by ','
     lines terminated by '\n'
@@ -75,12 +96,6 @@ load data local infile 'exhibit.csv' into table Exhibit
     fields terminated by ','
     lines terminated by '\n'
     (zoo_name,species);
-
-biomes(habitat,description)
-exhibit(zoo_name,species)
-family(family,description)
-species(habitat,description)
-zoo(zoo_name,city,state,address,latitude,longitude,num_animals,acres,hour_open,hour_close,annual_visitors,website)
 
 command to auto-create models:
 python manage.py inspectdb > models.py

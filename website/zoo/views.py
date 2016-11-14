@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.db import connection, connections
 from django.http import HttpResponseRedirect
 from math import ceil
-from .models import Zoo,Species,Classification,Exhibit,Habitat
+from .models import Zoo,Species,Classification,Exhibit,Habitat,Region,Status
 
 def index(request):
     return render(request,'zoo/index.html')
@@ -70,19 +70,19 @@ def update_zoo(request,_zoo_name):
     return render(request,'zoo/update_zoo.html',{'zoo':zoo})
 
 def list_species(request):
+    habitats = Habitat.objects.all()
+    families = Classification.objects.all()
+    regions = Region.objects.all()
+    statuses = Status.objects.all()
     if request.method == 'POST':
 # to be modified
-        habitats = Habitat.objects.all()
-        families = Classification.objects.all()
         list_species = Species.objects.all()
 # default everything displayed
     else:
-        habitats = Habitat.objects.all()
-        families = Classification.objects.all()
         list_species = Species.objects.all()
         for species in list_species:
             species.common_name = species.common_name.split(';')[0]
-    return render(request,'zoo/list_species.html',{'list_species':list_species,'families':families,'habitats':habitats})
+    return render(request,'zoo/list_species.html',{'list_species':list_species,'families':families,'habitats':habitats,'regions':regions,'statuses':statuses})
 
 def species(request,_species):
     if request.method == 'POST':

@@ -70,19 +70,73 @@ def update_zoo(request,_zoo_name):
     return render(request,'zoo/update_zoo.html',{'zoo':zoo})
 
 def list_species(request):
-    habitats = Habitat.objects.all()
-    families = Classification.objects.all()
-    regions = Region.objects.all()
-    statuses = Status.objects.all()
+# default all
+    habitats = Habitat.objects.values_list('habitat',flat=True)
+    regions = Region.objects.values_list('region',flat=True)
+    statuses = Status.objects.values_list('status',flat=True)
+    families = Classification.objects.values_list('description',flat=True)
+    select_habitats = []
+    select_regions = []
+    select_statuses = []
+    select_families = []
+# empty if no conditions
+    conditions = ''
+# if form submitted, build the query
     if request.method == 'POST':
-# to be modified
+    # retrive the information selected
+        select_habitats = request.POST.getlist('habitats')
+        select_regions = request.POST.getlist('regions')
+        select_statuses = request.POST.getlist('statuses')
+        select_families = request.POST.getlist('families')
+    # if a habitat was selected
+        if select_habitats:
+            habitats = set(habitats) - set(select_habitats)
+            for habitat in select_habitats[:-1]:
+                conditions = conditions + ' Species.habitat="' + habitat + '" OR'
+            conditions = conditions + ' Species.habitat="' + select_habitats[-1] + '"'
+    # if a region was selected
+        if select_regions:
+            regions = set(regions) - set(select_regions)
+            if conditions: # add an and to connect conditions
+                conditions = conditions + ' AND';
+            for region in select_regions[:-1]:
+                conditions = conditions + ' Species.region="' + region + '" OR'
+            conditions = conditions + ' Species.region="' + select_regions[-1] + '"';
+    # if a status was selected
+        if select_statuses:
+            statuses = set(statuses) - set(select_statuses)
+            if conditions:
+                conditions = conditions + ' AND';
+            for status in select_statuses[:-1]:
+                conditions = conditions + ' Species.status="' + status + '" OR'
+            conditions = conditions + ' Species.status="' + select_statuses[-1] + '"'
+    # if a family was selected
+        if select_families:
+            families = set(families) - set(select_families)
+            with connection.cursor() as cursor:
+            # select all family scientific names given the description
+                query = 'SELECT Classification.family FROM Classification WHERE';
+                for family in select_families[:-1]:
+                    query = query + ' Classification.description LIKE "%' + family + '%" OR'
+                query = query + ' Classification.description LIKE "%' + select_families[-1] + '%"'
+                cursor.execute(query)
+                select_families_sci = cursor.fetchall()
+            if conditions:
+                conditions = conditions + ' AND';
+            for family in select_families_sci[:-1]:
+                conditions = conditions + ' Species.family="' + family[0] + '" OR'
+            conditions = conditions + ' Species.family="' + select_families_sci[-1][0] +'"'
+    # if selected conditions, add to the query
+        if conditions:
+            conditions = ' WHERE' + conditions;
         list_species = Species.objects.all()
-# default everything displayed
-    else:
-        list_species = Species.objects.all()
-        for species in list_species:
-            species.common_name = species.common_name.split(';')[0]
-    return render(request,'zoo/list_species.html',{'list_species':list_species,'families':families,'habitats':habitats,'regions':regions,'statuses':statuses})
+# query the database for all the selected species
+    with connection.cursor() as cursor:
+        query = 'SELECT Species.species,Species.common_name FROM Species' + conditions
+        cursor.execute(query)
+        list_species = cursor.fetchall()
+
+    return render(request,'zoo/list_species.html',{'list_species':list_species,'families':families,'habitats':habitats,'regions':regions,'statuses':statuses,'select_families':select_families,'select_habitats':select_habitats,'select_regions':select_regions,'select_statuses':select_statuses})
 
 def species(request,_species):
     if request.method == 'POST':
@@ -91,7 +145,7 @@ def species(request,_species):
             _species = species.replace(" ","_")
             return HttpResponseRedirect('/species/'+_species+'/update/')
     species = Species.objects.get(species=_species.replace("_"," "))
-    classification = Classification.objects.get(family=species.family);
+    classification = Classification.objects.get(family=species.family.family);
     species_name = species.common_name.split(';')[0]
 # select all zoos that exhibit the specific species
     with connection.cursor() as cursor:

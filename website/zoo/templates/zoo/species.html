@@ -20,7 +20,7 @@
 <h3>Information</h3>
 <strong>Region:</strong> {{ species.region }}<br>
 <strong>Habitat:</strong> {{ species.habitat }}<br>
-<strong>Status:</strong> {{ species.status }}<br>
+<strong>Status:</strong> {{ species.status.status }}<br>
 
 <br>
 <form id="update_form" method="post">{% csrf_token %}

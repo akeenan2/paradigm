@@ -1,8 +1,10 @@
 drop table Exhibit;
+drop table Species;
 drop table Zoo;
+drop table Region;
+drop table Status;
 drop table Classification;
 drop table Habitat;
-drop table Species;
 
 create table Habitat (
     habitat varchar(20) primary key,
@@ -19,12 +21,12 @@ create table Classification (
 );
 
 create table Status (
-    status char(2),
+    status char(2) primary key,
     description varchar(25)
 );
 
 create table Region (
-    region varchar(25),
+    region varchar(25) primary key,
     description varchar(50)
 );
 
@@ -50,8 +52,9 @@ create table Species (
     family varchar(50),
     region varchar(100),
     habitat varchar(200),
-    status char(2)
-    foreign key (status) references Status(status)
+    status char(2),
+    foreign key (status) references Status(status),
+    foreign key (family) references Classification(family)
 );
 
 create table Exhibit (

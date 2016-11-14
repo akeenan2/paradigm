@@ -10,37 +10,57 @@
 {% block content %}
 
 <br>
-<h3>Search Options</h3>
+<h4>Search Options</h4>
 <form id="refine-search" method="post">{% csrf_token %}
     <div class="form-group row left-margin">
-        <div class="col-sm-4">
-            <label for="sel2">Habitat:</label>
-            <select multiple class="form-control" id="sel2">
+        <div class="col-sm-3 col-xs-6">
+            <label for="habitats">Habitat:</label>
+            <select multiple class="form-control" name="habitats" id="habitats">
+            {% for habitat in select_habitats %}
+                <option selected="selected">{{ habitat }}</option>
+            {% endfor %}
             {% for habitat in habitats %}
-                <option>{{ habitat.habitat }}</option>
+                <option>{{ habitat }}</option>
             {% endfor %}
             </select>
         </div>
-        <div class="col-sm-4">
-            <label for="sel2">Region:</label>
-            <select multiple class="form-control" id="sel2">
+        <div class="col-sm-3 col-xs-6">
+            <label for="regions">Region:</label>
+            <select multiple class="form-control" name="regions" id="regions">
+            {% for region in select_regions %}
+                <option selected="selected">{{ region }}</option>
+            {% endfor %}
             {% for region in regions %}
-                <option>{{ region.region }}</option>
+                <option>{{ region }}</option>
             {% endfor %}
             </select>
         </div>
-        <div class="col-sm-4">
-            <label for="sel2">Status:</label>
-            <select multiple class="form-control" id="sel2">
+        <div class="col-sm-2 col-xs-4">
+            <label for="statuses">Status:</label>
+            <select multiple class="form-control" name="statuses" id="statuses">
+            {% for status in select_statuses %}
+                <option selected="selected">{{ status }}</option>
+            {% endfor %}
             {% for status in statuses %}
-                <option>{{ status.status }}</option>
+                <option>{{ status }}</option>
+            {% endfor %}
+            </select>
+        </div>
+        <div class="col-sm-4 col-xs-8">
+            <label for="families">Family:</label>
+            <select multiple class="form-control" name="families" id="families">
+            {% for family in select_families %}
+                <option selected="selected">{{ family }}</option>
+            {% endfor %}
+            {% for family in families %}
+                <option>{{ family }}</option>
             {% endfor %}
             </select>
         </div>
     </div>
     <div class="form-group row left-margin">
-        <div class="col-sm-4">
-            <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="col-sm-12">
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>
 </form>
@@ -55,8 +75,8 @@
     <tbody>
         {% for species in list_species %}
         <tr>
-            <td><a href="" onclick="change_link(this,'/species/'); return false;">{{ species.species }}</a></td>
-            <td>{{ species.common_name }}</td>
+            <td><a href="" onclick="change_link(this,'/species/'); return false;">{{ species.0 }}</a></td>
+            <td>{{ species.1 }}</td>
         </tr>
         {% endfor %}
     </tbody>

@@ -15,4 +15,6 @@ urlpatterns = [
     url(r'^species/$',views.list_species),
     url(r'^species/(?P<_species>.[^/]+)/$',views.species),
     url(r'^species/(?P<_species>.[^/]+)/update/$',views.update_species),
+    url(r'^add/species/$',views.add_species),
+    url(r'^add/family/$',views.add_family),
 ]

@@ -1,0 +1,62 @@
+<!-- add_species.html -->
+
+{% extends "layouts/base.html" %}
+
+{% block page_title %}Add Species{% endblock %}
+
+{% block jumbotron_name %}Add Species{% endblock %}
+{% block jumbotron_description %}Add a species.{% endblock %}
+
+{% block content %}
+<br>
+<div class="container">
+    <form method="post">{% csrf_token %}
+        <h3>Classification</h3>
+        <div class="form-group row left-margin">
+            <div class="col-xs-6">
+                <strong>Species </strong><input name="species" type="text" class="form-control" placeholder="ex: acanthurus olivaceus"><br>
+                <strong>Common Name(s) </strong><input name="common_name" type="text" class="form-control" placeholder="ex: Orangeshoulder Tang"><br>
+                <strong>Genus </strong><input name="genus" type="text" class="form-control" placeholder="ex: acanthurus">
+            </div>
+            <div class="col-xs-6">
+                <label for="habitats"><strong>Family </strong></label> ( <a href="/add/family/">doesn't exist?</a> )
+                <select class="form-control" name="family" id="family" size="10">
+                {% for family in families %}
+                    <option>{{ family }}</option>
+                {% endfor %}
+                </select>
+            </div>
+        </div>
+        <h3>Information</h3>
+        <div class="form-group row left-margin">
+            <div class="col-xs-5">
+                <label for="regions"><strong>Region </strong></label>
+                <select multiple class="form-control" name="regions" id="regions" size="9">
+                {% for region in regions %}
+                    <option>{{ region }}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <div class="col-xs-5">
+                <label for="habitats"><strong>Habitat </strong></label>
+                <select multiple class="form-control" name="habitats" id="habitats" size="9">
+                {% for habitat in habitats %}
+                    <option>{{ habitat }}</option>
+                {% endfor %}
+                </select>
+            </div>        
+            <div class="col-xs-2">
+                <strong>Status </strong><br>
+                {% for status in statuses %}
+                    <input type="radio" name="status" value="{{ status }}"> {{ status }} <br>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="form-group row left-margin">
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

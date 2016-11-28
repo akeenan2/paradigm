@@ -12,23 +12,23 @@
 <div class="container">
     <form method="post">{% csrf_token %}
         <h3>Basic Information</h3>
-        <strong>Zoo Name: </strong><input name="zoo_name" type="text" class="form-control" value="{{ zoo.zoo_name }}" placeholder="class"><br>
-        <strong>Hour Open: </strong><input name="hour_open" type="text" class="form-control" value="{{ zoo.hour_open }}" placeholder="class"><br>
-        <strong>Hour Close: </strong><input name="hour_close" type="text" class="form-control" value="{{ zoo.hour_close }}" placeholder="class"><br>
-        <strong>Website: </strong><input name="website" type="text" class="form-control" value="{{ zoo.website }}" placeholder="class"><br>
+        <strong>Zoo Name: </strong><input name="zoo_name" type="text" class="form-control" value="{{ zoo.zoo_name }}"><br>
+        <strong>Hour Open: </strong><input name="hour_open" type="text" class="form-control" value="{{ zoo.hour_open }}"><br>
+        <strong>Hour Close: </strong><input name="hour_close" type="text" class="form-control" value="{{ zoo.hour_close }}"><br>
+        <strong>Website: </strong><input name="website" type="text" class="form-control" value="{{ zoo.website }}"><br>
 
         <h3>Location</h3>
-        <strong>Address: </strong><input name="address" type="text" class="form-control" value="{{ zoo.address }}" placeholder="class"><br>
-        <strong>City: </strong><input name="city" type="text" class="form-control" value="{{ zoo.city }}" placeholder="class"><br>
-        <strong>State: </strong><input name="state" type="text" class="form-control" value="{{ zoo.state }}" placeholder="class"><br>
-        <strong>Latitude: </strong><input name="latitude" type="text" class="form-control" value="{{ zoo.latitude }}" placeholder="class"><br>
-        <strong>Longitude: </strong><input name="longitude" type="text" class="form-control" value="{{ zoo.longitude }}" placeholder="class"><br>
+        <strong>Address: </strong><input name="address" type="text" class="form-control" value="{{ zoo.address }}"><br>
+        <strong>City: </strong><input name="city" type="text" class="form-control" value="{{ zoo.city }}"><br>
+        <strong>State: </strong><input name="state" type="text" class="form-control" value="{{ zoo.state }}"><br>
+        <strong>Latitude: </strong><input name="latitude" type="text" class="form-control" value="{{ zoo.latitude }}"><br>
+        <strong>Longitude: </strong><input name="longitude" type="text" class="form-control" value="{{ zoo.longitude }}"><br>
 
 
         <h3>Statistics</h3>
-        <strong>Number of Animals: </strong><input name="num_animals" type="text" class="form-control" value="{{ zoo.num_animals }}" placeholder="class"><br>
-        <strong>Number of Annual Visitors: </strong><input name="annual_visitors" type="text" class="form-control" value="{{ zoo.annual_visitors }}" placeholder="class"><br>
-        <strong>Acres: </strong><input name="acres" type="text" class="form-control" value="{{ zoo.acres }}" placeholder="class"><br>
+        <strong>Number of Animals: </strong><input name="num_animals" type="text" class="form-control" value="{{ zoo.num_animals }}"><br>
+        <strong>Number of Annual Visitors: </strong><input name="annual_visitors" type="text" class="form-control" value="{{ zoo.annual_visitors }}"><br>
+        <strong>Acres: </strong><input name="acres" type="text" class="form-control" value="{{ zoo.acres }}"><br>
 
         <button type="submit" class="btn btn-default">Update</button>
     </form>

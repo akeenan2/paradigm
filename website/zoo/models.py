@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 from django.db import models
 
-
 class Classification(models.Model):
     family = models.CharField(primary_key=True, max_length=50)
     ordr = models.CharField(max_length=50, blank=True, null=True)

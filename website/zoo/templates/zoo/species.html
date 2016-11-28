@@ -10,12 +10,12 @@
 {% block content %}
 
 <h3>Classification</h3>
-<table class="table"
-<strong>Kingdom</strong> {{ classification.kingdm }}<br>
-<strong>Phylum</strong> {{ classification.phylm }}<br>
-<strong>Class</strong> {{ classification.clss }}<br>
-<strong>Order</strong> {{ classification.ordr }}<br>
-<strong>Family</strong> {{ classification.family }}<br>
+<table class="table">
+<strong>Kingdom</strong> {{ species.family.kingdm }}<br>
+<strong>Phylum</strong> {{ species.family.phylm }}<br>
+<strong>Class</strong> {{ species.family.clss }}<br>
+<strong>Order</strong> {{ species.family.ordr }}<br>
+<strong>Family</strong> {{ species.family.family }}<br>
 <strong>Genus</strong> {{ species.genus }}<br>
 
 <h3>Information</h3>
@@ -50,5 +50,14 @@
         {% endfor %}
     </tbody>
 </table>
-
+<h3>Related Species</h3>
+{% for species in related_species %}
+<p><a href="" onclick="change_link(this,'/species/'); return false;">{{ species.0 }}</a></p>
+{% endfor %}
+{% if similar_species %}
+<h3>Similar Species</h3>
+{% endif %}
+{% for species in similar_species %}
+<p><a href="" onclick="change_link(this,'/species/'); return false;">{{ species.0 }}</a></p>
+{% endfor %}
 {% endblock %}

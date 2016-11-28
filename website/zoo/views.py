@@ -166,13 +166,62 @@ def species(request,_species):
             _species = species.replace(" ","_")
             return HttpResponseRedirect('/species/'+_species+'/update/')
     species = Species.objects.get(species=_species.replace("_"," "))
-    classification = Classification.objects.get(family=species.family.family);
     species_name = species.common_name.split(';')[0]
 # select all zoos that exhibit the specific species
     with connection.cursor() as cursor:
         cursor.execute('SELECT Zoo.zoo_name,Zoo.city,Zoo.state,Zoo.address FROM Zoo,Exhibit WHERE Zoo.zoo_name=Exhibit.zoo_name AND Exhibit.species=%s',[species.species])
         list_zoos = cursor.fetchall()
-    return render(request,'zoo/species.html',{'species':species,'species_name':species_name,'classification':classification,'list_zoos':list_zoos})
+    # fetch relevant information to the family of the current species
+        cursor.execute('SELECT Classification.family,Classification.ordr,Classification.clss,Classification.phylm FROM Classification WHERE Classification.family=%s',[species.family.family])
+    # all species of the same family
+        cursor.execute('SELECT s.species FROM Species s WHERE s.family=%s AND s.species!=%s',[species.family.family,species.species])
+        related_species = cursor.fetchall()
+        print species.family.family
+        if len(related_species) < 5:
+            print species.family.ordr
+        # same order
+            cursor.execute('SELECT s.species FROM Species s, Classification c WHERE c.family=s.family AND c.ordr=%s AND s.species!=%s ORDER BY RAND() LIMIT 5',[species.family.ordr,species.species])
+            related_species = cursor.fetchall()
+            if len(related_species) < 5:
+                print species.family.clss
+            # same class
+                cursor.execute('SELECT s.species FROM Species s, Classification c WHERE c.family=s.family AND c.clss=%s AND s.species!=%s ORDER BY RAND() LIMIT 5',[species.family.clss,species.species])
+                related_species = cursor.fetchall()
+                if len(related_species) < 5:
+                    print species.family.phylum
+                # same phylum
+                    cursor.execute('SELECT s.species FROM Species s, Classification c WHERE c.family=s.family AND c.phylum=%s AND s.species!=%s ORDER BY RAND() LIMIT 5',[species.family.phylum,species.species])
+                    related_species = cursor.fetchall()
+        print list(related_species)
+# same region and habitat
+    regions = species.region.split(';')
+    habitats = species.habitat.split(';')
+    conditions = ' WHERE ('
+    for region in regions[:-1]:
+        conditions = conditions + 'Species.region LIKE "%' + region + '%" OR '
+    conditions = conditions + 'Species.region LIKE "%' + regions[-1] + '%")';
+    conditions = conditions + ' AND ('
+    for habitat in habitats[:-1]:
+        conditions = conditions + 'Species.habitat LIKE "%' + habitat + '%" OR '
+    conditions = conditions + 'Species.habitat LIKE "%' + habitats[-1] + '%")';
+    for specie in related_species:
+        conditions = conditions + ' AND Species.species != "' + specie[0] + '"'
+# query the database for all the related species
+    with connection.cursor() as cursor:
+        query = 'SELECT Species.species FROM Species' + conditions + ' ORDER BY RAND() LIMIT 5'
+        print query # debug
+        cursor.execute(query)
+        similar_species = cursor.fetchall()
+        print similar_species
+    # variables to pass into html
+    context = {
+        'species':species,
+        'species_name':species_name,
+        'list_zoos':list_zoos,
+        'related_species':related_species,
+        'similar_species':similar_species
+    }
+    return render(request,'zoo/species.html',context)
 
 def update_species(request,_species):
     species = Species.objects.get(species=_species.replace("_"," "))
@@ -185,3 +234,41 @@ def update_species(request,_species):
 # show only the first common name
     species_name = species.common_name.split(';')[0]
     return render(request,'zoo/update_species.html',{'species':species,'species_name':species_name})
+
+def add_species(request):
+    habitats = Habitat.objects.values_list('habitat',flat=True)
+    families = Classification.objects.values_list('family',flat=True)
+    regions = Region.objects.values_list('region',flat=True)
+    statuses = Status.objects.values_list('status',flat=True)
+
+    if request.method == 'POST':
+        if request.POST.get('submit'):
+            select_habitats = request.POST.getlist('habitats')
+            select_regions = request.POST.getlist('regions')
+            habitats = ''
+            for habitat in select_habitats[:-1]:
+                habitats = habitats + habitat + ';'
+            habitats = habitats + select_habitats[-1]
+            regions = ''
+            for region in select_regions[:-1]:
+                regions = regions + region + ';'
+            regions = regions + select_regions[-1]
+            with connection.cursor() as cursor:
+                cursor.execute('INSERT INTO Species(species,common_name,genus,family,region,habitat,status) values(%s,%s,%s,%s,%s,%s,%s)',[request.POST.get('species'),request.POST.get('common_name'),request.POST.get('genus'),request.POST.get('family'),regions,habitats,request.POST.get('status')])
+            return HttpResponseRedirect('/species/')
+        elif request.POST.get('add-family'):
+            return HttpResponseRedirect('/add/family/'+request.POST.get('family').replace(" ","_")+'/')
+    context = {
+        'families':families,
+        'habitats':habitats,
+        'regions':regions,
+        'statuses':statuses,
+    }
+    return render(request,'zoo/add_species.html',context)
+
+def add_family(request):
+    if request.method == 'POST':
+        with connection.cursor() as cursor:
+            cursor.execute('INSERT INTO Classification(family,ordr,clss,phylm,kingdm,description) values(%s,%s,%s,%s,%s,%s,%s)',[request.POST.get('family'),request.POST.get('ordr'),request.POST.get('clss'),request.POST.get('phylm'),request.POST.get('kingdm'),request.POST.get('description')])
+        return HttpResponseRedirect('/add/species/')
+    return render(request,'zoo/add_family.html')

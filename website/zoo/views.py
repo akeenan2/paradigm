@@ -174,7 +174,7 @@ def species(request,_species):
     # fetch relevant information to the family of the current species
         cursor.execute('SELECT Classification.family,Classification.ordr,Classification.clss,Classification.phylm FROM Classification WHERE Classification.family=%s',[species.family.family])
     # all species of the same family
-        cursor.execute('SELECT s.species FROM Species s WHERE s.family=%s AND s.species!=%s',[species.family.family,species.species])
+        cursor.execute('SELECT s.species FROM Species s WHERE s.family=%s AND s.species!=%s ORDER BY RAND() LIMIT 5',[species.family.family,species.species])
         related_species = cursor.fetchall()
         print species.family.family
         if len(related_species) < 5:

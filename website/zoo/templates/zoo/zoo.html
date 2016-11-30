@@ -11,8 +11,8 @@
 
 <h3>Basic Information</h3>
 {{ zoo.address }}<br>
-{{ zoo.city }}, {{ zoo.state }}<br>
-<strong>Hours:</strong> {{ zoo.hour_open }} - {{ zoo.hour_close }}<br>
+{{ zoo.city }}, {{ zoo.state.abbrv }}<br>
+<strong>Hours:</strong> {{ time_open }} - {{ time_close }}<br>
 
 <h3>Statistics</h3>
 <strong>Number of Animals:</strong> {{ zoo.num_animals }}<br>
@@ -23,28 +23,33 @@
 <a href="" onclick="change_button('/zoo/','{{ zoo.zoo_name }}','/update/'); return false;" class="btn btn-default">Update</a>
 <br>
 
-<h3>Species Exhibits</h3>
-<form method="post" id="species_form">{% csrf_token %}
-    <input class="btn btn-default" type="submit" name="add" value="Add Species"/>
-    <input class="btn btn-default" type="submit" name="remove" value="Remove Species"/><br><br>
-</form>
-<table id="pagination" class="table table-striped table-bordered" cellspacing="0" width="100%">
-    <thead>
-        <tr>
-            <th>Scientific Name</th>
-            <th>Common Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for species in list_species %}
-        <tr>
-            <td><a href="" onclick="change_link(this,'/species/'); return false;">{{ species.0 }}</a></td>
-            <td>{{ species.1 }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
+{% if list_species %}
+    <h3>Species Exhibits</h3>
+    <form method="post" id="species_form">{% csrf_token %}
+        <input class="btn btn-default" type="submit" name="add" value="Add Species"/>
+        <input class="btn btn-default" type="submit" name="remove" value="Remove Species"/><br><br>
+    </form>
+    {% if use_pagination == 1 %}
+    <table id="pagination" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    {% else %}
+    <table class="table table-striped table-bordered" cellspacing="0" width="100%">
+    {% endif %}
+        <thead>
+            <tr>
+                <th>Scientific Name</th>
+                <th>Common Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for species in list_species %}
+            <tr>
+                <td><a href="" onclick="change_link(this,'/species/'); return false;">{{ species.0 }}</a></td>
+                <td>{{ species.1 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
 
 <h3>More Information</h3>
 <a href="{{ zoo.website }}">{{ zoo.zoo_name }} Official Website</a>

@@ -1,13 +1,13 @@
-nearctic,north america,
-neotropical,central/south america,
-palearctic,euope/asia,
-ethiopian,africa,
-oriental,tropical asia,
-australian,australia/new zealand,
-madagascan,madagascar,
-cosmopolitan,worldwide,
-holarctic,arctic,
-island endemic,constrained to an island,
-atlantic ocean,between the americas and europe/africa,
-pacific ocean,between asia and the americas,
-indian ocean,between asia and antarctica,
+nearctic,north america
+neotropical,central/south america
+palearctic,euope/asia
+ethiopian,africa
+oriental,tropical asia
+australian,australia/new zealand
+madagascan,madagascar
+cosmopolitan,worldwide
+holarctic,arctic
+island endemic,constrained to an island
+atlantic ocean,between the americas and europe/africa
+pacific ocean,between asia and the americas
+indian ocean,between asia and antarctica

@@ -10,13 +10,35 @@
 {% block content %}
 
 <h3>Classification</h3>
-<table class="table">
-<strong>Kingdom</strong> {{ species.family.kingdm }}<br>
-<strong>Phylum</strong> {{ species.family.phylm }}<br>
-<strong>Class</strong> {{ species.family.clss }}<br>
-<strong>Order</strong> {{ species.family.ordr }}<br>
-<strong>Family</strong> {{ species.family.family }}<br>
-<strong>Genus</strong> {{ species.genus }}<br>
+<table class="table half">
+    <tr>
+        <td class="col-xs-6"> Kingdom </td>
+        <td class="col-xs-6"> {{ species.family.kingdm }} </td>
+    </tr>
+    <tr>
+        <td> Phylum </td>
+        <td> {{ species.family.phylm }} </td>
+    </tr>
+    <tr>
+        <td> Class </td>
+        <td> {{ species.family.clss }} </td>
+    </tr>
+    <tr>
+        <td> Order </td>
+        <td> {{ species.family.ordr }} </td>
+    </tr>
+    <tr>
+        <td> Family </td>
+        <td> {{ species.family.family }} </td>
+    </tr>
+    <tr>
+        <td> Genus </td>
+        <td> {{ species.genus }} </td>
+    </tr>
+    <tr>
+        <td></td><td></td>
+    </tr>
+</table>
 
 <h3>Information</h3>
 <strong>Region:</strong> {{ species.region }}<br>
@@ -30,34 +52,43 @@
 </form>
 <br>
 
-<h3>Zoo Exhibits</h3>
-<table id="pagination" class="table table-striped table-bordered" cellspacing="0" width="100%">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Address</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for zoo in list_zoos %}
-        <tr>
-            <td><a href="" onclick="change_link(this,'/zoo/'); return false;">{{ zoo.0 }}</a></td>
-            <td>
-                {{ zoo.3 }}<br>
-                {{ zoo.1 }}, {{ zoo.2 }}
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+{% if list_zoos %}
+    <h3>Zoo Exhibits</h3>
+    {% if use_pagination == 1 %}
+    <table id="pagination" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    {% else %}
+    <table class="table table-striped table-bordered" cellspacing="0" width="100%">
+    {% endif %}
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for zoo in list_zoos %}
+            <tr>
+                <td><a href="" onclick="change_link(this,'/zoo/'); return false;">{{ zoo.0 }}</a></td>
+                <td>
+                    {{ zoo.3 }}<br>
+                    {{ zoo.1 }}, {{ zoo.2 }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+
+{% if related_species %}
 <h3>Related Species</h3>
 {% for species in related_species %}
 <p><a href="" onclick="change_link(this,'/species/'); return false;">{{ species.0 }}</a></p>
 {% endfor %}
+{% endif %}
 {% if similar_species %}
 <h3>Similar Species</h3>
-{% endif %}
 {% for species in similar_species %}
 <p><a href="" onclick="change_link(this,'/species/'); return false;">{{ species.0 }}</a></p>
 {% endfor %}
+{% endif %}
 {% endblock %}

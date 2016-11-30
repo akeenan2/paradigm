@@ -5,10 +5,16 @@ drop table Region;
 drop table Status;
 drop table Classification;
 drop table Habitat;
+drop table State;
+
+create table State (
+    abbrv char(2) primary key,
+    state varchar(20)
+);
 
 create table Habitat (
     habitat varchar(20) primary key,
-    description varchar(200)
+    descr varchar(200)
 );
 
 create table Classification (
@@ -17,32 +23,33 @@ create table Classification (
     clss varchar(50),
     phylm varchar(50),
     kingdm varchar(50),
-    description varchar(200)
+    descr varchar(200)
 );
 
 create table Status (
     status char(2) primary key,
-    description varchar(25)
+    descr varchar(25)
 );
 
 create table Region (
     region varchar(25) primary key,
-    description varchar(50)
+    descr varchar(50)
 );
 
 create table Zoo (
     zoo_name varchar(100) primary key,
     city varchar(50),
     state char(2),
-    address varchar(100),
+    address varchar(100) unique,
     latitude float(10,6),
     longitude float(10,6),
     num_animals int,
     acres int,
-    hour_open char(5),
-    hour_close char(5),
+    time_open char(5),
+    time_close char(5),
     annual_visitors int,
-    website varchar(100) unique
+    website varchar(100) unique,
+    foreign key (state) references State(abbrv)
 );
 
 create table Species (
@@ -65,30 +72,35 @@ create table Exhibit (
     foreign key (species) references Species(species)
 );
 
+load data local infile 'state.csv' into table State
+    fields terminated by ','
+    lines terminated by '\n'
+    (abbrv,state);
+
 load data local infile 'habitat.csv' into table Habitat
     fields terminated by ','
     lines terminated by '\n'
-    (habitat,description);
+    (habitat,descr);
 
 load data local infile 'classification.csv' into table Classification
     fields terminated by ','
     lines terminated by '\n'
-    (family,ordr,clss,phylm,kingdm,description);
+    (family,ordr,clss,phylm,kingdm,descr);
 
 load data local infile 'status.csv' into table Status
     fields terminated by ','
     lines terminated by '\n'
-    (status,description);
+    (status,descr);
 
 load data local infile 'region.csv' into table Region
     fields terminated by ','
     lines terminated by '\n'
-    (region,description);
+    (region,descr);
 
 load data local infile 'zoo.csv' into table Zoo
     fields terminated by ','
     lines terminated by '\n'
-    (zoo_name,city,state,address,latitude,longitude,num_animals,acres,hour_open,hour_close,annual_visitors,website);
+    (zoo_name,city,state,address,latitude,longitude,num_animals,acres,time_open,time_close,annual_visitors,website);
 
 load data local infile 'species.csv' into table Species
     fields terminated by ','
@@ -99,6 +111,3 @@ load data local infile 'exhibit.csv' into table Exhibit
     fields terminated by ','
     lines terminated by '\n'
     (zoo_name,species);
-
-command to auto-create models:
-python manage.py inspectdb > models.py

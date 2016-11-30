@@ -5,7 +5,8 @@ from django.shortcuts import render
 from django.db import connection, connections
 from django.http import HttpResponseRedirect
 from math import ceil
-from .models import Zoo,Species,Classification,Exhibit,Habitat,Region,Status
+from .models import *
+from .functions import convert_time,revert_time
 
 def index(request):
     return render(request,'zoo/index.html')
@@ -30,8 +31,24 @@ def zoo(request,_zoo_name):
     with connection.cursor() as cursor:
         cursor.execute('SELECT Species.species,Species.common_name FROM Species,Exhibit WHERE Species.species=Exhibit.species AND Exhibit.zoo_name=%s',[zoo.zoo_name])
         list_species = cursor.fetchall()
-    num_species = len(list_species)
-    return render(request,'zoo/zoo.html',{'zoo':zoo,'list_species':list_species,'num_species':num_species})
+# only use pagination if more than 10 entries
+    if len(list_species) > 10:
+        use_pagination = 1
+    else:
+        use_pagination = 0
+# make time human readable
+    time_open = convert_time(zoo.time_open)
+    time_open = time_open['hour'] + ':' + time_open['minute'] + time_open['period']
+    time_close = convert_time(zoo.time_close)
+    time_close = time_close['hour'] + ':' + time_close['minute'] + time_close['period']
+    context = {
+        'zoo':zoo,
+        'time_open':time_open,
+        'time_close':time_close,
+        'list_species':list_species,
+        'use_pagination':use_pagination
+    }
+    return render(request,'zoo/zoo.html',context)
 
 def update_exhibit(request,_zoo_name,operation):
     zoo_name = _zoo_name.replace("_"," ");
@@ -63,11 +80,35 @@ def update_zoo(request,_zoo_name):
     zoo = Zoo.objects.get(zoo_name=zoo_name)
 # update the specific zoo
     if request.method == 'POST':
+    # convert time to database format
+        time_open = revert_time(request.POST.get("open_hour"),request.POST.get("open_minute"),request.POST.get("open_period"))
+        time_close = revert_time(request.POST.get("close_hour"),request.POST.get("close_minute"),request.POST.get("close_period"))
         with connection.cursor() as cursor:
-            cursor.execute('UPDATE Zoo SET zoo_name=%s,city=%s,state=%s,address=%s,latitude=%s,longitude=%s,num_animals=%s,acres=%s,hour_open=%s,hour_close=%s,annual_visitors=%s,website=%s WHERE zoo_name=%s',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("latitude"),request.POST.get("longitude"),request.POST.get("num_animals"),request.POST.get("acres"),request.POST.get("hour_open"),request.POST.get("hour_close"),request.POST.get("annual_visitors"),request.POST.get("website"),zoo_name])
+            cursor.execute('UPDATE Zoo SET zoo_name=%s,city=%s,state=%s,address=%s,latitude=%s,longitude=%s,num_animals=%s,acres=%s,time_open=%s,time_close=%s,annual_visitors=%s,website=%s WHERE zoo_name=%s',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("latitude"),request.POST.get("longitude"),request.POST.get("num_animals"),request.POST.get("acres"),time_open,time_close,request.POST.get("annual_visitors"),request.POST.get("website"),zoo_name])
     # redirect back to the zoo detail page
         return HttpResponseRedirect('/zoo/'+_zoo_name+'/')
-    return render(request,'zoo/update_zoo.html',{'zoo':zoo})
+    states = State.objects.values_list('abbrv',flat=True)
+    time_open = convert_time(zoo.time_open)
+    time_close = convert_time(zoo.time_close)
+    hours = []
+    for i in range(1,13):
+        hours.append(str(i))
+    minutes = ['00','15','30','45']
+    periods = ['AM','PM']
+    context = {
+        'zoo':zoo,
+        'states':states,
+        'hours':hours,
+        'minutes':minutes,
+        'periods':periods,
+        'open_hour':time_open['hour'],
+        'open_minute':time_open['minute'],
+        'open_period':time_open['period'],
+        'close_hour':time_close['hour'],
+        'close_minute':time_close['minute'],
+        'close_period':time_close['period']
+    }
+    return render(request,'zoo/update_zoo.html',context)
 
 def list_species(request):
 # default values
@@ -83,7 +124,6 @@ def list_species(request):
     conditions = ''
     if request.method == 'POST':
         if request.POST.get('update'):
-            print 'update'
         # retrive the information selected
             select_habitats = request.POST.getlist('habitats')
             select_regions = request.POST.getlist('regions')
@@ -133,14 +173,18 @@ def list_species(request):
 # query the database for all the selected species
     with connection.cursor() as cursor:
         query = 'SELECT Species.species,Species.common_name FROM Species' + conditions
-        print query # debug
         cursor.execute(query)
         list_species = cursor.fetchall()
 # descriptions
-    habitats_desc = Habitat.objects.all()
-    regions_desc = Region.objects.all()
-    statuses_desc = Status.objects.all()
-    families_desc = Classification.objects.all()
+    habitats_descr = Habitat.objects.all()
+    regions_descr = Region.objects.all()
+    statuses_descr = Status.objects.all()
+    families_descr = Classification.objects.all()
+# only use pagination if more than 10 entries
+    if len(list_species) > 10:
+        use_pagination = 1
+    else:
+        use_pagination = 0
 # variables to pass into html
     context = {
         'list_species':list_species,
@@ -152,10 +196,11 @@ def list_species(request):
         'select_habitats':select_habitats,
         'select_regions':select_regions,
         'select_statuses':select_statuses,
-        'habitats_desc':habitats_desc,
-        'regions_desc':regions_desc,
-        'statuses_desc':statuses_desc,
-        'families_desc':families_desc
+        'habitats_descr':habitats_descr,
+        'regions_descr':regions_descr,
+        'statuses_descr':statuses_descr,
+        'families_descr':families_descr,
+        'use_pagination':use_pagination,
     }
     return render(request,'zoo/list_species.html',context)
 
@@ -176,23 +221,18 @@ def species(request,_species):
     # all species of the same family
         cursor.execute('SELECT s.species FROM Species s WHERE s.family=%s AND s.species!=%s ORDER BY RAND() LIMIT 5',[species.family.family,species.species])
         related_species = cursor.fetchall()
-        print species.family.family
         if len(related_species) < 5:
-            print species.family.ordr
         # same order
             cursor.execute('SELECT s.species FROM Species s, Classification c WHERE c.family=s.family AND c.ordr=%s AND s.species!=%s ORDER BY RAND() LIMIT 5',[species.family.ordr,species.species])
             related_species = cursor.fetchall()
             if len(related_species) < 5:
-                print species.family.clss
             # same class
                 cursor.execute('SELECT s.species FROM Species s, Classification c WHERE c.family=s.family AND c.clss=%s AND s.species!=%s ORDER BY RAND() LIMIT 5',[species.family.clss,species.species])
                 related_species = cursor.fetchall()
                 if len(related_species) < 5:
-                    print species.family.phylum
                 # same phylum
                     cursor.execute('SELECT s.species FROM Species s, Classification c WHERE c.family=s.family AND c.phylum=%s AND s.species!=%s ORDER BY RAND() LIMIT 5',[species.family.phylum,species.species])
                     related_species = cursor.fetchall()
-        print list(related_species)
 # same region and habitat
     regions = species.region.split(';')
     habitats = species.habitat.split(';')
@@ -209,40 +249,84 @@ def species(request,_species):
 # query the database for all the related species
     with connection.cursor() as cursor:
         query = 'SELECT Species.species FROM Species' + conditions + ' ORDER BY RAND() LIMIT 5'
-        print query # debug
         cursor.execute(query)
         similar_species = cursor.fetchall()
-        print similar_species
+# only use pagination if more than 10 entries
+    if len(list_zoos) > 10:
+        use_pagination = 1
+    else:
+        use_pagination = 0
     # variables to pass into html
     context = {
         'species':species,
         'species_name':species_name,
         'list_zoos':list_zoos,
         'related_species':related_species,
-        'similar_species':similar_species
+        'similar_species':similar_species,
+        'use_pagination':use_pagination
     }
     return render(request,'zoo/species.html',context)
 
 def update_species(request,_species):
+    families = Classification.objects.values_list('family',flat=True)
+    statuses = Status.objects.values_list('status',flat=True)
     species = Species.objects.get(species=_species.replace("_"," "))
+# update the data based on user input
     if request.method == 'POST':
+        select_habitats = request.POST.getlist('habitats')
+        select_regions = request.POST.getlist('regions')
+        habitats = ''
+        for habitat in select_habitats[:-1]:
+            habitats = habitats + habitat + ';'
+        habitats = habitats + select_habitats[-1]
+        regions = ''
+        for region in select_regions[:-1]:
+            regions = regions + region + ';'
+        regions = regions + select_regions[-1]
 # update the species with a query
         with connection.cursor() as cursor:
-            cursor.execute('UPDATE Species SET species=%s,common_name=%s,genus=%s,family=%s,region=%s,habitat=%s,status=%s WHERE species=%s',[request.POST.get("species"),request.POST.get("common_name"),request.POST.get("genus"),request.POST.get("family"),request.POST.get("region"),request.POST.get("habitat"),request.POST.get("status"),_species.replace("_"," ")])
+            cursor.execute('UPDATE Species SET species=%s,common_name=%s,genus=%s,family=%s,region=%s,habitat=%s,status=%s WHERE species=%s',[request.POST.get("species"),request.POST.get("common_name"),request.POST.get("genus"),request.POST.get("family"),regions,habitats,request.POST.get("status"),_species.replace("_"," ")])
         # redirect back to the species information page
             return HttpResponseRedirect('/species/'+_species+'/')
+# fetch the current data
+    all_habitats = Habitat.objects.values_list('habitat',flat=True)
+    all_regions = Region.objects.values_list('region',flat=True)
+# tuples for the information (0 if not selected, 1 if selected)
+    habitats = []
+    regions = []
+# sort through the regions
+    for region in all_regions:
+        if region in species.region.split(';'):
+            regions.append(('1',region))
+        else:
+            regions.append(('0',region))
+# sort through the habitats
+    for habitat in all_habitats:
+        if habitat in species.habitat.split(';'):
+            habitats.append(('1',habitat))
+        else:
+            habitats.append(('0',habitat))
 # show only the first common name
     species_name = species.common_name.split(';')[0]
-    return render(request,'zoo/update_species.html',{'species':species,'species_name':species_name})
+    context = {
+        'families':families,
+        'habitats':habitats,
+        'regions':regions,
+        'statuses':statuses,
+        'species':species,
+        'species_name':species_name
+    }
+    return render(request,'zoo/update_species.html',context)
 
 def add_species(request):
     habitats = Habitat.objects.values_list('habitat',flat=True)
     families = Classification.objects.values_list('family',flat=True)
     regions = Region.objects.values_list('region',flat=True)
     statuses = Status.objects.values_list('status',flat=True)
-
+# add the species based on user input
     if request.method == 'POST':
         if request.POST.get('submit'):
+        # get input and modify to fit database format
             select_habitats = request.POST.getlist('habitats')
             select_regions = request.POST.getlist('regions')
             habitats = ''
@@ -253,9 +337,11 @@ def add_species(request):
             for region in select_regions[:-1]:
                 regions = regions + region + ';'
             regions = regions + select_regions[-1]
+        # update the database
             with connection.cursor() as cursor:
                 cursor.execute('INSERT INTO Species(species,common_name,genus,family,region,habitat,status) values(%s,%s,%s,%s,%s,%s,%s)',[request.POST.get('species'),request.POST.get('common_name'),request.POST.get('genus'),request.POST.get('family'),regions,habitats,request.POST.get('status')])
             return HttpResponseRedirect('/species/')
+    # if chose to add a family, redirect to appropriate page
         elif request.POST.get('add-family'):
             return HttpResponseRedirect('/add/family/'+request.POST.get('family').replace(" ","_")+'/')
     context = {
@@ -268,7 +354,8 @@ def add_species(request):
 
 def add_family(request):
     if request.method == 'POST':
+    # add family to database
         with connection.cursor() as cursor:
-            cursor.execute('INSERT INTO Classification(family,ordr,clss,phylm,kingdm,description) values(%s,%s,%s,%s,%s,%s,%s)',[request.POST.get('family'),request.POST.get('ordr'),request.POST.get('clss'),request.POST.get('phylm'),request.POST.get('kingdm'),request.POST.get('description')])
+            cursor.execute('INSERT INTO Classification(family,ordr,clss,phylm,kingdm,descr) values(%s,%s,%s,%s,%s,%s,%s)',[request.POST.get('family'),request.POST.get('ordr'),request.POST.get('clss'),request.POST.get('phylm'),request.POST.get('kingdm'),request.POST.get('descr')])
         return HttpResponseRedirect('/add/species/')
     return render(request,'zoo/add_family.html')

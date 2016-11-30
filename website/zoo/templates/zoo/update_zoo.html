@@ -12,25 +12,124 @@
 <div class="container">
     <form method="post">{% csrf_token %}
         <h3>Basic Information</h3>
-        <strong>Zoo Name: </strong><input name="zoo_name" type="text" class="form-control" value="{{ zoo.zoo_name }}"><br>
-        <strong>Hour Open: </strong><input name="hour_open" type="text" class="form-control" value="{{ zoo.hour_open }}"><br>
-        <strong>Hour Close: </strong><input name="hour_close" type="text" class="form-control" value="{{ zoo.hour_close }}"><br>
-        <strong>Website: </strong><input name="website" type="text" class="form-control" value="{{ zoo.website }}"><br>
-
+        <div class="form-group row left-margin">
+            <div class="col-lg-8 col-sm-6 col-xs-12">
+                <strong>Zoo Name: </strong><input name="zoo_name" type="text" class="form-control" value="{{ zoo.zoo_name }}">
+            </div>
+            <div class="col-lg-2 col-sm-3 col-xs-6">
+                <label><strong>Opens At: </strong></label><br>
+                <select name="open_hour">
+                {% for hour in hours %}
+                    {% if hour != open_hour %}
+                        <option >{{ hour }}</option>
+                    {% else %}
+                        <option selected>{{ hour }}</option>
+                    {% endif %}
+                {% endfor %}
+                </select>
+                :
+                <select name="open_minute">
+                {% for minute in minutes %}
+                    {% if minute != open_minute %}
+                        <option >{{ minute }}</option>
+                    {% else %}
+                        <option selected>{{ minute }}</option>
+                    {% endif %}
+                {% endfor %}
+                </select>
+                <select name="open_period">
+                {% for period in periods %}
+                    {% if period != open_period %}
+                        <option >{{ period }}</option>
+                    {% else %}
+                        <option selected>{{ period }}</option>
+                    {% endif %}
+                {% endfor %}
+                </select>
+            </div>
+            <div class="col-lg-2 col-sm-3 col-xs-6">
+                <label><strong>Closes At: </strong></label><br>
+                <select name="close_hour">
+                {% for hour in hours %}
+                    {% if hour != close_hour %}
+                        <option >{{ hour }}</option>
+                    {% else %}
+                        <option selected>{{ hour }}</option>
+                    {% endif %}
+                {% endfor %}
+                </select>
+                :
+                <select name="close_minute">
+                {% for minute in minutes %}
+                    {% if minute != close_minute %}
+                        <option >{{ minute }}</option>
+                    {% else %}
+                        <option selected>{{ minute }}</option>
+                    {% endif %}
+                {% endfor %}
+                </select>
+                <select name="close_period">
+                {% for period in periods %}
+                    {% if period != close_period %}
+                        <option >{{ period }}</option>
+                    {% else %}
+                        <option selected>{{ period }}</option>
+                    {% endif %}
+                {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-group row left-margin">
+            <div class="col-xs-12">
+                <strong>Website: </strong><input name="website" type="text" class="form-control" value="{{ zoo.website }}">
+            </div>
+        </div>
         <h3>Location</h3>
-        <strong>Address: </strong><input name="address" type="text" class="form-control" value="{{ zoo.address }}"><br>
-        <strong>City: </strong><input name="city" type="text" class="form-control" value="{{ zoo.city }}"><br>
-        <strong>State: </strong><input name="state" type="text" class="form-control" value="{{ zoo.state }}"><br>
-        <strong>Latitude: </strong><input name="latitude" type="text" class="form-control" value="{{ zoo.latitude }}"><br>
-        <strong>Longitude: </strong><input name="longitude" type="text" class="form-control" value="{{ zoo.longitude }}"><br>
-
-
+        <div class="form-group row left-margin">
+            <div class="col-md-7 col-sm-6 col-xs-12">
+                <strong>Address: </strong><input name="address" type="text" class="form-control" value="{{ zoo.address }}">
+            </div>
+            <div class="col-sm-4 col-xs-10">
+                <strong>City: </strong><input name="city" type="text" class="form-control" value="{{ zoo.city }}">
+            </div>
+            <div class="col-sm-1 col-xs-2">
+                <label><strong>State: </strong></label><br>
+                <select name="state">
+                {% for state in states %}
+                    {% if state != zoo.state.abbrv %}
+                        <option >{{ state }}</option>
+                    {% else %}
+                        <option selected>{{ state }}</option>
+                    {% endif %}
+                {% endfor %}
+                </select>            
+            </div>
+        </div>
+        <div class="form-group row left-margin">
+            <div class="col-xs-6">
+                <strong>Latitude: </strong><input name="latitude" type="text" class="form-control" value="{{ zoo.latitude }}">
+            </div>
+            <div class="col-xs-6">
+                <strong>Longitude: </strong><input name="longitude" type="text" class="form-control" value="{{ zoo.longitude }}">
+            </div>
+        </div>
         <h3>Statistics</h3>
-        <strong>Number of Animals: </strong><input name="num_animals" type="text" class="form-control" value="{{ zoo.num_animals }}"><br>
-        <strong>Number of Annual Visitors: </strong><input name="annual_visitors" type="text" class="form-control" value="{{ zoo.annual_visitors }}"><br>
-        <strong>Acres: </strong><input name="acres" type="text" class="form-control" value="{{ zoo.acres }}"><br>
-
-        <button type="submit" class="btn btn-default">Update</button>
+        <div class="form-group row left-margin">
+            <div class="col-sm-4 col-xs-6">
+                <strong>Number of Animals: </strong><input name="num_animals" type="text" class="form-control" value="{{ zoo.num_animals }}">
+            </div>
+            <div class="col-sm-4 col-xs-6">
+                <strong>Number of Annual Visitors: </strong><input name="annual_visitors" type="text" class="form-control" value="{{ zoo.annual_visitors }}">
+            </div>
+            <div class="col-sm-4 col-xs-12">
+                <strong>Acres: </strong><input name="acres" type="text" class="form-control" value="{{ zoo.acres }}">
+            </div>
+        </div>
+        <div class="form-group row left-margin">
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-default">Update</button>
+            </div>
+        </div>
     </form>
 </div>
 {% endblock %}

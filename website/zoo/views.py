@@ -9,7 +9,15 @@ from .models import *
 from .functions import convert_time,revert_time
 
 def index(request):
-    return render(request,'zoo/index.html')
+    family = "acanthuridae"
+    with connection.cursor() as cursor:
+        cursor.execute('SELECT s.species FROM Species s,Classification c WHERE c.family=%s AND s.family=c.family',[family])
+        list_species = cursor.fetchall()
+
+    context = {
+        'list_species':list_species
+    }
+    return render(request,'zoo/index.html',context)
 
 def list_zoos(request):
 # select all the objects in the list of zoos
@@ -53,7 +61,7 @@ def zoo(request,_zoo_name):
 def update_exhibit(request,_zoo_name,operation):
     zoo_name = _zoo_name.replace("_"," ");
     zoo = Zoo.objects.get(zoo_name=zoo_name)
-    list_species = Species.objects.all()
+
     with connection.cursor() as cursor:
     # select all species animals not currently exhibited
         if operation == 'add':
@@ -212,6 +220,10 @@ def species(request,_species):
             return HttpResponseRedirect('/species/'+_species+'/update/')
     species = Species.objects.get(species=_species.replace("_"," "))
     species_name = species.common_name.split(';')[0]
+    if len(species.common_name.split(';')) > 1:
+        other_names = species.common_name.split(';')[1:]
+    else:
+        other_names = ''
 # select all zoos that exhibit the specific species
     with connection.cursor() as cursor:
         cursor.execute('SELECT Zoo.zoo_name,Zoo.city,Zoo.state,Zoo.address FROM Zoo,Exhibit WHERE Zoo.zoo_name=Exhibit.zoo_name AND Exhibit.species=%s',[species.species])
@@ -260,6 +272,7 @@ def species(request,_species):
     context = {
         'species':species,
         'species_name':species_name,
+        'other_names':other_names,
         'list_zoos':list_zoos,
         'related_species':related_species,
         'similar_species':similar_species,

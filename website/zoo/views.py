@@ -332,13 +332,15 @@ def update_species(request,_species):
     return render(request,'zoo/update_species.html',context)
 
 def add_species(request):
-    habitats = Habitat.objects.values_list('habitat',flat=True)
-    families = Classification.objects.values_list('family',flat=True)
-    regions = Region.objects.values_list('region',flat=True)
-    statuses = Status.objects.values_list('status',flat=True)
 # add the species based on user input
     if request.method == 'POST':
-        if request.POST.get('submit'):
+        if request.POST.get('add_region'):
+            with connection.cursor() as cursor:
+                cursor.execute('INSERT INTO Region(region,descr) values(%s,%s)',[request.POST.get('new_region'),request.POST.get('region_descr')])
+        elif request.POST.get('add_habitat'):
+            with connection.cursor() as cursor:
+                cursor.execute('INSERT INTO Habitat(habitat,descr) values(%s,%s)',[request.POST.get('new_habitat'),request.POST.get('habitat_descr')])
+        elif request.POST.get('submit'):
         # get input and modify to fit database format
             select_habitats = request.POST.getlist('habitats')
             select_regions = request.POST.getlist('regions')
@@ -357,6 +359,10 @@ def add_species(request):
     # if chose to add a family, redirect to appropriate page
         elif request.POST.get('add-family'):
             return HttpResponseRedirect('/add/family/'+request.POST.get('family').replace(" ","_")+'/')
+    habitats = Habitat.objects.values_list('habitat',flat=True)
+    families = Classification.objects.values_list('family',flat=True)
+    regions = Region.objects.values_list('region',flat=True)
+    statuses = Status.objects.values_list('status',flat=True)
     context = {
         'families':families,
         'habitats':habitats,

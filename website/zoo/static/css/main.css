@@ -82,12 +82,11 @@ footer {
 }
 
 .overlay .box {
-    position: fixed;
     background-color: #eee;
+    position: fixed;
     border-radius: 5px;
     top: 100px;
     left: 50%; 
-    max-height: 300px;
     width: 400px;
     margin-left: -200px;
     z-index: 7;
@@ -99,7 +98,6 @@ footer {
     top: 15px;
     left: 15px;
     font-size: 20px;
-    z-index: 9;
 }
 
 .overlay .close-btn {
@@ -107,7 +105,6 @@ footer {
     top: -15px;
     right: 15px;
     font-size: 50px;
-    z-index: 9;
 }
 
 .overlay .text {
@@ -118,9 +115,24 @@ footer {
     max-height: 300px;
     width: 400px;
     margin-left: -200px;
-    z-index: 8;
     padding: 10px;
-    overflow: scroll;
+    overflow-y: scroll;
+}
+
+.overlay .footer {
+    position: relative;
+    top: 50px;
+    width: 400px;
+    height: 50px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #eee;
+}
+
+.overlay .submit-btn {
+    position: relative;
+    top: 8px;
+    text-align: center;
 }
 
 .overlay .background {

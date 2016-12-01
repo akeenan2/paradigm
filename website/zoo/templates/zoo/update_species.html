@@ -9,82 +9,80 @@
 
 {% block content %}
 <br>
-<div class="container">
-    <form method="post">{% csrf_token %}
-        <h3>Classification</h3>
-        <div class="form-group row left-margin">
-            <div class="col-sm-5 col-xs-12">
-                <strong>Species </strong><input name="species" type="text" class="form-control" value="{{ species.species }}">
-            </div>
-            <div class="col-sm-4 col-xs-6">
-                <strong>Genus </strong><input name="genus" type="text" class="form-control" value="{{ species.genus }}">
-            </div>
-            <div class="col-sm-3 col-xs-6">
-               <label for="family"><strong>Family </strong></label> (<a href="/add/family/">doesn't exist?</a>)<br>
-                <select name="family">
-                {% for family in families %}
-                    {% if family != species.family.family %}
-                        <option >{{ family }}</option>
-                    {% else %}
-                        <option selected>{{ species.family.family }}</option>
-                    {% endif %}
-                {% endfor %}
-                </select>
-            </div>
+<form method="post">{% csrf_token %}
+    <h3>Classification</h3>
+    <div class="form-group row left-margin">
+        <div class="col-sm-5 col-xs-12">
+            <strong>Species </strong><input name="species" type="text" class="form-control" value="{{ species.species }}">
         </div>
-        <div class="form-group row left-margin">
-            <div class="col-xs-12">
-                <strong>Common Name(s) </strong><input name="common_name" type="text" class="form-control" value="{{ species.common_name }}">
-            </div>
+        <div class="col-sm-4 col-xs-6">
+            <strong>Genus </strong><input name="genus" type="text" class="form-control" value="{{ species.genus }}">
         </div>
-        <h3>Information</h3>
-        <div class="form-group row left-margin">
-            <div class="col-xs-12">
-                <label for="regions"><strong>Region </strong></label>
-            </div>
-            {% for region in regions %}
-                <div class="col-md-2 col-sm-3 col-xs-4">
-                {% if region.0 == '1' %}
-                    <input type="checkbox" name="regions" checked> {{ region.1 }}<br>
-                {% elif region.0 == '0' %}
-                    <input type="checkbox" name="regions"> {{ region.1 }}<br>
-                {% endif %}
-                </div>
-            {% endfor %}
-        </div>
-        <div class="form-group row left-margin">
-            <div class="col-xs-12">
-                <label for="habitats"><strong>Habitat </strong></label>
-            </div>
-            {% for habitat in habitats %}
-                <div class="col-md-2 col-sm-3 col-xs-4">
-                {% if habitat.0 == '1' %}
-                    <input type="checkbox" name="habitats" checked> {{ habitat.1 }}<br>
-                {% elif habitat.0 == '0' %}
-                    <input type="checkbox" name="habitats"> {{ habitat.1 }}<br>
-                {% endif %}
-                </div>
-            {% endfor %}
-        </div>       
-        <div class="form-group row left-margin">
-            <div class="col-xs-12">
-                <label for="status"><strong>Status </strong></label>
-            </div>
-            {% for status in statuses %}
-                <div class="col-md-1 col-sm-2 col-xs-3">
-                {% if status == species.status.status %}
-                    <input type="radio" name="status" value="{{ status }}" checked> {{ status }} <br>
+        <div class="col-sm-3 col-xs-6">
+           <label for="family"><strong>Family </strong></label> (<a href="/add/family/">doesn't exist?</a>)<br>
+            <select name="family">
+            {% for family in families %}
+                {% if family != species.family.family %}
+                    <option >{{ family }}</option>
                 {% else %}
-                    <input type="radio" name="status" value="{{ status }}"> {{ status }} <br>
+                    <option selected>{{ species.family.family }}</option>
                 {% endif %}
-                </div>
             {% endfor %}
+            </select>
         </div>
-        <div class="form-group row left-margin">
-            <div class="col-xs-12">
-                <button type="submit" class="btn btn-default">Update</button>
+    </div>
+    <div class="form-group row left-margin">
+        <div class="col-xs-12">
+            <strong>Common Name(s) </strong><input name="common_name" type="text" class="form-control" value="{{ species.common_name }}">
+        </div>
+    </div>
+    <h3>Information</h3>
+    <div class="form-group row left-margin">
+        <div class="col-xs-12">
+            <label for="regions"><strong>Region </strong></label>
+        </div>
+        {% for region in regions %}
+            <div class="col-md-2 col-sm-3 col-xs-4">
+            {% if region.0 == '1' %}
+                <input type="checkbox" name="regions" checked> {{ region.1 }}<br>
+            {% elif region.0 == '0' %}
+                <input type="checkbox" name="regions"> {{ region.1 }}<br>
+            {% endif %}
             </div>
+        {% endfor %}
+    </div>
+    <div class="form-group row left-margin">
+        <div class="col-xs-12">
+            <label for="habitats"><strong>Habitat </strong></label>
         </div>
-    </form>
-</div>
+        {% for habitat in habitats %}
+            <div class="col-md-2 col-sm-3 col-xs-4">
+            {% if habitat.0 == '1' %}
+                <input type="checkbox" name="habitats" checked> {{ habitat.1 }}<br>
+            {% elif habitat.0 == '0' %}
+                <input type="checkbox" name="habitats"> {{ habitat.1 }}<br>
+            {% endif %}
+            </div>
+        {% endfor %}
+    </div>       
+    <div class="form-group row left-margin">
+        <div class="col-xs-12">
+            <label for="status"><strong>Status </strong></label>
+        </div>
+        {% for status in statuses %}
+            <div class="col-md-1 col-sm-2 col-xs-3">
+            {% if status == species.status.status %}
+                <input type="radio" name="status" value="{{ status }}" checked> {{ status }} <br>
+            {% else %}
+                <input type="radio" name="status" value="{{ status }}"> {{ status }} <br>
+            {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="form-group row left-margin">
+        <div class="col-xs-12">
+            <button type="submit" class="btn btn-default">Update</button>
+        </div>
+    </div>
+</form>
 {% endblock %}

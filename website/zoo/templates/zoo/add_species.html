@@ -9,66 +9,64 @@
 
 {% block content %}
 <br>
-<div class="container">
-    <form method="post">{% csrf_token %}
-        <h3>Classification</h3>
-        <div class="form-group row left-margin">
-            <div class="col-sm-5 col-xs-12">
-                <strong>Species </strong><input name="species" type="text" class="form-control" placeholder="ex: acanthurus olivaceus">
-            </div>
-            <div class="col-sm-4 col-xs-6">
-                <strong>Genus </strong><input name="genus" type="text" class="form-control" placeholder="ex: acanthurus">
-            </div>
-            <div class="col-sm-3 col-xs-6">
-                <label for="family"><strong>Family </strong></label> (<a href="/add/family/">doesn't exist?</a>)<br>
-                <select name="family" id="family" >
-                {% for family in families %}
-                    <option>{{ family }}</option>
-                {% endfor %}
-                </select>
-            </div>
+<form method="post">{% csrf_token %}
+    <h3>Classification</h3>
+    <div class="form-group row left-margin">
+        <div class="col-sm-5 col-xs-12">
+            <strong>Species </strong><input name="species" type="text" class="form-control" placeholder="ex: acanthurus olivaceus">
         </div>
-        <div class="form-group row left-margin">
-            <div class="col-sm-12">
-                <strong>Common Name(s) </strong><input name="common_name" type="text" class="form-control" placeholder="ex: Orangeshoulder Tang">
-            </div>
+        <div class="col-sm-4 col-xs-6">
+            <strong>Genus </strong><input name="genus" type="text" class="form-control" placeholder="ex: acanthurus">
         </div>
-        <h3>Information</h3>
-        <div class="form-group row left-margin">
-            <div class="col-xs-12">
-                <label for="regions"><strong>Region </strong></label>
-            </div>
-            {% for region in regions %}
-                <div class="col-md-2 col-sm-3 col-xs-4">
-                    <input type="checkbox" name="regions"> {{ region }}<br>
-                </div>
+        <div class="col-sm-3 col-xs-6">
+            <label for="family"><strong>Family </strong></label> (<a href="/add/family/">doesn't exist?</a>)<br>
+            <select name="family" id="family" >
+            {% for family in families %}
+                <option>{{ family }}</option>
             {% endfor %}
+            </select>
         </div>
-        <div class="form-group row left-margin">
-            <div class="col-xs-12">
-                <label for="habitats"><strong>Habitat </strong></label>
-            </div>
-            {% for habitat in habitats %}
-                <div class="col-md-2 col-sm-3 col-xs-4">
-                    <input type="checkbox" name="habitats"> {{ habitat }}<br>
-                </div>
-            {% endfor %}
-        </div>       
-        <div class="form-group row left-margin">
-            <div class="col-xs-12">
-                <label for="status"><strong>Status </strong></label>
-            </div>
-            {% for status in statuses %}
-                <div class="col-md-1 col-sm-2 col-xs-3">
-                    <input type="radio" name="status" value="{{ status }}"> {{ status }} <br>
-                </div>
-            {% endfor %}
+    </div>
+    <div class="form-group row left-margin">
+        <div class="col-sm-12">
+            <strong>Common Name(s) </strong><input name="common_name" type="text" class="form-control" placeholder="ex: Orangeshoulder Tang">
         </div>
-        <div class="form-group row left-margin">
-            <div class="col-xs-12">
-                <button type="submit" class="btn btn-default">Submit</button>
-            </div>
+    </div>
+    <h3>Information</h3>
+    <div class="form-group row left-margin">
+        <div class="col-xs-12">
+            <label for="regions"><strong>Region </strong></label>
         </div>
-    </form>
-</div>
+        {% for region in regions %}
+            <div class="col-md-2 col-sm-3 col-xs-4">
+                <input type="checkbox" name="regions"> {{ region }}<br>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="form-group row left-margin">
+        <div class="col-xs-12">
+            <label for="habitats"><strong>Habitat </strong></label>
+        </div>
+        {% for habitat in habitats %}
+            <div class="col-md-2 col-sm-3 col-xs-4">
+                <input type="checkbox" name="habitats"> {{ habitat }}<br>
+            </div>
+        {% endfor %}
+    </div>       
+    <div class="form-group row left-margin">
+        <div class="col-xs-12">
+            <label for="status"><strong>Status </strong></label>
+        </div>
+        {% for status in statuses %}
+            <div class="col-md-1 col-sm-2 col-xs-3">
+                <input type="radio" name="status" value="{{ status }}"> {{ status }}<br>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="form-group row left-margin">
+        <div class="col-xs-12">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    </div>
+</form>
 {% endblock %}

@@ -336,12 +336,33 @@ def add_species(request):
     if request.method == 'POST':
         if request.POST.get('add_region'):
         # add the new region
-            with connection.cursor() as cursor:
-                cursor.execute('INSERT INTO Region(region,descr) values(%s,%s)',[request.POST.get('new_region'),request.POST.get('region_descr')])
+            if request.POST.get('new_region') and request.POST.get('region_descr'):
+                with connection.cursor() as cursor:
+                    cursor.execute('INSERT INTO Region(region,descr) values(%s,%s)',[request.POST.get('new_region'),request.POST.get('region_descr')])
         elif request.POST.get('add_habitat'):
         # add the new habitat
+            if request.POST.get('new_habitat') and request.POST.get('habitat_descr'):
+                with connection.cursor() as cursor:
+                    cursor.execute('INSERT INTO Habitat(habitat,descr) values(%s,%s)',[request.POST.get('new_habitat'),request.POST.get('habitat_descr')])
+        elif request.POST.get('add_family'):
+        # add family to database
             with connection.cursor() as cursor:
-                cursor.execute('INSERT INTO Habitat(habitat,descr) values(%s,%s)',[request.POST.get('new_habitat'),request.POST.get('habitat_descr')])
+                cursor.execute('INSERT INTO Classification(family,ordr,clss,phylm,kingdm,descr) values(%s,%s,%s,%s,%s,%s)',[request.POST.get('new_family'),request.POST.get('ordr'),request.POST.get('clss'),request.POST.get('phylm'),request.POST.get('kingdm'),request.POST.get('family_descr')])
+        elif request.POST.get('remove_region'):
+        # remove regions
+            with connection.cursor() as cursor:
+                for region in request.POST.getlist('remove_regions'):
+                    cursor.execute('DELETE FROM Region WHERE region=%s',[region])
+        elif request.POST.get('remove_habitat'):
+        # remove habitats
+            with connection.cursor() as cursor:
+                for habitat in request.POST.getlist('remove_habitats'):
+                    cursor.execute('DELETE FROM Habitat WHERE habitat=%s',[habitat])
+        elif request.POST.get('remove_family'):
+        # remove families
+            with connection.cursor() as cursor:
+                for family in request.POST.getlist('remove_families'):
+                    cursor.execute('DELETE FROM Classification WHERE family=%s',[family])
         elif request.POST.get('submit'):
         # get input and modify to fit database format
             select_habitats = request.POST.getlist('habitats')
@@ -372,11 +393,3 @@ def add_species(request):
         'statuses':statuses,
     }
     return render(request,'zoo/add_species.html',context)
-
-def add_family(request):
-    if request.method == 'POST':
-    # add family to database
-        with connection.cursor() as cursor:
-            cursor.execute('INSERT INTO Classification(family,ordr,clss,phylm,kingdm,descr) values(%s,%s,%s,%s,%s,%s,%s)',[request.POST.get('family'),request.POST.get('ordr'),request.POST.get('clss'),request.POST.get('phylm'),request.POST.get('kingdm'),request.POST.get('descr')])
-        return HttpResponseRedirect('/add/species/')
-    return render(request,'zoo/add_family.html')

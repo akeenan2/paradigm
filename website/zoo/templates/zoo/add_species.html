@@ -1,6 +1,6 @@
 <!-- add_species.html -->
 
-{% extends "layouts/base.html" %}
+{% extends "layouts/overlay.html" %}
 
 {% block page_title %}Add Species{% endblock %}
 
@@ -8,32 +8,6 @@
 {% block jumbotron_description %}Add a species.{% endblock %}
 
 {% block content %}
-
-<div id="overlay-regions" class="overlay hide">
-    <div class="box">
-        <div class="title">Add a Region</div>
-        <a href="" class="close-btn" onclick="hide_overlay('regions'); return false;">&times;</a>    
-        <form method="post">{% csrf_token %}
-            <div class="text">
-        	    <div class="col-md-6">
-                    <strong>Region </strong>
-                    <input name="new_region" type="text" class="form-control" placeholder="ex: oriental" maxlength="25">
-                </div>
-        	    <div class="col-md-6">
-                    <strong>Description </strong>
-                    <textarea name="region_descr" rows="2" cols="25" class="form-control" placeholder="ex: tropical asia" maxlength="50"></textarea>
-                </div>
-            </div>
-            <div class="footer curve">
-                <div class="submit-btn">
-                    <input class="btn btn-primary" type="submit" name="add_region" value="Submit"/>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="background"></div>
-</div>
-
 <br>
 <form method="post">{% csrf_token %}
     <h3>Classification</h3>
@@ -45,7 +19,9 @@
             <strong>Genus </strong><input name="genus" type="text" class="form-control" placeholder="ex: acanthurus">
         </div>
         <div class="col-sm-3 col-xs-6">
-            <label for="family"><strong>Family </strong></label> (<a href="/add/family/">doesn't exist?</a>)<br>
+            <label for="family"><strong>Family </strong></label>
+            (<a href="" onclick="show_overlay('add-family'); return false;">+</a>/<a href="" onclick="show_overlay('remove-family'); return false;">-</a>)
+            <br>
             <select name="family" id="family" >
             {% for family in families %}
                 <option>{{ family }}</option>
@@ -62,24 +38,25 @@
     <div class="form-group row left-margin">
         <div class="col-xs-12">
             <label for="regions"><strong>Region </strong></label>
-            <a href="" onclick="show_overlay('regions'); return false;">Add Region</a>
+            (<a href="" onclick="show_overlay('add-region'); return false;">+</a>/<a href="" onclick="show_overlay('remove-region'); return false;">-</a>)
         </div>
         {% for region in regions %}
             <div class="col-md-2 col-sm-3 col-xs-4">
-                <input type="checkbox" name="regions"> {{ region }}<br>
+                <input type="checkbox" name="add-regions" value="{{ region }}"> {{ region }}<br>
             </div>
         {% endfor %}
     </div>
     <div class="form-group row left-margin">
         <div class="col-xs-12">
             <label for="habitats"><strong>Habitat </strong></label>
+            (<a href="" onclick="show_overlay('add-habitat'); return false;">+</a>/<a href="" onclick="show_overlay('remove-habitat'); return false;">-</a>)
         </div>
         {% for habitat in habitats %}
             <div class="col-md-2 col-sm-3 col-xs-4">
-                <input type="checkbox" name="habitats"> {{ habitat }}<br>
+                <input type="checkbox" name="habitats" value="{{ habitat }}"> {{ habitat }}<br>
             </div>
         {% endfor %}
-    </div>       
+    </div>
     <div class="form-group row left-margin">
         <div class="col-xs-12">
             <label for="status"><strong>Status </strong></label>

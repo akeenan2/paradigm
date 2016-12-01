@@ -1,0 +1,273 @@
+<!-- overlay.html -->
+
+{% extends "layouts/base.html" %}
+
+{% block overlay %}
+<div id="overlay-habitats" class="overlay hide">
+    <div class="box">
+        <div class="title">Habitats</div>
+        <a href="" class="close-btn" onclick="hide_overlay('habitats'); return false;">&times;</a>
+        <div id="habitats-text curve" class="text">
+            {% for habitat in habitats_descr %}
+            <div class="row left-margin">
+                <div class="col-xs-4"> 
+                    {{ habitat.habitat }}
+                </div>
+                <div class="col-xs-8">
+                    {{ habitat.descr }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="background"></div>
+</div>
+
+<div id="overlay-regions" class="overlay hide">
+    <div class="box">
+        <div class="title">Regions</div>
+        <a href="" class="close-btn" onclick="hide_overlay('regions'); return false;">&times;</a>
+        <div id="regions-text curve" class="text">
+            {% for region in regions_descr %}
+            <div class="row left-margin">
+                <div class="col-xs-4"> 
+                    {{ region.region }}
+                </div>
+                <div class="col-xs-8">
+                    {{ region.descr }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="background"></div>
+</div>
+
+<div id="overlay-statuses" class="overlay hide">
+    <div class="box">
+        <div class="title">Status</div>
+        <a href="" class="close-btn" onclick="hide_overlay('statuses'); return false;">&times;</a>
+        <div id="statuses-text curve" class="text">
+            {% for status in statuses_descr %}
+            <div class="row left-margin">
+                <div class="col-xs-4"> 
+                    {{ status.status }}
+                </div>
+                <div class="col-xs-8">
+                    {{ status.descr }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="background"></div>
+</div>
+
+<div id="overlay-families" class="overlay hide">
+    <div class="box">
+        <div class="title">Families</div>
+        <a href="" class="close-btn" onclick="hide_overlay('families'); return false;">&times;</a>
+        <div id="families-text curve" class="text">
+            {% for family in families_descr %}
+            <div class="row left-margin">
+                <div class="col-xs-4"> 
+                    {{ family.family }}
+                </div>
+                <div class="col-xs-8">
+                    {{ family.descr }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="background"></div>
+</div>
+
+<div id="overlay-add-region" class="overlay hide">
+    <div class="box">
+        <div class="title">Add a Region</div>
+        <a href="" class="close-btn" onclick="hide_overlay('add-region'); return false;">&times;</a>    
+        <form method="post">{% csrf_token %}
+            <div id="add-region-text" class="text">
+                <div class="form-group row left-margin">
+                    <div class="col-sm-12">
+                        <strong>Region </strong>
+                        <input name="new_region" type="text" class="form-control" placeholder="ex: oriental" maxlength="25">
+                    </div>
+                </div>
+                <div class="form-group row left-margin">
+                    <div class="col-sm-12">
+                        <strong>Description </strong>
+                        <textarea name="region_descr" rows="2" cols="25" class="form-control" placeholder="ex: tropical asia" maxlength="200"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="footer curve">
+                <div class="submit-btn">
+                    <div class="col-sm-12">
+                        <input class="btn btn-primary" type="submit" name="add_region" value="Add"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="background"></div>
+</div>
+
+<div id="overlay-add-habitat" class="overlay hide">
+    <div class="box">
+        <div class="title">Add a Habitat</div>
+        <a href="" class="close-btn" onclick="hide_overlay('add-habitat'); return false;">&times;</a>    
+        <form method="post">{% csrf_token %}
+            <div id="add-habitat-text" class="text">
+                <div class="form-group row left-margin">
+                    <div class="col-sm-12">
+                        <strong>Habitat </strong>
+                        <input name="new_habitat" type="text" class="form-control" placeholder="ex: forest" maxlength="25">
+                    </div>
+                </div>
+                <div class="form-group row left-margin">
+                    <div class="col-sm-12">
+                        <strong>Description </strong>
+                        <textarea name="habitat_descr" rows="2" cols="25" class="form-control" placeholder="ex: dominated by trees" maxlength="200"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="footer curve">
+                <div class="submit-btn">
+                    <div class="col-sm-12">
+                        <input class="btn btn-primary" type="submit" name="add_habitat" value="Add"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="background"></div>
+</div>
+
+<div id="overlay-add-family" class="overlay hide">
+    <div class="box">
+        <div class="title">Add a Family</div>
+        <a href="" class="close-btn" onclick="hide_overlay('add-family'); return false;">&times;</a>    
+        <form method="post">{% csrf_token %}
+            <div id="add-family-text" class="text">
+                <div class="form-group row left-margin">
+                    <div class="col-sm-12">
+                        <strong>Family </strong>
+                        <input name="new_family" type="text" class="form-control" placeholder="ex: acanthuridae" maxlength="50">
+                    </div>
+                </div>
+                <div class="form-group row left-margin">
+                    <div class="col-sm-12">
+                        <strong>Order </strong>
+                        <input name="ordr" type="text" class="form-control" placeholder="ex: perciformes" maxlength="50">
+                    </div>
+                </div>
+                <div class="form-group row left-margin">
+                    <div class="col-sm-12">
+                        <strong>Class </strong>
+                        <input name="clss" type="text" class="form-control" placeholder="ex: actinopterygii" maxlength="50">
+                    </div>
+                </div>
+                <div class="form-group row left-margin">
+                    <div class="col-sm-12">
+                        <strong>Phylum </strong>
+                        <input name="phylm" type="text" class="form-control" placeholder="ex: chordata" maxlength="50">
+                    </div>
+                </div>
+                <div class="form-group row left-margin">
+                    <div class="col-sm-12">
+                        <strong>Kingdom </strong>
+                        <input name="kingdm" type="text" class="form-control" placeholder="ex: actinopterygii" maxlength="50">
+                    </div>
+                </div>
+                <div class="form-group row left-margin">
+                    <div class="col-sm-12">
+                        <strong>Description </strong>
+                        <textarea name="family_descr" rows="2" cols="25" class="form-control" placeholder="ex: surgeonfish;tang;unicornfish" maxlength="200"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="footer curve">
+                <div class="submit-btn">
+                    <div class="col-sm-12">
+                        <input class="btn btn-primary" type="submit" name="add_family" value="Add"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="background"></div>
+</div>
+<div id="overlay-remove-region" class="overlay hide">
+    <div class="box">
+        <div class="title">Remove Region</div>
+        <a href="" class="close-btn" onclick="hide_overlay('remove-region'); return false;">&times;</a>    
+        <form method="post">{% csrf_token %}
+            <div id="remove-region-text" class="text">
+            {% for region in regions %}
+                <div class="col-xs-6">
+                    <input type="checkbox" name="remove_regions" value="{{ region }}"> {{ region }}<br>
+                </div>
+            {% endfor %}
+            </div>
+            <div class="footer curve">
+                <div class="submit-btn">
+                    <div class="col-sm-12">
+                        <input class="btn btn-primary" type="submit" name="remove_region" value="Remove"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="background"></div>
+</div>
+
+<div id="overlay-remove-habitat" class="overlay hide">
+    <div class="box">
+        <div class="title">Remove Habitats</div>
+        <a href="" class="close-btn" onclick="hide_overlay('remove-habitat'); return false;">&times;</a>    
+        <form method="post">{% csrf_token %}
+            <div id="remove-habitat-text" class="text">
+            {% for habitat in habitats %}
+                <div class="col-xs-6">
+                    <input type="checkbox" name="remove_habitats" value="{{ habitat }}"> {{ habitat }}<br>
+                </div>
+            {% endfor %}
+            </div>
+            <div class="footer curve">
+                <div class="submit-btn">
+                    <div class="col-sm-12">
+                        <input class="btn btn-primary" type="submit" name="remove_habitat" value="Remove"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="background"></div>
+</div>
+
+<div id="overlay-remove-family" class="overlay hide">
+    <div class="box">
+        <div class="title">Remove Families</div>
+        <a href="" class="close-btn" onclick="hide_overlay('remove-family'); return false;">&times;</a>    
+        <form method="post">{% csrf_token %}
+            <div id="remove-family-text" class="text">
+            {% for family in families %}
+                <div class="col-xs-6">
+                    <input type="checkbox" name="remove_families" value="{{ family }}"> {{ family }}<br>
+                </div>
+            {% endfor %}
+            </div>
+            <div class="footer curve">
+                <div class="submit-btn">
+                    <div class="col-sm-12">
+                        <input class="btn btn-primary" type="submit" name="remove_family" value="Remove"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="background"></div>
+</div>
+{% endblock %}

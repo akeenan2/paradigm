@@ -13,7 +13,7 @@ create table State (
 );
 
 create table Habitat (
-    habitat varchar(20) primary key,
+    habitat varchar(25) primary key,
     descr varchar(200)
 );
 
@@ -33,7 +33,7 @@ create table Status (
 
 create table Region (
     region varchar(25) primary key,
-    descr varchar(50)
+    descr varchar(200)
 );
 
 create table Zoo (

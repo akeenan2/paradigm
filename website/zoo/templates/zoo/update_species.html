@@ -1,6 +1,6 @@
 <!-- update_species.html -->
 
-{% extends "layouts/base.html" %}
+{% extends "layouts/overlay.html" %}
 
 {% block page_title %}Update {{ species_name }}{% endblock %}
 
@@ -44,9 +44,9 @@
         {% for region in regions %}
             <div class="col-md-2 col-sm-3 col-xs-4">
             {% if region.0 == '1' %}
-                <input type="checkbox" name="regions" checked> {{ region.1 }}<br>
+                <input type="checkbox" name="regions" value="{{ region.1 }}" checked> {{ region.1 }}<br>
             {% elif region.0 == '0' %}
-                <input type="checkbox" name="regions"> {{ region.1 }}<br>
+                <input type="checkbox" name="regions" value="{{ region.1 }}"> {{ region.1 }}<br>
             {% endif %}
             </div>
         {% endfor %}
@@ -58,9 +58,9 @@
         {% for habitat in habitats %}
             <div class="col-md-2 col-sm-3 col-xs-4">
             {% if habitat.0 == '1' %}
-                <input type="checkbox" name="habitats" checked> {{ habitat.1 }}<br>
+                <input type="checkbox" name="habitats" value="{{ habitat.1 }}" checked> {{ habitat.1 }}<br>
             {% elif habitat.0 == '0' %}
-                <input type="checkbox" name="habitats"> {{ habitat.1 }}<br>
+                <input type="checkbox" name="habitats" value="{{ habitat.1 }}"> {{ habitat.1 }}<br>
             {% endif %}
             </div>
         {% endfor %}

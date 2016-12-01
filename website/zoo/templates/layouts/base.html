@@ -15,11 +15,12 @@
         {% endblock %}
 
         <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
-        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Josefin+Slab" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat" rel="stylesheet">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
         {% block css %}
         {% endblock %}
     </head>
@@ -52,7 +53,7 @@
         <div class="container">
             <div class="jumbotron">
                 <h2>{% block jumbotron_name %}{% endblock %}</h2>
-             <p><h4><small>{% block jumbotron_description %}{% endblock %}</small></h4></p>
+                <h5>{% block jumbotron_description %}{% endblock %}</h5>
             </div>
             {% block header %}{% endblock %}
         </div>

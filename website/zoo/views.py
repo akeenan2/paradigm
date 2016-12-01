@@ -9,15 +9,10 @@ from .models import *
 from .functions import convert_time,revert_time
 
 def index(request):
-    family = "acanthuridae"
-    with connection.cursor() as cursor:
-        cursor.execute('SELECT s.species FROM Species s,Classification c WHERE c.family=%s AND s.family=c.family',[family])
-        list_species = cursor.fetchall()
+    return render(request,'zoo/index.html')
 
-    context = {
-        'list_species':list_species
-    }
-    return render(request,'zoo/index.html',context)
+def help(request):
+    return render(request,'zoo/help.html')
 
 def list_zoos(request):
 # select all the objects in the list of zoos
@@ -282,49 +277,80 @@ def species(request,_species):
 
 def update_species(request,_species):
     families = Classification.objects.values_list('family',flat=True)
-    statuses = Status.objects.values_list('status',flat=True)
+    statuses = Status.objects.order_by('level').values_list('status',flat=True)
     species = Species.objects.get(species=_species.replace("_"," "))
 # update the data based on user input
     if request.method == 'POST':
-        select_habitats = request.POST.getlist('habitats')
-        select_regions = request.POST.getlist('regions')
-        habitats = ''
-        for habitat in select_habitats[:-1]:
-            habitats = habitats + habitat + ';'
-        habitats = habitats + select_habitats[-1]
-        regions = ''
-        for region in select_regions[:-1]:
-            regions = regions + region + ';'
-        regions = regions + select_regions[-1]
-# update the species with a query
-        with connection.cursor() as cursor:
-            cursor.execute('UPDATE Species SET species=%s,common_name=%s,genus=%s,family=%s,region=%s,habitat=%s,status=%s WHERE species=%s',[request.POST.get("species"),request.POST.get("common_name"),request.POST.get("genus"),request.POST.get("family"),regions,habitats,request.POST.get("status"),_species.replace("_"," ")])
-        # redirect back to the species information page
-            return HttpResponseRedirect('/species/'+_species+'/')
+        if request.POST.get('submit-add-region'):
+        # add the new region
+            with connection.cursor() as cursor:
+                cursor.execute('INSERT INTO Region(region,descr) values(%s,%s)',[request.POST.get('new-region'),request.POST.get('region-descr')])
+        elif request.POST.get('submit-add-habitat'):
+        # add the new habitat
+            with connection.cursor() as cursor:
+                cursor.execute('INSERT INTO Habitat(habitat,descr) values(%s,%s)',[request.POST.get('new-habitat'),request.POST.get('habitat-descr')])
+        elif request.POST.get('submit-add-family'):
+        # add family to database
+            with connection.cursor() as cursor:
+                cursor.execute('INSERT INTO Classification(family,ordr,clss,phylm,kingdm,descr) values(%s,%s,%s,%s,%s,%s)',[request.POST.get('new-family'),request.POST.get('ordr'),request.POST.get('clss'),request.POST.get('phylm'),request.POST.get('kingdm'),request.POST.get('family-descr')])
+        elif request.POST.get('submit-remove-region'):
+        # remove regions
+            with connection.cursor() as cursor:
+                for region in request.POST.getlist('remove-regions'):
+                    cursor.execute('DELETE FROM Region WHERE region=%s',[region])
+        elif request.POST.get('submit-remove-habitat'):
+        # remove habitats
+            with connection.cursor() as cursor:
+                for habitat in request.POST.getlist('remove-habitats'):
+                    cursor.execute('DELETE FROM Habitat WHERE habitat=%s',[habitat])
+        elif request.POST.get('submit-remove-family'):
+        # remove families
+            with connection.cursor() as cursor:
+                for family in request.POST.getlist('remove-families'):
+                    cursor.execute('DELETE FROM Classification WHERE family=%s',[family])
+        elif request.POST.get('submit'):
+        # update the species
+            select_habitats = request.POST.getlist('update-habitats')
+            select_regions = request.POST.getlist('update-regions')
+            habitats = ''
+            for habitat in select_habitats[:-1]:
+                habitats = habitats + habitat + ';'
+            habitats = habitats + select_habitats[-1]
+            regions = ''
+            for region in select_regions[:-1]:
+                regions = regions + region + ';'
+            regions = regions + select_regions[-1]
+        # update the species with a query
+            with connection.cursor() as cursor:
+                cursor.execute('UPDATE Species SET species=%s,common_name=%s,genus=%s,family=%s,region=%s,habitat=%s,status=%s WHERE species=%s',[request.POST.get("species"),request.POST.get("common_name"),request.POST.get("genus"),request.POST.get("family"),regions,habitats,request.POST.get("update-status"),_species.replace("_"," ")])
+            # redirect back to the species information page
+                return HttpResponseRedirect('/species/'+_species+'/')
 # fetch the current data
     all_habitats = Habitat.objects.values_list('habitat',flat=True)
     all_regions = Region.objects.values_list('region',flat=True)
 # tuples for the information (0 if not selected, 1 if selected)
-    habitats = []
-    regions = []
+    def_habitats = []
+    def_regions = []
 # sort through the regions
     for region in all_regions:
         if region in species.region.split(';'):
-            regions.append(('1',region))
+            def_regions.append(('1',region))
         else:
-            regions.append(('0',region))
+            def_regions.append(('0',region))
 # sort through the habitats
     for habitat in all_habitats:
         if habitat in species.habitat.split(';'):
-            habitats.append(('1',habitat))
+            def_habitats.append(('1',habitat))
         else:
-            habitats.append(('0',habitat))
+            def_habitats.append(('0',habitat))
 # show only the first common name
     species_name = species.common_name.split(';')[0]
     context = {
         'families':families,
-        'habitats':habitats,
-        'regions':regions,
+        'def_habitats':def_habitats,
+        'habitats':all_habitats,
+        'def_regions':def_regions,
+        'regions':all_regions,
         'statuses':statuses,
         'species':species,
         'species_name':species_name
@@ -334,39 +360,37 @@ def update_species(request,_species):
 def add_species(request):
 # add the species based on user input
     if request.method == 'POST':
-        if request.POST.get('add_region'):
+        if request.POST.get('submit-add-region'):
         # add the new region
-            if request.POST.get('new_region') and request.POST.get('region_descr'):
-                with connection.cursor() as cursor:
-                    cursor.execute('INSERT INTO Region(region,descr) values(%s,%s)',[request.POST.get('new_region'),request.POST.get('region_descr')])
-        elif request.POST.get('add_habitat'):
+            with connection.cursor() as cursor:
+                cursor.execute('INSERT INTO Region(region,descr) values(%s,%s)',[request.POST.get('new-region'),request.POST.get('region-descr')])
+        elif request.POST.get('submit-add-habitat'):
         # add the new habitat
-            if request.POST.get('new_habitat') and request.POST.get('habitat_descr'):
-                with connection.cursor() as cursor:
-                    cursor.execute('INSERT INTO Habitat(habitat,descr) values(%s,%s)',[request.POST.get('new_habitat'),request.POST.get('habitat_descr')])
-        elif request.POST.get('add_family'):
+            with connection.cursor() as cursor:
+                cursor.execute('INSERT INTO Habitat(habitat,descr) values(%s,%s)',[request.POST.get('new-habitat'),request.POST.get('habitat-descr')])
+        elif request.POST.get('submit-add-family'):
         # add family to database
             with connection.cursor() as cursor:
-                cursor.execute('INSERT INTO Classification(family,ordr,clss,phylm,kingdm,descr) values(%s,%s,%s,%s,%s,%s)',[request.POST.get('new_family'),request.POST.get('ordr'),request.POST.get('clss'),request.POST.get('phylm'),request.POST.get('kingdm'),request.POST.get('family_descr')])
-        elif request.POST.get('remove_region'):
+                cursor.execute('INSERT INTO Classification(family,ordr,clss,phylm,kingdm,descr) values(%s,%s,%s,%s,%s,%s)',[request.POST.get('new-family'),request.POST.get('ordr'),request.POST.get('clss'),request.POST.get('phylm'),request.POST.get('kingdm'),request.POST.get('family-descr')])
+        elif request.POST.get('submit-remove-region'):
         # remove regions
             with connection.cursor() as cursor:
-                for region in request.POST.getlist('remove_regions'):
+                for region in request.POST.getlist('remove-regions'):
                     cursor.execute('DELETE FROM Region WHERE region=%s',[region])
-        elif request.POST.get('remove_habitat'):
+        elif request.POST.get('submit-remove-habitat'):
         # remove habitats
             with connection.cursor() as cursor:
-                for habitat in request.POST.getlist('remove_habitats'):
+                for habitat in request.POST.getlist('remove-habitats'):
                     cursor.execute('DELETE FROM Habitat WHERE habitat=%s',[habitat])
-        elif request.POST.get('remove_family'):
+        elif request.POST.get('submit-remove-family'):
         # remove families
             with connection.cursor() as cursor:
-                for family in request.POST.getlist('remove_families'):
+                for family in request.POST.getlist('remove-families'):
                     cursor.execute('DELETE FROM Classification WHERE family=%s',[family])
         elif request.POST.get('submit'):
         # get input and modify to fit database format
-            select_habitats = request.POST.getlist('habitats')
-            select_regions = request.POST.getlist('regions')
+            select_habitats = request.POST.getlist('add-habitats')
+            select_regions = request.POST.getlist('add-regions')
             habitats = ''
             for habitat in select_habitats[:-1]:
                 habitats = habitats + habitat + ';'
@@ -377,7 +401,7 @@ def add_species(request):
             regions = regions + select_regions[-1]
         # update the database
             with connection.cursor() as cursor:
-                cursor.execute('INSERT INTO Species(species,common_name,genus,family,region,habitat,status) values(%s,%s,%s,%s,%s,%s,%s)',[request.POST.get('species'),request.POST.get('common_name'),request.POST.get('genus'),request.POST.get('family'),regions,habitats,request.POST.get('status')])
+                cursor.execute('INSERT INTO Species(species,common_name,genus,family,region,habitat,status) values(%s,%s,%s,%s,%s,%s,%s)',[request.POST.get('species'),request.POST.get('common_name'),request.POST.get('genus'),request.POST.get('family'),regions,habitats,request.POST.get('add-status')])
             return HttpResponseRedirect('/species/')
     # if chose to add a family, redirect to appropriate page
         elif request.POST.get('add-family'):

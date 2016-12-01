@@ -11,10 +11,10 @@
 <br>
 <h4>Search Options</h4>
 <form id="refine-search" method="post">{% csrf_token %}
-    <div class="form-group row left-margin">
+    <div class="form-group row">
         <div class="col-sm-3 col-xs-6">
             <label for="habitats">Habitat:</label>  (<a href="" onclick="show_overlay('habitats'); return false;">?</a>)
-            <select multiple class="form-control" name="habitats" id="habitats" size="10">
+            <select multiple class="form-control" name="habitats" id="habitats" size="8">
             {% for habitat in select_habitats %}
                 <option selected="selected">{{ habitat }}</option>
             {% endfor %}
@@ -25,7 +25,7 @@
         </div>
         <div class="col-sm-3 col-xs-6">
             <label for="regions">Region:</label>  (<a href="" onclick="show_overlay('regions'); return false;">?</a>)
-            <select multiple class="form-control" name="regions" id="regions" size="10">
+            <select multiple class="form-control" name="regions" id="regions" size="8">
             {% for region in select_regions %}
                 <option selected="selected">{{ region }}</option>
             {% endfor %}
@@ -36,7 +36,7 @@
         </div>
         <div class="col-sm-2 col-xs-4">
             <label for="statuses">Status:</label>  (<a href="" onclick="show_overlay('statuses'); return false;">?</a>)
-            <select multiple class="form-control" name="statuses" id="statuses" size="10">
+            <select multiple class="form-control" name="statuses" id="statuses" size="8">
             {% for status in select_statuses %}
                 <option selected="selected">{{ status }}</option>
             {% endfor %}
@@ -47,7 +47,7 @@
         </div>
         <div class="col-sm-4 col-xs-8">
             <label for="families">Family:</label>  (<a href="" onclick="show_overlay('families'); return false;">?</a>)
-            <select multiple class="form-control" name="families" id="families" size="10">
+            <select multiple class="form-control" name="families" id="families" size="8">
             {% for family in select_families %}
                 <option selected="selected">{{ family }}</option>
             {% endfor %}
@@ -57,11 +57,11 @@
             </select>
         </div>
     </div>
-    <div class="form-group row left-margin">
-        <div class="col-sm-12">
+    <div class="form-group row">
+        <span class="pull-right">
             <input class="btn btn-primary" type="submit" name="update" value="Update"/>
             <input class="btn btn-default" type="submit" name="reset" value="Reset"/>
-        </div>
+        </span>
     </div>
 </form>
 <br>

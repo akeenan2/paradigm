@@ -1,8 +1,8 @@
-DD,data deficient
-NE,not evaluated
-LC,least concern
-NT,near threatened
-VU,vulnerable
-EN,endangered
-CR,critically endangered
-EW,extinct in the wild
+0,DD,data deficient
+1,NE,not evaluated
+2,LC,least concern
+3,NT,near threatened
+4,VU,vulnerable
+5,EN,endangered
+6,CR,critically endangered
+7,EW,extinct in the wild

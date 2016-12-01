@@ -49,17 +49,15 @@ footer {
 }
 
 .half {
-    width: 100%;
+    width: 300px;
 }
-@media (min-width: 768px) {
-    .half {
-        width: 50%;
-    }
+
+.right {
+    text-align: right;
 }
-@media (min-width: 992px) {
-    .half {
-        width: 25%;
-    }
+
+.left {
+    text-align: left;
 }
 
 .fit {
@@ -91,6 +89,12 @@ footer {
     margin-left: -200px;
     z-index: 7;
 }
+@media (min-width: 768px) {
+    .overlay .box {
+        margin-left: -300px;
+        width: 600px;
+    }
+}
 
 .overlay .title {
     font-family: 'Josefin Slab', serif;
@@ -117,6 +121,12 @@ footer {
     padding: 10px;
     overflow-y: scroll;
 }
+@media (min-width: 768px) {
+    .overlay .text {
+        margin-left: -300px;
+        width: 600px;
+    }
+}
 
 .overlay .footer {
     position: relative;
@@ -124,6 +134,11 @@ footer {
     width: 400px;
     height: 50px;
     background-color: #eee;
+}
+@media (min-width: 768px) {
+    .overlay .footer {
+        width: 600px;
+    }
 }
 
 .overlay .curve {

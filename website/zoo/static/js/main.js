@@ -24,3 +24,21 @@ function hide_overlay(obj) {
     id = "overlay-" + obj;
     document.getElementById(id).className = "overlay hide";
 }
+
+$('input.limit-habitats').on('change', function(e) {
+// limit to 10
+    if($('.limit-habitats').filter(':checked').length >= 10) {
+        $('.limit-habitats:not(:checked)').attr('disabled','disabled');
+    } else {
+        $('.limit-habitats').removeAttr("disabled");
+    }
+});
+
+$('input.limit-regions').on('change', function(e) {
+// limit to 10
+    if ($('.limit-regions').filter(':checked').length >= 10) {
+        $('.limit-regions:not(:checked)').attr('disabled','disabled');
+    } else {
+        $('.limit-regions').removeAttr("disabled");
+    }
+});

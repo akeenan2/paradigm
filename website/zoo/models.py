@@ -83,15 +83,6 @@ class Status(models.Model):
         managed = False
         db_table = 'Status'
 
-
-class Time(models.Model):
-    time = models.CharField(primary_key=True, max_length=5)
-
-    class Meta:
-        managed = False
-        db_table = 'Time'
-
-
 class Zoo(models.Model):
     zoo_name = models.CharField(primary_key=True, max_length=100)
     city = models.CharField(max_length=50, blank=True, null=True)

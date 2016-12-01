@@ -17,33 +17,30 @@
 {% endif %}
 
 <h3>Classification</h3>
-<table class="table half">
+<table class="table table-bordered half">
     <tr>
-        <td class="col-xs-6"> Kingdom </td>
-        <td class="col-xs-6"> {{ species.family.kingdm }} </td>
+        <td class="col-xs-4 right"> Kingdom </td>
+        <td class="col-xs-8 left"> {{ species.family.kingdm }} </td>
     </tr>
     <tr>
-        <td> Phylum </td>
-        <td> {{ species.family.phylm }} </td>
+        <td class="right"> Phylum </td>
+        <td class ="left"> {{ species.family.phylm }} </td>
     </tr>
     <tr>
-        <td> Class </td>
-        <td> {{ species.family.clss }} </td>
+        <td class="right"> Class </td>
+        <td class="left"> {{ species.family.clss }} </td>
     </tr>
     <tr>
-        <td> Order </td>
-        <td> {{ species.family.ordr }} </td>
+        <td class="right"> Order </td>
+        <td class="left"> {{ species.family.ordr }} </td>
     </tr>
     <tr>
-        <td> Family </td>
-        <td> {{ species.family.family }} </td>
+        <td class="right"> Family </td>
+        <td class="left"> {{ species.family.family }} </td>
     </tr>
     <tr>
-        <td> Genus </td>
-        <td> {{ species.genus }} </td>
-    </tr>
-    <tr>
-        <td></td><td></td>
+        <td class="right"> Genus </td>
+        <td class="left"> {{ species.genus }} </td>
     </tr>
 </table>
 

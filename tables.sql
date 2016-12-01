@@ -13,7 +13,7 @@ create table State (
 );
 
 create table Habitat (
-    habitat varchar(25) primary key,
+    habitat varchar(20) primary key,
     descr varchar(200)
 );
 
@@ -27,12 +27,13 @@ create table Classification (
 );
 
 create table Status (
+    level int(10) unique,
     status char(2) primary key,
     descr varchar(25)
 );
 
 create table Region (
-    region varchar(25) primary key,
+    region varchar(20) primary key,
     descr varchar(200)
 );
 
@@ -43,8 +44,8 @@ create table Zoo (
     address varchar(100) unique,
     latitude float(10,6),
     longitude float(10,6),
-    num_animals int,
-    acres int,
+    num_animals int(10),
+    acres int(10),
     time_open char(5),
     time_close char(5),
     annual_visitors int,
@@ -57,7 +58,7 @@ create table Species (
     common_name varchar(200),
     genus varchar(50),
     family varchar(50),
-    region varchar(100),
+    region varchar(200),
     habitat varchar(200),
     status char(2),
     foreign key (status) references Status(status),
@@ -90,7 +91,7 @@ load data local infile 'classification.csv' into table Classification
 load data local infile 'status.csv' into table Status
     fields terminated by ','
     lines terminated by '\n'
-    (status,descr);
+    (level,status,descr);
 
 load data local infile 'region.csv' into table Region
     fields terminated by ','

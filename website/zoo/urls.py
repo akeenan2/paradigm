@@ -16,4 +16,5 @@ urlpatterns = [
     url(r'^species/(?P<_species>.[^/]+)/$',views.species),
     url(r'^species/(?P<_species>.[^/]+)/update/$',views.update_species),
     url(r'^add/species/$',views.add_species),
+    url(r'^help/$',views.help),
 ]

@@ -11,15 +11,17 @@
 <br>
 <form method="post">{% csrf_token %}
     <h3>Classification</h3>
-    <div class="form-group row left-margin">
+    <div class="form-group row">
         <div class="col-sm-5 col-xs-12">
-            <strong>Species </strong><input name="species" type="text" class="form-control" value="{{ species.species }}">
+            <strong>Species </strong><input name="species" type="text" class="form-control" value="{{ species.species }}" maxlength="100" required>
         </div>
         <div class="col-sm-4 col-xs-6">
-            <strong>Genus </strong><input name="genus" type="text" class="form-control" value="{{ species.genus }}">
+            <strong>Genus </strong><input name="genus" type="text" class="form-control" value="{{ species.genus }}" maxlength="50" required>
         </div>
         <div class="col-sm-3 col-xs-6">
-           <label for="family"><strong>Family </strong></label> (<a href="/add/family/">doesn't exist?</a>)<br>
+            <label for="family"><strong>Family </strong></label>
+            (<a href="" onclick="show_overlay('add-family'); return false;">+</a>/<a href="" onclick="show_overlay('remove-family'); return false;">-</a>)
+            <br>
             <select name="family">
             {% for family in families %}
                 {% if family != species.family.family %}
@@ -31,55 +33,57 @@
             </select>
         </div>
     </div>
-    <div class="form-group row left-margin">
+    <div class="form-group row">
         <div class="col-xs-12">
-            <strong>Common Name(s) </strong><input name="common_name" type="text" class="form-control" value="{{ species.common_name }}">
+            <strong>Common Name(s) </strong><input name="common_name" type="text" class="form-control" value="{{ species.common_name }}" maxlength="200" required>
         </div>
     </div>
     <h3>Information</h3>
-    <div class="form-group row left-margin">
+    <div class="form-group row">
         <div class="col-xs-12">
             <label for="regions"><strong>Region </strong></label>
+            (<a href="" onclick="show_overlay('add-region'); return false;">+</a>/<a href="" onclick="show_overlay('remove-region'); return false;">-</a>)
         </div>
-        {% for region in regions %}
+        {% for region in def_regions %}
             <div class="col-md-2 col-sm-3 col-xs-4">
             {% if region.0 == '1' %}
-                <input type="checkbox" name="regions" value="{{ region.1 }}" checked> {{ region.1 }}<br>
+                <input type="checkbox" class="limit-regions" name="update-regions" value="{{ region.1 }}" checked> {{ region.1 }}<br>
             {% elif region.0 == '0' %}
-                <input type="checkbox" name="regions" value="{{ region.1 }}"> {{ region.1 }}<br>
+                <input type="checkbox" class="limit-regions" name="update-regions" value="{{ region.1 }}"> {{ region.1 }}<br>
             {% endif %}
             </div>
         {% endfor %}
     </div>
-    <div class="form-group row left-margin">
+    <div class="form-group row">
         <div class="col-xs-12">
             <label for="habitats"><strong>Habitat </strong></label>
+            (<a href="" onclick="show_overlay('add-habitat'); return false;">+</a>/<a href="" onclick="show_overlay('remove-habitat'); return false;">-</a>)
         </div>
-        {% for habitat in habitats %}
+        {% for habitat in def_habitats %}
             <div class="col-md-2 col-sm-3 col-xs-4">
             {% if habitat.0 == '1' %}
-                <input type="checkbox" name="habitats" value="{{ habitat.1 }}" checked> {{ habitat.1 }}<br>
+                <input type="checkbox" class="limit-habitats" name="update-habitats" value="{{ habitat.1 }}" checked> {{ habitat.1 }}<br>
             {% elif habitat.0 == '0' %}
-                <input type="checkbox" name="habitats" value="{{ habitat.1 }}"> {{ habitat.1 }}<br>
+                <input type="checkbox" class="limit-habitats" name="update-habitats" value="{{ habitat.1 }}"> {{ habitat.1 }}<br>
             {% endif %}
             </div>
         {% endfor %}
     </div>       
-    <div class="form-group row left-margin">
+    <div class="form-group row">
         <div class="col-xs-12">
             <label for="status"><strong>Status </strong></label>
         </div>
         {% for status in statuses %}
             <div class="col-md-1 col-sm-2 col-xs-3">
             {% if status == species.status.status %}
-                <input type="radio" name="status" value="{{ status }}" checked> {{ status }} <br>
+                <input type="radio" name="update-status" value="{{ status }}" checked> {{ status }} <br>
             {% else %}
-                <input type="radio" name="status" value="{{ status }}"> {{ status }} <br>
+                <input type="radio" name="update-status" value="{{ status }}"> {{ status }} <br>
             {% endif %}
             </div>
         {% endfor %}
     </div>
-    <div class="form-group row left-margin">
+    <div class="form-group row">
         <div class="col-xs-12">
             <button type="submit" class="btn btn-default">Update</button>
         </div>

@@ -7,6 +7,32 @@
 {% block jumbotron_name %}{{ species_name }}{% endblock %}
 {% block jumbotron_description %}{{ species.species }}{% endblock %}
 
+{% block css %}
+<style>
+table.colored {
+}
+tr.t0 {
+    background-color: #566D7E;
+}
+tr.t1 {
+    background-color: #607788;
+}
+tr.t2 {
+    background-color: #6A8192;
+}
+tr.t3 {
+    background-color: #748B9C;
+}
+tr.t4 {
+    background-color: #7E95A6;
+}
+tr.t5 {
+    background-color: #889FB0;
+}
+
+</style>
+{% endblock %}
+
 {% block content %}
 
 {% if other_names %}
@@ -16,30 +42,31 @@
     {% endfor %}
 {% endif %}
 
+
 <h3>Classification</h3>
-<table class="table table-bordered half colored">
-    <tr>
-        <td class="col-xs-4 right"> Kingdom </td>
+<table id="t1" class="table table-bordered half colored">
+    <tr class="t0">
+        <td class="col-xs-4 right"><strong> Kingdom </strong></td>
         <td class="col-xs-8 left"> {{ species.family.kingdm }} </td>
     </tr>
-    <tr>
-        <td class="right"> Phylum </td>
+    <tr class="t1">
+        <td class="right"><strong> Phylum </strong></td>
         <td class ="left"> {{ species.family.phylm }} </td>
     </tr>
-    <tr>
-        <td class="right"> Class </td>
+    <tr class="t2">
+        <td class="right"><strong>  Class </strong></td>
         <td class="left"> {{ species.family.clss }} </td>
     </tr>
-    <tr>
-        <td class="right"> Order </td>
+    <tr class="t3">
+        <td class="right"><strong>  Order </strong></td>
         <td class="left"> {{ species.family.ordr }} </td>
     </tr>
-    <tr>
-        <td class="right"> Family </td>
+    <tr class="t4">
+        <td class="right"><strong>  Family </strong></td>
         <td class="left"> {{ species.family.family }} </td>
     </tr>
-    <tr>
-        <td class="right"> Genus </td>
+    <tr class="t5">
+        <td class="right"><strong>  Genus </strong></td>
         <td class="left"> {{ species.genus }} </td>
     </tr>
 </table>

@@ -335,9 +335,11 @@ def add_species(request):
 # add the species based on user input
     if request.method == 'POST':
         if request.POST.get('add_region'):
+        # add the new region
             with connection.cursor() as cursor:
                 cursor.execute('INSERT INTO Region(region,descr) values(%s,%s)',[request.POST.get('new_region'),request.POST.get('region_descr')])
         elif request.POST.get('add_habitat'):
+        # add the new habitat
             with connection.cursor() as cursor:
                 cursor.execute('INSERT INTO Habitat(habitat,descr) values(%s,%s)',[request.POST.get('new_habitat'),request.POST.get('habitat_descr')])
         elif request.POST.get('submit'):

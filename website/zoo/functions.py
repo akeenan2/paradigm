@@ -25,3 +25,4 @@ def revert_time(hour,minute,period):
         hour = 0
     time = str(hour) + ':' + minute
     return time
+    

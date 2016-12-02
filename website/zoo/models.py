@@ -17,7 +17,7 @@ class Classification(models.Model):
 
 
 class Exhibit(models.Model):
-    zoo_name = models.ForeignKey('Zoo', models.DO_NOTHING, db_column='zoo_name')
+    zoo_name = models.ForeignKey('Zoo', models.DO_NOTHING, db_column='zoo_name', primary_key=True)
     species = models.ForeignKey('Species', models.DO_NOTHING, db_column='species')
 
     class Meta:
@@ -35,17 +35,9 @@ class Habitat(models.Model):
         db_table = 'Habitat'
 
 
-class Hour(models.Model):
-    hour = models.CharField(primary_key=True, max_length=5)
-
-    class Meta:
-        managed = False
-        db_table = 'Hour'
-
-
 class Region(models.Model):
-    region = models.CharField(primary_key=True, max_length=25)
-    descr = models.CharField(max_length=50, blank=True, null=True)
+    region = models.CharField(primary_key=True, max_length=20)
+    descr = models.CharField(max_length=200, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -57,7 +49,7 @@ class Species(models.Model):
     common_name = models.CharField(max_length=200, blank=True, null=True)
     genus = models.CharField(max_length=50, blank=True, null=True)
     family = models.ForeignKey(Classification, models.DO_NOTHING, db_column='family', blank=True, null=True)
-    region = models.CharField(max_length=100, blank=True, null=True)
+    region = models.CharField(max_length=200, blank=True, null=True)
     habitat = models.CharField(max_length=200, blank=True, null=True)
     status = models.ForeignKey('Status', models.DO_NOTHING, db_column='status', blank=True, null=True)
 
@@ -76,12 +68,14 @@ class State(models.Model):
 
 
 class Status(models.Model):
+    level = models.IntegerField(unique=True, blank=True, null=True)
     status = models.CharField(primary_key=True, max_length=2)
     descr = models.CharField(max_length=25, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'Status'
+
 
 class Zoo(models.Model):
     zoo_name = models.CharField(primary_key=True, max_length=100)
@@ -100,3 +94,4 @@ class Zoo(models.Model):
     class Meta:
         managed = False
         db_table = 'Zoo'
+

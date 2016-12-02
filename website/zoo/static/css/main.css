@@ -3,6 +3,7 @@
 * {
     font-family: 'Lato', sans-serif;
     font-size: 14px;
+    color: white;
 }
 
 html {
@@ -12,11 +13,12 @@ html {
 
 body {
     margin-bottom: 60px;
+    background-color: #7D6655;
 }
 
 header {
     margin-top: 55px;
-    background-color: #eee;
+    background-color: #55657D;
 }
 @media (min-width: 768px) {
     header {
@@ -32,10 +34,20 @@ h1,h2,h3,h4,h5 {
 .navbar {
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
+    background-color: #91A1B9;
 }
+
+.navbar-header a {
+	color: white;
+}
+
+.nav.navbar-nav.navbar-right li a {
+    color: white;   
+} 
 
 .jumbotron {
     max-height: 150px;
+    background-color: #55657D
 }
 @media (min-width: 768px) {
     .jumbotron {
@@ -168,4 +180,43 @@ table .colored {
     z-index: 6;
     top: 0;
     left: 0;
+}
+
+.btn {
+    background-color: #566D7E;
+	border-color: #566D7E;
+    color: #ffffff;
+}
+
+.pagination li a {
+	background-color: #566D7E;
+	border-color: #566D7E;
+	color: #fff;
+}
+
+.pagination .active a {
+	background-color: #9CB3C4;
+	border-color: #9CB3C4;
+}
+
+.pagination .disabled a {
+	background-color: #889FB0;
+	border-color: #889FB0;
+}
+
+option:not(:checked) {
+	color: #555;
+}
+
+
+.table-striped tbody tr:nth-child(odd) td, .table-striped tbody tr:nth-child(odd) th {
+   background-color: #9D8675;
+}
+
+.table-striped tbody tr:nth-child(even) td, .table-striped tbody tr:nth-child(even) > th {
+   background-color: #8D7665;
+}
+
+a {
+    color: #AFC6D7;
 }

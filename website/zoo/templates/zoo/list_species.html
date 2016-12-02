@@ -9,7 +9,8 @@
 
 {% block content %}
 <br>
-<h4>Search Options</h4>
+<h3>Search Options</h3>
+<hr>
 <form id="refine-search" method="post">{% csrf_token %}
     <div class="form-group row">
         <div class="col-sm-3 col-xs-6">
@@ -64,6 +65,7 @@
         </span>
     </div>
 </form>
+<h3>Species</h3>
 <hr>
 {% if use_pagination == 1 %}
 <table id="pagination" class="table table-striped table-bordered" cellspacing="0" width="100%">

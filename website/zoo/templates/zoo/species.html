@@ -34,7 +34,6 @@ tr.t5 {
 {% endblock %}
 
 {% block content %}
-
 {% if other_names %}
     <h3>Other Common Names</h3>
     {% for name in other_names %}
@@ -42,8 +41,8 @@ tr.t5 {
     {% endfor %}
 {% endif %}
 
-
 <h3>Classification</h3>
+<hr>
 <table id="t1" class="table table-bordered half colored">
     <tr class="t0">
         <td class="col-xs-4 right"><strong> Kingdom </strong></td>
@@ -72,6 +71,7 @@ tr.t5 {
 </table>
 
 <h3>Information</h3>
+<hr>
 <strong>Region:</strong> {{ species.region }}<br>
 <strong>Habitat:</strong> {{ species.habitat }}<br>
 <strong>Status:</strong> {{ species.status.status }}<br>

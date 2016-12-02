@@ -1,6 +1,10 @@
 <!-- overlay.html -->
 
 {% extends "layouts/base.html" %}
+{% load staticfiles %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/overlay.css' %}">
+{% endblock %}
 
 {% block overlay %}
 <div id="overlay-habitats" class="overlay hide">

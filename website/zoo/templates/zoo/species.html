@@ -9,31 +9,41 @@
 
 {% block css %}
 <style>
-table.colored {
+.half {
+    width: 300px;
 }
-tr.t0 {
-    background-color: #334c00;
+.right {
+    text-align: right;
 }
-tr.t1 {
-    background-color: #3d5b00;
+.left {
+    text-align: left;
 }
-tr.t2 {
-    background-color: #476b00;
+#t0 {
+ border-radius: 5px;
+    background-color: #008986;
 }
-tr.t3 {
-    background-color: #517a00;
+#t1 {
+    background-color: #199492;
 }
-tr.t4 {
-    background-color: #5b8900;
+#t2 {
+    background-color: #32a09e;
 }
-tr.t5 {
-    background-color: #669900;
+#t3 {
+    background-color: #4cacaa;
+}
+#t4 {
+    background-color: #66b8b6;
+}
+#t5 {
+     border-radius: 5px;
+    background-color: #7fc4c2;
 }
 
 </style>
 {% endblock %}
 
 {% block content %}
+<br>
 {% if other_names %}
     <h3>Other Common Names</h3>
     <hr>
@@ -44,28 +54,28 @@ tr.t5 {
 
 <h3>Classification</h3>
 <hr>
-<table id="t1" class="table table-bordered half colored">
-    <tr class="t0">
+<table class="table table-bordered half">
+    <tr id="t0">
         <td class="col-xs-4 right"><strong> Kingdom </strong></td>
         <td class="col-xs-8 left"> {{ species.family.kingdm }} </td>
     </tr>
-    <tr class="t1">
+    <tr id="t1">
         <td class="right"><strong> Phylum </strong></td>
         <td class ="left"> {{ species.family.phylm }} </td>
     </tr>
-    <tr class="t2">
+    <tr id="t2">
         <td class="right"><strong>  Class </strong></td>
         <td class="left"> {{ species.family.clss }} </td>
     </tr>
-    <tr class="t3">
+    <tr id="t3">
         <td class="right"><strong>  Order </strong></td>
         <td class="left"> {{ species.family.ordr }} </td>
     </tr>
-    <tr class="t4">
+    <tr id="t4">
         <td class="right"><strong>  Family </strong></td>
         <td class="left"> {{ species.family.family }} </td>
     </tr>
-    <tr class="t5">
+    <tr id="t5">
         <td class="right"><strong>  Genus </strong></td>
         <td class="left"> {{ species.genus }} </td>
     </tr>

@@ -33,8 +33,10 @@ amazona viridigenalis,Red-Crowned Amazon;Red-Crowned Parrot;Green-Cheeked Amazon
 amazonetta brasiliensis,Brazilian Teal,amazonetta,anatidae,neotropical,forest,LC
 amblonyx cinerea,Oriental Small-Clawed Otter,amblonyx,mustelidae,oriental,lakes;rivers,VU
 ambystoma californiense,California Tiger Salamander,ambystoma,ambystomatidae,nearctic,lakes,VU
+ambystoma maculatum,Spotted Salamander,ambystoma,ambystomatidae,nearctic,forest;marsh,LC
 ambystoma mavortium,Barred Tiger Salamander,ambystoma,ambystomatidae,nearctic,forest,CR
 ambystoma mexicanum,Axolotl,ambystoma,ambystomatidae,nearctic,lakes,CR
+ambystoma opacum,Marbled Salamander,ambystoma,ambystomatidae,nearctic,forest,LC
 ammospermophilus harrisii,Harris' Antelope Squirrel,ammospermophilus,sciuridae,nearctic,savanna/grassland,LC
 ammotragus lervia,Aoudad,ammotragus,bovidae,ethiopian,desert/dune;savanna/grassland;mountains,VU
 amphiprion clarkii,Black Clownfish;Brown Anemonefish,amphiprion,pomacentridae,indian ocean;pacific ocean,reef,NE
@@ -47,13 +49,14 @@ anas capensis,Cape Teal,anas,anatidae,ethiopian,lakes,LC
 anas carolinensis,Green Winged Teal Duck,anas,anatidae,nearctic,marsh,LC
 anas clypeata,Northern Shoveler,anas,anatidae,palearctic,marsh,LC
 anas cyanoptera,Cinnamon Teal Duck,anas,anatidae,nearctic,lake;marsh,LC
-anas discors,Blue winged teal,anas ,anatidae,nearctic,marsh,LC
+anas discors,Blue Winged Teal,anas ,anatidae,nearctic,marsh,LC
 anas formosa,Baikal Teal;Bimaculate Duck;Squawk Duck,siberonetta,anatidae,palearctic;holarctic,tundra;taiga;lakes;rivers;brackish water;marsh;swamp;bog,VU
 anas laysanensis,Laysan Duck;Laysan Teal,ana,anatidae,island endemic,savanna/grassland;lakes,CR
 anas platyrhynchos,Mallard Duck,anas,anatidae,cosmopolitan,taiga;savanna/grassland;forest;rainforest;scrub forest;lakes;rivers;coastal,LC
 anas querquedula,Garganey teal,anas,anatidae,palearctic,marsh,LC
 anas undulata,Yellow-Billed Duck,anas,anatidae,ethiopian,lakes;rivers,LC
 anaxyrus americanus,American Toad,anaxyrus,bufonidae,nearctic,rivers;lake,LC
+anaxyrus boreas boreas,Boreal Toad,bufo,bufonidae,nearctic,mountain,NE
 anaxyrus houstonensis,Houston Toad,anaxyrus,bufonidae,nearctic,savanna/grassland;forest,EN
 anaxyrus woodhousii,Woodhouse Toad,anaxyrus,bufonidae,nearctic,forest;river,LC
 anodorhynchus hyacinthinus,Hyacinth Macaw,anodorhynchus,psittacidae,neotropical,savanna/grassland;forest,VU
@@ -68,7 +71,7 @@ antilocapra americana,Pronghorn;American Antelope,antilocapra,antilocapridae,nea
 antilope cervicapra,Blackbuck,antilope,bovidae,oriental,savanna/grassland,NT
 aphonopelma hentzi,Brown tarantula,aphonopelma,theraphosidae,nearctic,savanna/grassland,NE
 apis mellifera,Italian Honey Bees,apis,apidae,palearctic,forest,NE
-aptenodytes patagonicus,King Penguin,aptenodytes,spheniscidae,arctic,taiga,LC
+aptenodytes patagonicus,King Penguin,aptenodytes,spheniscidae,holarctic,taiga,LC
 apteryx mantelli,Northern Brown Kiwi,apteryx,apterygidae,australian,forest;scrub forest,EN
 aquila chrysaetos,Golden Eagle,aquila,accipitridae,nearctic;palearctic,forest,LC
 ara ararauna,Blue-And-Yellow Macaw,ara,psittacidae,neotropical,rainforest,LC
@@ -106,13 +109,13 @@ aythya americana,Red Head Duck,aythya,anatidae,nearctic,marsh,LC
 aythya valisineria,Canvasback,aythya,anatidae,neatctic,lakes;rivers;coastal;brackish water;marsh;estuarine,LC
 babyrousa celebensis,North Sulawesi Babirusa,babyrousa,suidae,oriental,forest;riparian,VU
 balaeniceps rex,Shoebill Stork,balaeniceps,balaenicipitidae,ethiopian,swamp,VU
-balearica pavonina,Black-crowned crane,balearica,gruidae,ethiopian,savanna/grassland,VU
+balearica pavonina,Black-Crowned Crane,balearica,gruidae,ethiopian,savanna/grassland,VU
 balearica regulorum gibbericeps,East African Crowned Crane;Grey Crowned Crane,balearica,gruidae,ethiopian,savanna/grassland;marsh,VU
 balistoides conspicillum,Clown Triggerfish;Bigspotted Triggerfish,balistoides,balistidae,indian ocean;pacific ocean,reef,NE
 basiliscus basiliscus,Green Basilisk,basiliscus,corytophanidae,neotropical,rainforest,LC
 bassariscus astutus,Ringtail Cat,bassariscus,procyonidae,nearctic,desert,LC
 batagur borneoensis,Painted Terrapin;Painted Batagur;Saw-Jawed Turtle,batagur,geoemydidae,oriental,rainforest,CR
-bettongia penicillata,Woylie;Brush-Tailed Bettong,bettongia,potoroidae,australian,forest;woodland,CR
+bettongia penicillata,Woylie;Brush-Tailed Bettong,bettongia,potoroidae,australian,forest,CR
 bison bison,American Bison,bison,bovidae,nearctic,savanna/grassland;forest;scrub forest,NT
 bitis gabonica,Gaboon Viper,bitis,viperidae,ethiopian,rainforest;swamp;estuarine,NE
 blaberus giganteus,Central American Giant Cave Cockroach,biaberus,blaberidae,neotropical,rainforest,NE
@@ -154,7 +157,7 @@ buteo solitarius,Hawaiian Hawk,buteo,accipitridae,island endemic,forest,NT
 buteo swainsoni,Swainson Hawk,buteo,accipitridae,nearctic,savanna/grassland,LC
 butorides virescens,Green Heron,butorides,ardeidae,nearctic,lakes;rivers,LC
 bycanistes brevis,Silvery-Cheeked Hornbill,bycanistes,bucerotidae,ethiopian,rainforest;forest,LC
-bycanistes bucinator,Trumpeter Hornbill,bycanistes,,,,
+bycanistes bucinator,Trumpeter Hornbill,bycanistes,bucerotidae,ethiopian,forest,Lc
 cacatua galerita,Sulphur-Crested Cockatoo,cacatua,cacatuidae,australian,rainforest,LC
 cacatua moluccensis,Salmon-Crested Cockatoo,cacatua,cacatuidae,oriental,forest,VU
 cacatua sanguinea,Little Corella;Bare-Eyed Cockatoo;Blood-Stained Cockatoo;Short-Billed Corella;Little Cockatoo;Blue-Eyed Cockatoo,cacatua,cacatuidae,australian,forest;savanna/grassland,LC
@@ -180,6 +183,7 @@ canis lupus dingo,Dingo,canis,canidae,oriental;australian,forest;suburban,VU
 canis lupus familiaris,Domestic Dog,canis,canidae,palearctic,savanna/grassland,NE
 canis rufus,Red Wolf,canis,canidae,nearctic,forest;scrub forest,CR
 capra aegagrus hircus,Dwarf Nigerian Goat,capra,bovidae,palearctic,suburban,LC
+capra falconeri heptneri,Bukharan Markhor;Turkomen Markhor ,capra,bovidae,palearctic,savanna/grassland,EN
 capra hircus,Domestic Goat,capra,bovidae,palearctic;cosmopolitan,taiga;desert/dune;savanna/grassland;chaparral;forest;rainforest;scrub forest;mountains,NE
 capra hircus hircus,West African Pygmy Goat,capra,bovidae,nearctic,savanna/grasslands,NE
 capra nubiana,Nubian Ibex,capra,bovidae,palearctic,desert/dune;mountains,VU
@@ -199,6 +203,7 @@ catagonus wagneri,Chacoan Peccary;Tagua,catagonus,tayassuidae,neotropical,scrub 
 cathartes aura,Turkey Vulture;Turkey Buzzard;John Crow;Carrion Crow,cathartes,cathartidae,neotropical;nearctic,tundra;desert/dune;savanna/grassland;chaparral;forest;mountains;urban;suburban;riparian;estuarine,LC
 cavia porcellus,Guinea Pig;Guinea Forest Hog,cavia,caviidae,neotropical,savanna/grassland,NE
 cebuella pygmaea,Pygmy Marmoset,cebuella,callitrichidae,neotropical,rainforest,LC
+cebus albifrons,White-Fronted Capuchin,cebus,cebidae,neotropical,forest;rainforest,LC
 cebus capunicus,Capuchin Monkey;White-Headed Capuchin,cebus,cebidae,neotropical,forest;rainforest;riparian,LC
 celestus warreni,Giant Haitian Galliwasp,celestus,anguidae,neotropical,forest,CR
 centropomus undecimalis,Common Snook,centropomus,centropomidae,atlantic ocean,coastal;estuarine,NE
@@ -219,6 +224,7 @@ chaetodon ephippium,Saddle Butterflyfish,chaetodon,chaetodontidae,australian,ree
 chaetodon lunula,Raccoon Butterflyfish;Crescent-Masked Butterflyfish;Halfmoon Butterflyfish,chaetodon,chaetodontidae,indian ocean;pacific ocean;atlantic ocean,reef,NE
 chaetophractus vellerosus,Screaming Hairy Armadillo,chaetophractus,chlamyphoridae,neotropical,savanna/grassland;desert/dune;scrub forest,LC
 chamaeleolis barbatus,Cuban False Chameleon Anole,chamaeleolis,polychrotidae,neotropical,forest,NE
+charina bottae,Rubber Boa,charina,boidae,nearctic,savanna/grassland;forest,LC
 chauna torquata,Crested Screamer,chauna,anhimidae,neotropical,savanna/grassland,LC
 cheilinus undulatus,Humphead Wrasse,cheilinus,labridae,indian ocean;pacific ocean,reef,EN
 chelmon rostratus,Copperband Butterflyfish;Beaked Butterflyfish;Beaked Coralfish;Orange Stripe Butterfly,chelmon,chaetodontidae,pacific ocean,reef,LC
@@ -235,16 +241,20 @@ choloepus didactylus,Linnaeus's Two-Toed Sloth,choloepus,megalonychidae,ethiopia
 choloepus hoffmanni,Hoffmann's Two-Toed Sloth,choloepus,megalonychidae,neotropical,rainforest;forest,LC
 chromis viridis,Green Chromis,chromis,pomacentridae,indian ocean;pacific ocean,reef;coastal,NE
 chrysocyon brachyurus,Maned Wolf,chrysocyon,canidae,neotropical,rainforest,NT
+chrysolophus amherstiae,Lady Amherst's Pheasant,chrysolophus,phasianidae,oriental,mountain,LC
 chrysolophus pictus,Golden Pheasant,chrysolophus,phasianidae,oriental,scrub forest;forest,LC
 ciconia abdimii,Abdim's Stork,ciconia,ciconiidae,ethiopian,forest,LC
 ciconia ciconia,White Stork,ciconia,ciconiidae,palearctic;oriental;ethiopian,marsh;savanna/grassland;urban;suburban;riparian,LC
 ciconia nigra,Black Stork,ciconia,ciconiidae,palearctic;ethiopian,forest;scrub forest;mountains;rivers;marsh;swamp;riparian,LC
 cinnyricinclus leucogaster,Violet backed starling,cinnyricinclus ,sturnidae,ethiopian,forest,LC
 cissa chinensis,Hunting Cissa;Common Green Magpie,cissa,corvidae,oriental,forest,LC
+claravis pretiosa,Blue Ground Dove,claravis,columbidae,neotropical,forest;rainforest,LC
 clemmys guttata,Spotted Turtle,clemmys,emydidae,nearctic,swamp;marsh,EN
 cleptornis marchei,Golden White-Eye,cleptornis,zosteropidae,island endemic,forest,CR
 cochlearius cochlearius,Boat-Billed Heron;Boatbill,cochlearius,ardeidae,neotropical,swamp;marsh;rainforest,LC
 coendou prehensilis,Prehensile-Tailed Porcupine,coendou,erethizontidae,neotropical,forest;rainforest,NE
+coereba flaveola,Bananaquit,coereba,thraupidae,neotropical,forest,LC
+colinus virginianus,Northern Bobwhite;Virginia Quail,colinus,odontophoridae,nearctic,savanna/grassland,NT
 colius striatus,Speckled mousebird,colius,coliidae,ethiopian,savanna/grassland,LC
 colobus angolensis,Angolan Colobus,colobus,cercopithecidae,ethiopian,rainforest,LC
 colobus guereza,Colobus Monkey;Black-and-White Colobus,colobus,cercopithecidae,ethiopian,forest;rainforest;scrub forest;riparian,LC
@@ -273,11 +283,12 @@ crocodylus mindorensis,Philippine Crocodile,crocodylus,crocodylidae,oriental,bra
 crocodylus niloticus,Nile Crocodile,crocodylus,crocodylidae,ethiopian,rivers;lakes,LC
 crocodylus porosus,Saltwater Crocodile,crocodylus,crocodylidae,australian;oriental,estuarine;swamp;marsh;brackish water,LC
 crocodylus rhombifer,Cuban Crocodile,crocodylus,crocodylidae,neotropical,marsh;rivers,CR
+crocodylus siamensis,Siamese Crocodile,crocodylus,crocodylidae,oriental,river;swamp,CR
 crocuta crocuta,Spotted Hyena,crocuta,hyaenidae,ethiopian,desert/dune;savanna/grassland;forest;scrub forest;mountains;riparian,LC
 crossoptilon crossoptilon,White-Eared Pheasant,crossoptilon,phasianidae,oriental,mountains;forest;scrub forest,NT
 crotalus adamanteus,Eastern Diamondback Rattlesnake,crotalus,viperidae,nearctic,forest,LC
 crotalus atrox,Western Diamondback Rattlesnake,crotalus,viperidae,nearctic,desert/dune;savanna/grassland;chaparral,LC
-crotalus cerastes,Sidewinder,crotalus,Bucorvidae,nearctic,desert/dune,LC
+crotalus cerastes,Sidewinder,crotalus,viperidae,nearctic,desert/dune,LC
 crotalus durissus unicolor,Aruba Island Rattlesnake,crotalus,viperidae,neotropical,forest,CR
 crotalus horridus,Timber Rattlesnake;Canebrake Rattlesnake,crotalus,viperidae,nearctic,savanna/grassland,LC
 crotalus lepidus,Banded Rock Rattlesnake,crotalus,viperidae,nearctic,savanna/grassland;scrub foreset,LC
@@ -288,6 +299,7 @@ crotaphytus collaris,Eastern Collared Lizard;Common Collared Lizard;Oklama Colla
 cryptobranchus alleganiensis,Eastern Hellbender;Hellbender Salamander,cryptobranchus,cryptobranchidae,nearctic,lakes,NT
 cryptomys damarensis,Damara Mole Rat,cryptomys,bathyergidae,ethiopian,savanna/grassland;scrub forest,LC
 cryptoprocta ferox,Fossa,cryptoprocta,eupleridae,madagascan,savanna/grassland;forest;rainforest;scrub forest,VU
+cuora mccordi,McCord's Box Turtle,cuora,geoemydidae,oriental,lakes,CR
 cuora pani,Pan's Box Turtle,cuora,geoemydidae,oriental,marsh,CR
 cuora trifasciata,Chinese Three-Striped Box Turtle;Golden Coin Turtle,cuora,geoemydidae,oriental,riparian;rivers;forest,CR
 cyanocompsa cyanoides,Blue & Black Grosbeak,cyanocompsa,cardinalidae,neotropical,forest,LC
@@ -405,6 +417,7 @@ felis margarita,Sand Cat,felis,felidae,ethiopian,savanna/grassland,LC
 felis nigripes,Black-Footed Cat,felis,felidae,ethiopian,savanna/grassland,VU
 flathead minnow,Flathead Minnow,pimephales,cyprinidae,nearctic,river;lake,LC
 fratercula cirrhata,Tufted Puffin,fratercula,alcidae,pacific ocean,coastal,LC
+fratercula corniculata,Horned Puffin,fratercula,alcidae,holarctic,polar ice,LC
 fukomys amatus,Giant Zambian Mole Rat,fukomys,bathyergidae,ethiopian,savanna/grassland;scrub forest,NE
 furcifer pardalis,Panther Chameleon,furcifer,chamaeleonidae,madagascan,rainforest,LC
 galago moholi,Mohol Bushbaby,galago,galagidae,ethiopian,forest,LC
@@ -414,6 +427,7 @@ gallirallus owstoni,Guam Rail,gallirallus,rallidae,nearctic,savanna/grassland,EW
 gallirallus philippensis,Buff banded rail,gallirallus,rallidae,australian,marsh,LC
 gallus gallus domesticus,Chicken,gallus,phasianidae,cosmopolitan,savanna/grassland,NE
 garrulax courtoisi,Blue-Crowned Laughingthrush,garrulax,leiothrichidae,oriental,forest,CR
+garrulax leucolophus,White-Crested Laughing Thrush,garrulax,leiothrichidae,oriental,forest,LC
 gavialis gangeticus,Gharial Crocodile,gavialis,gavialidae,oriental,rivers,CR
 gazella spekei,Speke's Gazelle,gazella,bovidae,ethiopian,scrub forest;desert/dune;chaparral,EN
 gazella subgutturosa,Goitered Gazelle,gazella,bovidae,palearctic,savanna/grassland,VU
@@ -422,6 +436,7 @@ geochelone pardalis,Leopard Tortoise,geochelone,testudinidae,ethiopian,desert/du
 geochelone sulcata,African Spurred Tortoise,geochelone,testudinidae,ethiopian,desert/dune;savanna/grassland,VU
 geococcyx californianus,Greater Roadrunner,geococcyx,cuculidae,nearctic,scrub forest;desert/dune;chaparral,LC
 geomyda spengleri,Black-Breasted Leaf Turtle;Vietnamese Leaf Turtle,geomyda,geoemydidae,oriental,forest;riparian,EN
+geopelia cuneata,Diamond Dove,geopelia,columbidae,australian,forest,LC
 geronticus eremita,Northern Bald Ibis;Hermit Ibis;Waldrapp,geronticus,threskiornithidae,palearctic,scrub forest,CR
 gerrhosaurus major,Sudan Plated Lizard,gerrhosaurus,gerrhosauridae,ethiopian,desert/dune,NE
 ginglymostoma cirratum,Nurse Shark,ginglymostoma,ginglymostomatidae,atlantic ocean,ocean,NE
@@ -429,7 +444,9 @@ giraffa camelopardalis,Northern Giraffe,giraffa,giraffidae,ethiopian,savanna/gra
 giraffa reticulata,Reticulated Giraffe;Somali Giraffe,giraffa,giraffidae,ethiopian,savanna/grassland;scrub forest,VU
 giraffa rothschildi,Rothschild Giraffe,giraffa,giraffidae,ethiopian,savanna/grassland;scrub foreset,EN
 giraffa tippelskirchi,Masai Giraffe,giraffa,giraffidae,ethiopian,savanna/grassland;scrub forest,NE
+glossopsitta concinna,Musk Lorikeet,glossopsitta,psittaculidae,australian,forest,LC
 glyptemys insculpta,Wood Turtle,glyptemys,emydidae,nearctic,lakes;rivers,EN
+glyptemys muhlenbergii,Bog Turtle,glyptemys,emydidae,nearctic,marshes;swamps,CR
 gongylophis colubrinus,Kenyan Sand Boa,gongylophis,boidae,ethiopian,desert/dune;scrub forest,NE
 gonyosoma oxycephalum,Red-Tailed Green Rat Snake,gonyosoma,colubridae,oriental,rainforest;forest,LC
 gopherus agassizii,Desert Tortoise,gopherus,testudinidae,nearctic,desert,VU
@@ -456,6 +473,7 @@ gymnomuraena zebra,Zebra Moray Eel,gymnomuraena,muraenidae,indian ocean;pacific 
 gyps africanus,African white-backed vulture,gyps,accipitridae,ethiopian,savanna/grassland,CR
 gyps rueppellii,Ruppell's Griffon Vulture,gyps,accipitridae,ethiopian,savanna/grassland;desert/dune,CR
 haematopus palliatus,American Oystercatcher,haematopus,haematopodidae,nearctic,coastal,LC
+halcyon malimbica,Blue-Breasted Kingfisher,halcyon,alcedinidae,ethiopian,forest,LC
 haliaeetus leucocephalus,Bald Eagle,haliaeetus,accipitridae,nearctic,forest,LC
 haliaeetus vocifer,African Fish Eagle,haliaeetus,accipitridae,ethiopian,forest,LC
 halichoerus grypus,Grey Seal,halichoerus,phocidae,palearctic,coastal,LC
@@ -476,6 +494,7 @@ hippotragus equinus,Roan Antelope,hippotragus,bovidae,ethiopian,savanna/grasslan
 hippotragus niger,Sable Antelope,hippotragus,bovidae,ethiopian,savanna/grassland,LC
 hologymnosus rhodonotus,Redback Longface Wrasse,hologymnosus,labridae,indian ocean;pacific ocean,reef,LC
 hoplobatrachus occipitalis,African Groove-Crowned Bullfrog,hoplobatrachus,dicroglossidae,ethiopian,savanna/grassland,LC
+hyaena hyaena,Striped Hyena,hyaena,hyaenidae,palearctic,savanna/grassland,NT
 hydrictis maculicollis,Spotted-Necked Otter,hydrictis,mustelidae,ethiopian,lakes;rivers,LC
 hydrochoerus hydrochaeris,Capybara,hydrochoerus,caviidae,neotropical,tropical,LC
 hyla cinerea,Green Tree Frog,hyla,hylidae,nearctic,lakes;marshes,LC
@@ -487,6 +506,7 @@ hylobates lar,Lar Gibbon;White-Handed Gibbon,hylobates,hylobatidae,oriental,rain
 hylobates moloch,Javan Gibbon;Silvery Gibbon,hylobates,hylobatidae,oriental,rainforest,EN
 hylobates pileatus,Pileated Gibbon,hylobates,hylobatidae,oriental,rainforest;forest,EN
 hylomantis lemur,Lemur Tree Frog,hylomantis,hylidae,neotropical,rainforest,CR
+hypergerus atriceps,Oriole Warbler,hypergerus,cisticolidae,ethiopian,forest,LC
 hypogeomys antimena,Malagasy Giant Rat;Madagascar Giant Jumping Rat,hypogeomys,nesomyidae,madagascan,forest,EN
 hystrix cristata,African Crested Porcupine,hystrix,hystricidae,ethiopian,tropical,LC
 hystrix indica,Indian Crested Porcupine,hystrix,hystricidae,oriental,savanna/grassland;forest,LC
@@ -510,14 +530,14 @@ lama guanicoe,Guanaco,lama,camelidae,neotropical,mountains,LC
 lampropeltis getula splendida,Desert King Snake,lampropeltis,colubridae,nearctic,forest,LC
 lampropeltis triangulum,Scarlet Kingsnake;Milk Snake,lampropeltis,colubridae,nearctic,savanna/grassland;forest;rivers;suburban;riparian,NE
 lampropeltis triangulum gaigeae,Black Milksnake,lampropeltis,colubridae,neotropical,rainforest,NE
-lamprotornis iris,Emerald starling,lamprotornis,sturnidae,ethiopian,savanna/grassland,LC
+lamprotornis iris,Emerald Starling,lamprotornis,sturnidae,ethiopian,savanna/grassland,LC
 lamprotornis regius,Golden-Breasted Starling,lamprotornis,sturnidae,ethiopian,savanna/grassland;scrub forest,LC
 lamprotornis superbus,Superb Starling,lamprotornis,sturnidae,ethiopian,savanna/grassland;forest,LC
 langaha nasuta,Twig Mimic Snake,langaha,lamprophiidae,ethiopian,forest,LC
 larosterna inca,Inca Tern,larosterna,sternidae,neotropical,coastal,NT
 lasiodora parahybana,Brazilian Salmon Tarantula,lasiodora,theraphosidae,neotropical,forest,NE
 leiothrix argentauris,Silver-Eared Mesia,leiothrix,leiothrichidae,oriental,scrub forest;forest,LC
-leiothrix lutea,Red billed leiothrix,leiothrix,leiothrichidae,palearctic,,LC
+leiothrix lutea,Red billed leiothrix,leiothrix,leiothrichidae,palearctic,forest,LC
 lemur catta,Ring-Tailed Lemur,lemur,lemuridae,madagascan,forest;rainforest;scrub forest,NT
 leontopithecus chrysomelas,Golden-Headed Lion Tamarin,leontopithecus,callitrichidae,neotropical,rainforest,EN
 leontopithecus rosalia,Golden Lion Tamarin,leontopithecus,callitrichidae,neotropical,forest;rainforest;scrub forest,EN
@@ -525,11 +545,13 @@ leopardus geoffroyi,Geoffroy's Cat,leopardus,felidae,neotropical,forest;rainfore
 leopardus pardalis,Ocelot;Dwarf Leopard,leopardus,felidae,neotropical,forest;rainforest;scrub forest,LC
 lepomis macrochirus,Bluegill,lepomis,centrarchidae,nearctic,lakes,LC
 leptailurus serval,Serval,leptailurus,felidae,ethiopian,savanna/grassland,LC
+leptodactylus pentadactylus,Smoky Jungle Frog,leptodactylus,leptodactylidae,neotropical,forest;rainforest,LC
 leptonycteris nivalis,Mexican Long-Nosed Bat,leptonycertis,phyllostomidae,nearctic;neotropical,desert/dune;forest;scrub forest,EN
 leptoptilos crumenifer,Marabou Stork,leptoptilos,ciconiidae,ethiopian,scrub forest;urban;swamp,LC
 lepus californicus,Black-Tailed Jackrabbit,lepus,leporidae,nearctic,desert/dune;savanna/grassland;chaparral;suburban,LC
 leucophaeus pipixcan,Franklin's Gull,leucophaeus,laridae,nearctic;neotropical,river;lake,LC
-leucopsar rothschildi,Bali Myna;Bali Myna,leucopsar,sturnidae,oriental,forest,CR
+leucopsar rothschildi,Bali Myna;Bali Mynah,leucopsar,sturnidae,oriental,forest,CR
+lichanura trivirgata,Rosy Boa,lichanura,boidae,nearctic,savanna/grassland,LC
 lithobates blairi,Plains Leopard Frog,lithobates,ranidae,nearctic,savanna/grassland,LC
 lithobates capito,Gopher Frog,lithobates,ranidae,nearctic,forest,NT
 lithobates catesbeiana,Bull Frog,lithobates,ranidae,nearctic,lake;swamp,LC
@@ -537,12 +559,14 @@ lithobates catesbeianus,American Bullfrog,lithobates,ranidae,nearctic,lakes,LC
 litocranius walleri,Gerenuk,litocranius,bovidae,ethiopian,savanna/grassland,NT
 litoria caerulea,Australian Green Tree Frog;White's Tree Frog,litoria,hylidae,australian,forest,LC
 lontra canadensis,North American River Otter,lontra,mustelidae,nearctic,lakes;rivers;coastal;marsh;swamp;riparian;estuarine,LC
+lophochroa leadbeateri,Major Mitchell's Cockatoo,lophochroa,cacatuidae,australian,forest,LC
 lophodytes cucullatus,Hooded Merganser,lophodytes,anatidae,nearctic,lakes;riparian,LC
 lophotis gindiana,Buff-Crested Bustard,lophotis,otididae,ethiopian,desert/dune;savanna/grassland,LC
 lophura diardi,Siamese Fireback Pheasant,lophura,phasianidae,oriental,forest,LC
 lophura edwardsi,Edward's Pheasant,lophura,phasianidae,oriental,rainforest,CR
 lophura erythrophthalma,Malayan Crestless Fireback Pheasant,lophura,phasianidae,oriental,forest;rainforest,VU
 lorius lory,Black-Capped Lory,lorius,psittaculidae,australian,forest,LC
+loxocemus bicolor,Mexican Burrowing Python,loxocemus,loxocemidae,neotropical,forest;rainforest,NE
 loxodonta africana,African Elephant,loxodonta,elephantidae,ethiopian,savanna/grassland;desert/dune;forest;rainforest;scrub forest;marsh;swamp;agricultural,VU
 lutjanus campechanus,Northern Red Snapper,lutjanus,lutjanidae,atlantic ocean,ocean,LC
 lybius dubius,Bearded Barbet,lybius,lybiidae,ethiopian,forest,LC
@@ -571,6 +595,7 @@ martes pennanti,Fisher,martes,mustelidae,nearctic,forest,LC
 mauremys annamensis,Annam Leaf Turtle;Vietnamese Pond Turtle,mauremys,geoemydidae,oriental,rivers;riparian,CR
 megascops asio,Eastern Screech Owl,megascops,strigidae,nearctic,forest;swamps,LC
 megascops kennicottii,Western Screech Owl,megascops,strigidae,nearctic,forest;desert/dune;suburban,LC
+melanerpes uropygialis,Gila Wodpecker,melanerpes,picidae,nearctic,forest,LC
 melanophryniscus stelzneri,Bumblebee Walking Toad,melanophryniscus,bufonidae,neotropical,rainforest,LC
 melanotaenia boesemani,Boeseman's Rainbowfish,melanotaenia,melanotaeniidae,oriental,reef,EN
 meleagris gallopavo,Wild Turkey,meleagris,phasianidae,nearctic,forest;marsh;riparian,LC
@@ -600,6 +625,7 @@ mycteria americana,Wood Stork,mycteria,ciconiidae,nearctic,swamp;marsh,LC
 mycteria ibis,Yellow-Billed Stork,mycteria,ciconiidae,ethiopian,swamp;marsh,LC
 myiopsitta monachus,Monk Parakeet,myiopsitta,psittacidae,neotropical,forest;rainforest,LC
 myrmecophaga tridactyla,Giant Anteater;Ant Bear,myrmecophaga,myrmecophagidae,neotropical,rainforest;savanna/grassland,VU
+naemorhedus griseus,Chinese Goral,naemorhedus,bovidae,oriental,mountain,VU
 naja haje,Moroccan Cobra;Egyptian Cobra,naja,elapidae,ethiopian,savanna/grassland;desert,VU
 naja melanoleuca,Forest Cobra;Black Forest Cobra,naja,elapidae,palearctic,forest,NE
 naja nigricollis,Black Spitting Cobra,naja,elapidae,ethiopian,savanna/grassland,LC
@@ -628,6 +654,7 @@ nymphicus hollandicus,Cockatiel,nymphicus,psittacidae,australian,savanna/grassla
 odobenus rosmarus,Walrus,Odobenus,odobenidae,bering sea,ocean,VU
 odocoileus virginianus,White-Tailed Deer,odocoileus,cervidae,nearctic,savanna/grassland;forest,LC
 okapia johnstoni,Okapi,okapia,giraffidae,ethiopian,forest,EN
+oophaga pumilio,Strawberry Poison-Dart Frog,oophaga,dendrobatidae,neotropical,forest;rainforest,LC
 ophiophagus hannah,King Cobra,ophiophagus,elapidae,oriental,forest,VU
 oreotragus oreotragus,Klipspringer,oreotragus,bovidae,ethiopian,savanna/grasslands,LC
 ortalis ruficauda,Rufous-Vented Chachalaca,ortalis,cracidae,neotropical,forest;scrub forest,LC
@@ -641,7 +668,7 @@ osteopilus septentrionalis,Cuban Tree Frog,osteopilus,hylidae,nearctic,forest;ra
 otidiphaps nobilis,Pheasant Pigeon;Green-Naped Pheasant Pigeon,otidiphaps,columbidae,australian,rainforest,LC
 otocolobus manul,Pallas's Cat;Manul,otocolobus,felidae,oriental;palearctic,savanna/grassland;mountains,NT
 otocyon megalotis,Bat-Eared Fox,otocyon,canidae,ethiopian,savanna/grassland;scrub,LC
-ovibos moschatus,Muskox,ovibos,bovidae,arctic,tundra,LC
+ovibos moschatus,Muskox,ovibos,bovidae,holarctic,tundra,LC
 ovis aries,Sheep,ovis,bovidae,palearctic,savanna/grassland,NE
 ovis canadensis,Bighorn Sheep,ovis,bovidae,nearctic,mountains,LC
 oxyura jamaicensis,Ruddy Duck,oxyura,anatidae,nearctic;neotropical,marsh;lakes,LC
@@ -668,7 +695,7 @@ papio papio,Guinea Baboon,papio,cercopithecidae,ethiopian,forest,NT
 parabuteo unicinctus,Harris' Hawk,parabuteo,accipitridae,nearctic,forest,LC
 paracanthurus hepatus,Blue Tang;Regal Tang;Palette Surgeonfish,paracanthurus,acanthuridae,indian ocean;pacific ocean,reef,LC
 parastichopus californicus,Giant California Sea Cucumber,parastichopus,stichopodidae,pacific ocean,reef,NE
-paroaria coronata,Red crested cardinal,paroaria,thraupidae,neotropical,forest,LC
+paroaria coronata,Red Crested Cardinal,paroaria,thraupidae,neotropical,forest,LC
 parupeneus ciliatus,Whitesaddle Goatfish,parupeneus,mullidae,pacific ocean,reef,NE
 pauxi pauxi,Helmeted Curassow,pauxi,cracidae,neotropical,mountains;forest,EN
 pavo cristatus,Peafowl,pavo,phasianidae,oriental,rainforest,LC
@@ -678,6 +705,7 @@ pelecanus occidentalis,Brown Pelican,pelecanus,pelecanidae,nearctic,lakes,LC
 pelecanus onocrotalus,Great White Pelican;Eastern White Pelican;Rosy Pelican,pelecanus,pelecanidae,palearctic,swamp;lakes,LC
 pelecanus rufescens,Pink-Backed Pelican,pelecanus,pelecanidae,ethiopian,swamp,LC
 peltophryne lemur,Puerto Rican Crested Toad,peltophryne,bufonidae,neotropical,scrub forest;chaparral,CR
+pelusios subniger,East African Black Mud Turtle,pelusios,pelomedusidae,ethiopian,marsh;lake,LC
 perodicticus potto,Potto,perodicticus,lorisidae,ethiopian,rainforest,LC
 petaurus breviceps,Sugar Glider,petaurus,petauridae,australian,forest,LC
 petrogale xanthopus,Yellow-Footed Rock-Wallaby,petrogale,macropodidae,australian,savanna/grassland,NT
@@ -702,6 +730,7 @@ phyllium biocalatum,Gray's Leaf Insect;Malaysian Walking Leaf Insect,phyllium,ph
 phyllobates terribilis,Golden Poison Frog;Golden Poison Arrow Frog;Golden Dart Frog,phyllobates,dendrobatidae,neotropical,rainforest,EN
 phyllobates vittatus,Golfodulcean Poison Frog,phyllobates,dendrobatidae,neotropical,forest;river;rainforest,EN
 phyllomedusa bicolor,Blue-and-Yellow Frog;Bicolored Tree-Frog;Giant Monkey Frog;Giant Leaf Frog;Waxy-Monkey Treefrog,phyllomedusa,hylidae,neotropical,rainforest;riparian,LC
+phyllomedusa sauvagii,Waxy Monkey Tree Frog,phyllomedusa,hylidae,neotropical,forest;rainforest,LC
 pionites melanocephalus,Black Headed Caique,pionites,psittacidae,neotropical,forest,LC
 pipa parva,Sabana Surinam Toad,pipa,pipidae,neotropical,savanna/grassland;swamp;lakes;marsh,LC
 pithecia pithecia,White-Faced Saki Monkey;Guianan Saki;Golden-Faced Saki,pithecia,pitheciidae,neotropical,rainforest,LC
@@ -762,7 +791,7 @@ puma concolor,Cougar;Mountain Lion;Puma;Panther;Catamount,puma,felidae,nearctic,
 puma concolor coryi,Florida Panther,puma,felidae,nearctic,forest;swamp,CR
 pygathrix nemaeus,Red-Shanked Douc,pygathrix,cercopithecidae,oriental,forest;rainforest,EN
 pygocentrus nattereri,Red-Bellied Piranha,pygocentrus,serrasalmidae,neotropical,rivers,NE
-pygoscelis papua,Gentoo Penguin,pygoscelis,spheniscidae,arctic,taiga,NT
+pygoscelis papua,Gentoo Penguin,pygoscelis,spheniscidae,holarctic,taiga,NT
 python bivittatus,Burmese Python,python,boidae,oriental,riparian;swamp;forest;marsh;savanna/grassland,VU
 python regius,Ball Python,python,boidae,ethiopian,savanna/grassland,LC
 python reticulatus,Reticulated Python,python,boidae,oriental,rainforest,VU
@@ -776,7 +805,7 @@ ramphastos sulfuratus,Keel Billed Toucan,ramphastos,ramphastidae,neotropical,rai
 ramphastos toco,Toco Toucan,ramphastos,ramphastidae,neotropical,forest;savanna/grassland;scrub forest;riparian,LC
 ramphastos tucanus,Red-billed Toucan,ramphastos,ramphastidae,neotropical,rainforest,VU
 ramphastos vitellinus,Channel-Billed Toucan,ramphastos,ramphastidae,neotropical,rainforest,VU
-rangifer tarandus,Reindeer,rangifer,cervidae,arctic,tundra,VU
+rangifer tarandus,Reindeer,rangifer,cervidae,holarctic,tundra,VU
 rhacodactylus chahoua,Mossy Prehensile Tailed Gecko,rhacodactylus,diplodactylidae,australian,coastal,VU
 rhacodactylus leachianus,Caledonian Giant Gecko,rhacodactylus,diplodactylidae,australian,forest,LC
 rhacophorus nigropalmatus,Wallace's Flying Frog,rhacophorus,rhacophoridae,oriental,forest;rainforest,LC
@@ -861,6 +890,7 @@ theloderma corticale,Mossy Tree Frog,theloderma,rhacophoridae,palearctic,rainfor
 theraphosa blondi,Goliath Bird Eating Tarantula,theraphosa,theraphosidae,neotropical,rainforest,NE
 theropithecus gelada,Gelada,theropithecus,cercopithecidae,ethiopian,mountains,LC
 thraupis episcopus,Blue-Gray Tanager,thraupis,thraupidae,neotropical,forest;rainforest,LC
+threskiornis aethiopicus,African Sacred Ibis,threskiornis,threskiornithidae,ethiopian,marsh,LC
 threskiornis spinicollis,Straw-Necked Ibis,threskiornis,threskiornithidae,australian,swamp;marsh;savanna/grassland,LC
 tiliqua scincoides,Eastern Blue-Tongued Skink,tiliqua,scincidae,australian,scrub forest;suburban,NE
 tockus flavirostris,Eastern Yellow-Billed Hornbill;Northern Yellow-Billed Hornbill,tockus,bucerotidae,ethiopian,forest,LC
@@ -925,7 +955,7 @@ varecia variegata,Black and White Ruffed Lemur,varecia,lemuridae,madagascan,fore
 vicugna pacos,Alpaca,vicugna,camelidae,neotropical,savanna/grassland;mountains,NE
 vipera raddei,Rock Viper;Radde's Mountain Viper;Armenian Mountain Viper;Armenian Mountain Adder,vipera,viperidae,palearctic,mountains;scrub forest,NT
 vombatus ursinus,Tasmanian Wombat,vombatus,vombatidae,australian,mountains,LC
-vulpes lagopus,Arctic Fox,vulpes,canidae,arctic,taiga,LC
+vulpes lagopus,Arctic Fox,vulpes,canidae,holarctic,taiga,LC
 vulpes velox,Swift Fox,vulpes,canidae,nearctic,desert/dune;savanna/grassland,LC
 vulpes vulpes,Red fox,vulpes,canidae,nearctic,forest,LC
 vulpes zerda,Fennec Fox,vulpes,canidae,ethiopian,savanna/grasslands,LC

@@ -59,10 +59,12 @@
         </div>
     </div>
     <div class="form-group row">
-        <span class="pull-right">
-            <input class="btn btn-primary" type="submit" name="update" value="Update"/>
-            <input class="btn btn-default" type="submit" name="reset" value="Reset"/>
-        </span>
+        <div class="col-xs-12">
+            <span class="pull-right">
+                <input class="btn btn-primary" type="submit" name="update" value="Update"/>
+                <input class="btn btn-default" type="submit" name="reset" value="Reset"/>
+            </span>
+        </div>
     </div>
 </form>
 <h3>Species</h3>
@@ -70,7 +72,7 @@
 {% if use_pagination == 1 %}
 <table id="pagination" class="table table-striped table-bordered" cellspacing="0" width="100%">
 {% else %}
-<table class="table table-striped table-bordered" cellspacing="0" width="100%">
+<table class="table table-striped" cellspacing="0" width="100%">
 {% endif %}
     <thead>
         <tr>

@@ -12,22 +12,22 @@
 table.colored {
 }
 tr.t0 {
-    background-color: #566D7E;
+    background-color: #334c00;
 }
 tr.t1 {
-    background-color: #607788;
+    background-color: #3d5b00;
 }
 tr.t2 {
-    background-color: #6A8192;
+    background-color: #476b00;
 }
 tr.t3 {
-    background-color: #748B9C;
+    background-color: #517a00;
 }
 tr.t4 {
-    background-color: #7E95A6;
+    background-color: #5b8900;
 }
 tr.t5 {
-    background-color: #889FB0;
+    background-color: #669900;
 }
 
 </style>
@@ -36,6 +36,7 @@ tr.t5 {
 {% block content %}
 {% if other_names %}
     <h3>Other Common Names</h3>
+    <hr>
     {% for name in other_names %}
     <p>{{ name }}</p>
     {% endfor %}

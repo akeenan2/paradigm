@@ -17,7 +17,7 @@ class Classification(models.Model):
 
 
 class Exhibit(models.Model):
-    zoo_name = models.ForeignKey('Zoo', models.DO_NOTHING, db_column='zoo_name', primary_key=True)
+    zoo_name = models.ForeignKey('Zoo', models.DO_NOTHING, db_column='zoo_name')
     species = models.ForeignKey('Species', models.DO_NOTHING, db_column='species')
 
     class Meta:

@@ -10,6 +10,63 @@ from .functions import convert_time,revert_time
 import json
 
 def index(request):
+    with connection.cursor() as cursor:
+        cursor.execute('SELECT phylm FROM Classification GROUP BY phylm')
+        phylums = cursor.fetchall()
+        phylums_dict = dict()
+        for p in phylums:
+
+            cursor.execute('SELECT clss FROM Classification WHERE phylm=%s GROUP BY clss',[p[0]])
+            classes = cursor.fetchall()
+            classes_dict = dict()
+            for c in classes:
+
+                cursor.execute('SELECT ordr FROM Classification WHERE clss=%s GROUP BY ordr',[c[0]])
+                orders = cursor.fetchall()
+                orders_dict = dict()
+                for o in orders:
+
+                    cursor.execute('SELECT family FROM Classification WHERE ordr=%s GROUP BY family',[o[0]])
+                    families = cursor.fetchall()
+                    families_dict = dict()
+                    for f in families:
+
+                        cursor.execute('SELECT genus FROM Classification c,Species s WHERE c.family=%s AND c.family=s.family GROUP BY s.genus',[f[0]])
+                        genus = cursor.fetchall()
+                        genus_dict = dict()
+                        for g in genus:
+
+                            cursor.execute('SELECT species FROM Species WHERE genus=%s',[g[0]])
+                            species = cursor.fetchall()
+                            species_children = []
+                            for s in species:
+                                species_children.append({'name':s[0]})
+                            genus_dict[g[0]] = species_children
+
+                        genus_children = []
+                        for g in genus:
+                            genus_children.append({'name':g[0],'children':genus_dict[g[0]]})
+                        families_dict[f[0]] = genus_children
+
+                    family_children = []
+                    for f in families:
+                        family_children.append({'name':f[0],'children':families_dict[f[0]]})
+                    orders_dict[o[0]] = family_children
+
+                order_children = []
+                for o in orders:
+                    order_children.append({'name':o[0],'children':orders_dict[o[0]]})
+                classes_dict[c[0]] = order_children
+
+            class_children = []
+            for c in classes:  
+                class_children.append({'name':c[0],'children':classes_dict[c[0]]})
+            phylums_dict[p[0]] = class_children
+
+        phylum_children = []
+        for p in phylums:
+            phylum_children.append({'name':p[0],'children':phylums_dict[p[0]]})
+            
     classification = {'name':'animalia','children':[{'name':'child'}]}
     classification_json = json.dumps(classification)
     context = {

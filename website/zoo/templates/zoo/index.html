@@ -1,5 +1,11 @@
 <!-- index.html -->
+{% extends "layouts/base.html" %}
+{% load staticfiles %}
+{% block page_title %}Zootopia{% endblock %}
+{% block jumbotron_name %}Zootopia{% endblock %}
+{% block jumbotron_description %}Find any animal in a zoo from the Association of Zoos and Aquariums.{% endblock %}
 
+{% block css %}
 <style>
 .node {
   cursor: pointer;
@@ -18,7 +24,10 @@
   stroke-width: 1.5px;
 }
 </style>
+{% endblock %}
 
+{% block content %}
+{% block js %}
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
 var margin = {top: 20, right: 120, bottom: 20, left: 120},
@@ -161,3 +170,5 @@ function click(d) {
   update(d);
 }
 </script>
+{% endblock %}
+{% endblock %}

@@ -1,9 +1,6 @@
 <!-- species.html -->
-
 {% extends "layouts/base.html" %}
-
 {% block page_title %}{{ species_name }}{% endblock %}
-
 {% block jumbotron_name %}{{ species_name }}{% endblock %}
 {% block jumbotron_description %}{{ species.species }}{% endblock %}
 
@@ -19,31 +16,29 @@
     text-align: left;
 }
 #t0 {
- border-radius: 5px;
-    background-color: #008986;
+    background-color: #447304;
 }
 #t1 {
-    background-color: #199492;
+    background-color: #4c8105;
 }
 #t2 {
-    background-color: #32a09e;
+    background-color: #559006;
 }
 #t3 {
-    background-color: #4cacaa;
+    background-color: #669b1e;
 }
 #t4 {
-    background-color: #66b8b6;
+    background-color: #76a637;
 }
 #t5 {
-     border-radius: 5px;
-    background-color: #7fc4c2;
+    background-color: #88b150;
 }
-
 </style>
 {% endblock %}
 
 {% block content %}
 <br>
+<img class="fit" src="/static/img/red-list/{{ species.status.status }}.png">
 {% if other_names %}
     <h3>Other Common Names</h3>
     <hr>

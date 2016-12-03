@@ -1,14 +1,8 @@
 <!-- index.html -->
-
 {% extends "layouts/base.html" %}
-
 {% block page_title %}Zootopia{% endblock %}
-
 {% block jumbotron_name %}Zootopia{% endblock %}
 {% block jumbotron_description %}Find any animal in a zoo from the Association of Zoos and Aquariums.{% endblock %}
 
 {% block content %}
-{% for species in list_species %}
-<p>{{ species.0 }}</p>
-{% endfor %}
 {% endblock %}

@@ -1,14 +1,11 @@
 <!-- zoo.html -->
-
 {% extends "layouts/base.html" %}
-
 {% block page_title %}{{ zoo.zoo_name }}{% endblock %}
-
 {% block jumbotron_name %}{{ zoo.zoo_name }}{% endblock %}
 {% block jumbotron_description %}More information.{% endblock %}
 
 {% block content %}
-
+<br>
 <h3>Basic Information</h3>
 {{ zoo.address }}<br>
 {{ zoo.city }}, {{ zoo.state.abbrv }}<br>

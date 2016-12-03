@@ -1,11 +1,11 @@
 <!-- update_zoo.html -->
 
-{% extends "layouts/base.html" %}
+{% extends "layouts/navbar.html" %}
 
 {% block page_title %}Update {{ zoo.zoo_name }}{% endblock %}
 
 {% block jumbotron_name %}Update {{ zoo.zoo_name }}{% endblock %}
-{% block jumbotron_description %}Update zoo information.{% endblock %}
+{% block jumbotron_description %}Update zoo information{% endblock %}
 
 {% block content %}
 <form method="post">{% csrf_token %}

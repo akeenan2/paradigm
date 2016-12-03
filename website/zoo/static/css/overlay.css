@@ -20,8 +20,8 @@
     }
 }
 .overlay .title {
+    font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
-    font-weight: 800;
     position: absolute;
     top: 15px;
     left: 15px;

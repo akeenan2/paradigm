@@ -1,16 +1,28 @@
 <!-- index.html -->
-
 {% extends "layouts/base.html" %}
-
 {% block page_title %}FAQ{% endblock %}
-
 {% block jumbotron_name %}FAQ{% endblock %}
 {% block jumbotron_description %}Questions?{% endblock %}
+
+{% block navbar %}
+<div class="collapse navbar-collapse" id="navbar-collapse">
+    <ul class="nav navbar-nav">
+        <li><a href="/zoo/">List of Zoos</a></li>
+        <li><a href="/species/">List of Species</a></li>
+        <li><a href="/add/species/">Add a Species</a></li>
+        <li><a class="active" href="/help/">FAQ</a></li>
+    </ul>
+</div>
+{% endblock %}
 
 {% block content %}
 <br>
 <h4> What is this website for? </h4>
-<p>...</p>
+<p> Find the zoos that exhibit your favorite animals, or browse the animals exhibited at any of our recorded zoos! You can also find related or similar species to any species that you find within our database. </p>
 <h4> How do I find a species? </h4>
-<p>...</p>
+<p> Navigate to the 'List of Species' page, and choose from a variety of search options or search for a specific species by name (common or scientific) in the search bar. Multiple options can be selected for habitat, region, status, or family by pressing the ctrl/command key or the shift button. </p>
+<h4> What if I can't find a species? </h4>
+<p> It might not be in our database! You can help us out by adding the species in the 'Add a Species' page. Up to ten regions and ten habitats can be added to each species. If the family of your species is not in the list of families, press the plus button next to 'Family' to add the family. </p>
+<h4> Can I add more regions or habitats? </h4>
+<p> You can add another region or habitat in either the 'Add a Species' page or while updating a specific species. Simply press the plus button next to the respective categories, fill out the form, and press the 'Add' button! If you make a mistake adding, feel free to press the subtract button next to the respective category to delete your edit. Do not delete any elements that you have not personally created! <p>
 {% endblock %}

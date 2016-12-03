@@ -15,7 +15,7 @@
         {% endblock %}
 
         <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Open+Sans:800" rel="stylesheet">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
@@ -25,9 +25,9 @@
         {% endblock %}
     </head>
     <body>
-        <nav class="navbar navbar-fixed-top navbar-always-fixed">
+        <nav class="navbar navbar-fixed-top">
         <div class="navbar-title">
-            <a class="nav navbar-nav navbar-brand" data-scroll href="/">Zootopia</a>
+            <a class="nav navbar-nav navbar-brand" href="/">Zootopia</a>
         </div>
         <div class="container">
             <div class="navbar-header">
@@ -59,16 +59,14 @@
 
         {% block overlay %}{% endblock %}
         
-        <section>
+        <section id="section">
         {% block content %}{% endblock %}
         </section>
 
         <footer class="footer">
-        <div class="container">
             <br><br>
             {% block footer %}{% endblock footer %}
             <p class="text-muted">&copy; Paradigm 2016</p>
-        </div>
         </footer>
 
         <script src="https://code.jquery.com/jquery-1.12.3.js"></script>

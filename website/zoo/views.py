@@ -117,7 +117,7 @@ def list_species(request):
 # default values
     habitats = Habitat.objects.values_list('habitat',flat=True)
     regions = Region.objects.values_list('region',flat=True)
-    statuses = Status.objects.values_list('status',flat=True)
+    statuses = Status.objects.order_by('level').values_list('status',flat=True)
     families = Classification.objects.values_list('family',flat=True)
     select_habitats = []
     select_regions = []
@@ -181,7 +181,7 @@ def list_species(request):
 # descriptions
     habitats_descr = Habitat.objects.all()
     regions_descr = Region.objects.all()
-    statuses_descr = Status.objects.all()
+    statuses_descr = Status.objects.order_by('level').all()
     families_descr = Classification.objects.all()
 # only use pagination if more than 10 entries
     if len(list_species) > 10:
@@ -409,7 +409,7 @@ def add_species(request):
     habitats = Habitat.objects.values_list('habitat',flat=True)
     families = Classification.objects.values_list('family',flat=True)
     regions = Region.objects.values_list('region',flat=True)
-    statuses = Status.objects.values_list('status',flat=True)
+    statuses = Status.objects.order_by('level').values_list('status',flat=True)
     context = {
         'families':families,
         'habitats':habitats,

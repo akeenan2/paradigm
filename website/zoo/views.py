@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from math import ceil
 from .models import *
 from .functions import convert_time,revert_time
+from django.utils.safestring import mark_safe
 import json
 
 def index(request):
@@ -66,11 +67,12 @@ def index(request):
         phylum_children = []
         for p in phylums:
             phylum_children.append({'name':p[0],'children':phylums_dict[p[0]]})
-            
-    classification = {'name':'animalia','children':[{'name':'child'}]}
+    
+    classification = {"name":"animalia","children":phylum_children}
     classification_json = json.dumps(classification)
+
     context = {
-        'classification_json':classification_json
+        'classification_json':(mark_safe(classification_json))
     }
 
     return render(request,'zoo/index.html',context)
@@ -147,13 +149,14 @@ def update_zoo(request,_zoo_name):
     zoo = Zoo.objects.get(zoo_name=zoo_name)
 # update the specific zoo
     if request.method == 'POST':
-    # convert time to database format
-        time_open = revert_time(request.POST.get("open_hour"),request.POST.get("open_minute"),request.POST.get("open_period"))
-        time_close = revert_time(request.POST.get("close_hour"),request.POST.get("close_minute"),request.POST.get("close_period"))
-        with connection.cursor() as cursor:
-            cursor.execute('UPDATE Zoo SET zoo_name=%s,city=%s,state=%s,address=%s,latitude=%s,longitude=%s,num_animals=%s,acres=%s,time_open=%s,time_close=%s,annual_visitors=%s,website=%s WHERE zoo_name=%s',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("latitude"),request.POST.get("longitude"),request.POST.get("num_animals"),request.POST.get("acres"),time_open,time_close,request.POST.get("annual_visitors"),request.POST.get("website"),zoo_name])
-    # redirect back to the zoo detail page
-        return HttpResponseRedirect('/zoo/'+_zoo_name+'/')
+        if request.POST.get('update'):
+        # convert time to database format
+            time_open = revert_time(request.POST.get("open_hour"),request.POST.get("open_minute"),request.POST.get("open_period"))
+            time_close = revert_time(request.POST.get("close_hour"),request.POST.get("close_minute"),request.POST.get("close_period"))
+            with connection.cursor() as cursor:
+                cursor.execute('UPDATE Zoo SET zoo_name=%s,city=%s,state=%s,address=%s,latitude=%s,longitude=%s,num_animals=%s,acres=%s,time_open=%s,time_close=%s,annual_visitors=%s,website=%s WHERE zoo_name=%s',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("latitude"),request.POST.get("longitude"),request.POST.get("num_animals"),request.POST.get("acres"),time_open,time_close,request.POST.get("annual_visitors"),request.POST.get("website"),zoo_name])
+        # redirect back to the zoo detail page
+            return HttpResponseRedirect('/zoo/'+_zoo_name+'/')
     states = State.objects.values_list('abbrv',flat=True)
     time_open = convert_time(zoo.time_open)
     time_close = convert_time(zoo.time_close)
@@ -315,8 +318,11 @@ def species(request,_species):
     for habitat in habitats[:-1]:
         conditions = conditions + 'Species.habitat LIKE "%' + habitat + '%" OR '
     conditions = conditions + 'Species.habitat LIKE "%' + habitats[-1] + '%")';
+# no repeating species
     for specie in related_species:
         conditions = conditions + ' AND Species.species != "' + specie[0] + '"'
+# exclude the current species
+    conditions = conditions + ' AND Species.species != "' + species.species + '"'
 # query the database for all the related species
     with connection.cursor() as cursor:
         query = 'SELECT Species.species FROM Species' + conditions + ' ORDER BY RAND() LIMIT 5'
@@ -372,7 +378,7 @@ def update_species(request,_species):
             with connection.cursor() as cursor:
                 for family in request.POST.getlist('remove-families'):
                     cursor.execute('DELETE FROM Classification WHERE family=%s',[family])
-        elif request.POST.get('submit'):
+        elif request.POST.get('update'):
         # update the species
             select_habitats = request.POST.getlist('update-habitats')
             select_regions = request.POST.getlist('update-regions')
@@ -425,6 +431,7 @@ def add_species(request):
 # add the species based on user input
     if request.method == 'POST':
         if request.POST.get('submit-add-region'):
+            print 'add region'
         # add the new region
             with connection.cursor() as cursor:
                 cursor.execute('INSERT INTO Region(region,descr) values(%s,%s)',[request.POST.get('new-region'),request.POST.get('region-descr')])
@@ -466,10 +473,7 @@ def add_species(request):
         # update the database
             with connection.cursor() as cursor:
                 cursor.execute('INSERT INTO Species(species,common_name,genus,family,region,habitat,status) values(%s,%s,%s,%s,%s,%s,%s)',[request.POST.get('species'),request.POST.get('common_name'),request.POST.get('genus'),request.POST.get('family'),regions,habitats,request.POST.get('add-status')])
-            return HttpResponseRedirect('/species/')
-    # if chose to add a family, redirect to appropriate page
-        elif request.POST.get('add-family'):
-            return HttpResponseRedirect('/add/family/'+request.POST.get('family').replace(" ","_")+'/')
+            return HttpResponseRedirect('/species/'+request.POST.get('species').replace(" ","_")+'/')
     habitats = Habitat.objects.values_list('habitat',flat=True)
     families = Classification.objects.values_list('family',flat=True)
     regions = Region.objects.values_list('region',flat=True)

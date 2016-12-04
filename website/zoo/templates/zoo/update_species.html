@@ -17,7 +17,7 @@
         </div>
         <div class="col-sm-3 col-xs-6">
             <label for="family"><strong>Family </strong></label>
-            (<a href="" onclick="show_overlay('add-family'); return false;">+</a>/<a href="" onclick="show_overlay('remove-family'); return false;">-</a>)
+            (<a href="" onclick="show_overlay('add-family'); return false;">+</a><!--/<a href="" onclick="show_overlay('remove-family'); return false;">-</a>-->)
             <br>
             <select name="family">
             {% for family in families %}
@@ -39,7 +39,7 @@
     <div class="form-group row">
         <div class="col-xs-12">
             <label for="regions"><strong>Region </strong></label>
-            (<a href="" onclick="show_overlay('add-region'); return false;">+</a>/<a href="" onclick="show_overlay('remove-region'); return false;">-</a>)
+            (<a href="" onclick="show_overlay('add-region'); return false;">+</a><!--/<a href="" onclick="show_overlay('remove-region'); return false;">-</a>-->)
         </div>
         {% for region in def_regions %}
             <div class="col-md-2 col-sm-3 col-xs-4">
@@ -54,7 +54,7 @@
     <div class="form-group row">
         <div class="col-xs-12">
             <label for="habitats"><strong>Habitat </strong></label>
-            (<a href="" onclick="show_overlay('add-habitat'); return false;">+</a>/<a href="" onclick="show_overlay('remove-habitat'); return false;">-</a>)
+            (<a href="" onclick="show_overlay('add-habitat'); return false;">+</a><!--/<a href="" onclick="show_overlay('remove-habitat'); return false;">-</a>-->)
         </div>
         {% for habitat in def_habitats %}
             <div class="col-md-2 col-sm-3 col-xs-4">
@@ -82,7 +82,7 @@
     </div>
     <div class="form-group row">
         <div class="col-xs-12">
-            <button type="submit" class="btn btn-default">Update</button>
+            <input class="btn btn-default" type="submit" name="update" value="Update"/>
         </div>
     </div>
 </form>

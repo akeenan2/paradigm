@@ -1,12 +1,11 @@
 acanthuridae,perciformes,actinopterygii,chordata,animalia,surgeonfish;tang;unicornfish
 accipitridae,accipitriformes,aves,chordata,animalia,kite;hawk;eagle;osprey
 agamidae,squamata,reptilia,chordata,animalia,toad
-cisticolidae,passeriformes,aves,chordata,animalia,old world warbler
 ailuridae,carnivora,mammalia,chordata,animalia,red panda
 alcedinidae,bucerotiformes,aves,chordata,animalia,kingfishers
 alcidae,charadriiformes,aves,chordata,animalia,auk
 alligatoridae,crocodilia,reptilia,chordata,animalia,alligator;caiman
-ambystomatidae,urodela,lissamphibia,chordata,animalia,mole salamander
+ambystomatidae,urodela,amphibia,chordata,animalia,mole salamander
 anatidae,anseriformes,aves,chordata,animalia,duck;goose;swan
 anguidae,squamata,reptilia,chordata,animalia,galliwasp
 anhimidae,anseriformes,aves,chordata,animalia,screamer
@@ -54,8 +53,9 @@ chelidae,testudines,reptilia,chordata,animalia,matamata
 chelydridae,testudines,reptilia,chordata,animalia,snapping turtle
 chinchillidae,rodentia,mammalia,chordata,animalia,chinchilla;viscacha
 chlamyphoridae,cingulata,mammalia,chordata,animalia,armadillo
-cichlasomatinae,cichlidae,perciformes,chordata,animalia,cichlid
+cichlasomatinae,perciformes,actinopterygii,chordata,animalia,cichlid
 ciconiidae,ciconiiformes,aves,chordata,animalia,stork
+cisticolidae,passeriformes,aves,chordata,animalia,old world warbler
 clupeidae,clupeiformes,actinopterygii,chordata,animalia,herring;shad;sardine;hilsa;menhaden
 coliidae,coliiformes,aves,chordata,animalia,mousebird
 colubridae,squamata,reptilia,chordata,animalia,snake
@@ -160,7 +160,6 @@ orectolobidae,orectolobiformes,chondrichthyes,chordata,animalia,wobbegong
 orycteropodidae,tubulidentata,mammalia,chordata,animalia,aardvark
 otariidae,carnivora,mammalia,chordata,animalia,eared seal
 otididae,otidiformes,aves,chordata,animalia,bustard
-ovis,bovidae,artiodactyla,chordata,animalia,sheep
 papilionidae,lepidoptera,insecta,arthropoda,animalia,swallowtail butterfly
 pelecanidae,pelecaniformes,aves,chordata,animalia,pelican
 pelomedusidae,testudines,reptilia,chordata,animalia,freshwater turtle
@@ -193,7 +192,7 @@ potoroidae,diprotodontia,mammalia,chordata,animalia,bettong;potoroo
 procaviidae,hyracoidea,mammalia,chordata,animalia,hyrax
 procyonidae,carnivora,mammalia,chordata,animalia,raccoons;coatis;kinkajous;olinguitos
 pseudophasmatidae,phasmatodea ,insecta,arthropoda,animalia,striped walkingstick
-psittacidae,psittaciformes,aves,chordata,animalia,parrot;cockatoo
+psittacidae,psittaciformes,aves,chordata,animalia,parrot;parakeet;macaw;cockatoo
 psittaculidae,psittaciformes,aves,chordata,animalia,parrot
 psophiidae,gruiformes,aves,chordata,animalia,trumpeter
 pteroinae,scorpaeniformes,actinopterygii,chordata,animalia,lionfish
@@ -210,7 +209,6 @@ rhacophoridae,anura,amphibia,chordata,animalia,shrub frog
 rheidae,rheiformes,aves,chordata,animalia,flightless ratite birds
 rhinocerotidae,perissodactyla,mammalia,chordata,animalia,rhinoceros
 rhynochetidae,eurypygiformes,aves,chordata,animalia,kagu
-rousettus,pteropodidae,chiropera,chordata,animalia,old world fruit bat
 sagittariidae,accipitriformes,aves,chordata,animalia,secretary bird
 salamandridae,urodela,amphibia,chordata,animalia,true salamander;newt
 scaphiopodidae,anura,amphibia,chordata,animalia,spadefoot toads
@@ -239,7 +237,7 @@ tayassuidae,artiodactyla,mammalia,chordata,animalia,peccary
 teiidae,squamata,reptilia,chordata,animalia,whiptail;tegu
 testudinidae,testudines,reptilia,chordata,animalia,tortoise
 tetraodontidae,tetraodontiformes,actinopterygii,chordata,animalia,puffer fish
-theraphosidae,araneae,arachnida,chordata,animalia,tarantula
+theraphosidae,araneae,arachnida,arthropoda,animalia,tarantula
 thraupidae,passeriformes,aves,chordata,animalia,tanager
 threskiornithidae,pelecaniformes,aves,chordata,animalia,ibis;spoonbill
 tinamidae,tinamiformes,aves,chordata,animalia,tinamou

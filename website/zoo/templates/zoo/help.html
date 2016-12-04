@@ -1,8 +1,8 @@
-<!-- index.html -->
+<!-- help.html -->
 {% extends "layouts/base.html" %}
 {% block page_title %}FAQ{% endblock %}
 {% block jumbotron_name %}FAQ{% endblock %}
-{% block jumbotron_description %}Questions?{% endblock %}
+{% block jumbotron_description %}Question/Answer{% endblock %}
 
 {% block navbar %}
 <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -20,13 +20,24 @@
 <h4> What is this website for? </h4>
 <hr>
 <p> Find the zoos that exhibit your favorite animals, or browse the animals exhibited at any of our recorded zoos! You can also find related or similar species to any species that you find within our database. </p>
+<br>
 <h4> How do I find a species? </h4>
 <hr>
 <p> Navigate to the 'List of Species' page, and choose from a variety of search options or search for a specific species by name (common or scientific) in the search bar. Multiple options can be selected for habitat, region, status, or family by pressing the ctrl/command key or the shift button. </p>
+<br>
 <h4> What if I can't find a species? </h4>
 <hr>
 <p> It might not be in our database! You can help us out by adding the species in the 'Add a Species' page. Up to ten regions and ten habitats can be added to each species. If the family of your species is not in the list of families, press the plus button next to 'Family' to add the family. </p>
-<h4> Can I add more regions or habitats? </h4>
+<br>
+<h4> How do I use the taxonomy tree? </h4>
 <hr>
-<p> You can add another region or habitat in either the 'Add a Species' page or while updating a specific species. Simply press the plus button next to the respective categories, fill out the form, and press the 'Add' button! If you make a mistake adding, feel free to press the subtract button next to the respective category to delete your edit. Do not delete any elements that you have not personally created! <p>
+<p> Click on a dark green node to expand its contents, and click on a light green node to retract its contents. The tree begins at the kingdom animalia and expands down to species. Scroll horizontally to view the tree in its full capacity. </p>
+<br>
+<h4> What are related and similar species? </h4>
+<hr>
+<p> Related species are those in the same hierarchical tree as a specific species, mostly in either the same family or order. Similar species are those that live in the same region and habitat. Results are shuffled around, so each refresh of a species page may yield new similar or related species. </p>
+<br>
+<h4> Can I add to the database? </h4>
+<hr>
+<p> You can add another region or habitat in the 'Add a Species' page or while updating a specific species. Simply press the plus button next to the respective categories, fill out the form, and press the 'Add' button. <p>
 {% endblock %}

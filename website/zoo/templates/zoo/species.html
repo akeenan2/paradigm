@@ -122,10 +122,12 @@
 <p><a href="" onclick="change_link(this,'/species/'); return false;">{{ species.0 }}</a></p>
 {% endfor %}
 {% endif %}
-{% if similar_species %}
 <h3>Similar Species</h3>
-{% for species in similar_species %}
-<p><a href="" onclick="change_link(this,'/species/'); return false;">{{ species.0 }}</a></p>
-{% endfor %}
+{% if similar_species %}
+    {% for species in similar_species %}
+    <p><a href="" onclick="change_link(this,'/species/'); return false;">{{ species.0 }}</a></p>
+    {% endfor %}
+{% else %}
+    <p> No similar species found! </p>
 {% endif %}
 {% endblock %}

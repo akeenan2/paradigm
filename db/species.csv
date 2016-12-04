@@ -5,7 +5,7 @@ acinonyx jubatus,Cheetah;Hunting Leopard,acinonyx,felidae,ethiopian;oriental;pal
 acryllium vulturinum,Vulturine Guineafowl,acryllium,numididae,ethiopian,savanna/grassland;scrub forest,LC
 addax nasomaculatus,Addax,addax,bovidae,ethiopian,desert/dune;savanna/grassland,CR
 aegolius acadicus,Northern Saw-Whet Owl,aegolius,strigidae,nearctic,forest,LC
-aegypius monachus,Cinereous vulture,aegypius,accipitridae,palearctic,forest,NT
+aegypius monachus,Cinereous Vulture,aegypius,accipitridae,palearctic,forest,NT
 afropavo congensis,Congo Peafowl,afropavo,phasianidae,oriental,forest,VU
 agalychnis callidryas,Red-Eyed Tree Frog,agalychnis,hylidae,neotropical,forest;rainforest,LC
 agalychnis lemur,Lemur Leaf Frog,agalychnis,hylidae,neotropical,forest,CR
@@ -648,7 +648,7 @@ nomascus leucogenys,White-Cheeked Gibbon,nomascus,hylobatidae,oriental,forest;ra
 notophthalmus viridescens piaropicola,Peninsula Newt,notophthalmus,salamandridae,nearctic,forest,LC
 numida meleagris,Helmeted Guineafowl,numida,numididae,ethiopian,savanna/grassland,LC
 nycticebus bengalensis,Bengal Slow Loris,nycticebus,lorisidae,palearctic,rainforest,VU
-nycticebus pygmaeus,Pygmy slow loris,nycticebus,lorisidae,oriental,forest,VU
+nycticebus pygmaeus,Pygmy Slow Loris,nycticebus,lorisidae,oriental,forest,VU
 nycticorax nycticorax,Black Crowned Night Heron,nycticorax,ardeidae,nearctic;palearctic;neotropical,forest,LC
 nymphicus hollandicus,Cockatiel,nymphicus,psittacidae,australian,savanna/grassland,LC
 odobenus rosmarus,Walrus,Odobenus,odobenidae,bering sea,ocean,VU
@@ -821,7 +821,7 @@ rhynochetos jubatus,Kagu,rhynochetos,rhynochetidae,australian;island endemic,mou
 rhyticeros undulatus,Wreathed Hornbill,rhyticeros,bucerotidae,oriental,rainforest;forest,LC
 rollulus rouloul,Crested Partridge;Crested Wood Partridge;Roul-Roul;Red-Crowned Wood Partridge;Green Wood Quail;Green Wood Partridge,rollulus,phasianidae,oriental,rainforest,NT
 rousettus aegyptiacus,Egyptian Fruit Bat,rousettus,pteropodidae,ethiopian,forest,LC
-rousettus lanosus,Ruwenzori Long-Haired Fruit Bat,ianosus,rousettus,ethiopian,rainforest,LC
+rousettus lanosus,Ruwenzori Long-Haired Fruit Bat,rousettus,pteropodidae,ethiopian,rainforest,LC
 rupicula peruvianis,Andean Cock-of-the-Rock;Tunki,rupicola,cotingidae,neotropical,forest,LC
 sagittarius serpentarius,Secretary Bird,sagittarius,sagittariidae,ethiopian,forests;savanna/grassland,VU
 saguinus bicolor,Pied Tamarin,saguinus,callitrichidae,neotropical,rainforest,EN

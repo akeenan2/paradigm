@@ -13,7 +13,10 @@ SECRET_KEY = 'c6$1+@38yqsl0!z7r854p%7z&0^i9ztmokj06e4&58jox5bmh1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dsg1.crc.nd.edu']
+ALLOWED_HOSTS = [
+    'dsg1.crc.nd.edu',
+    'dsg1.virtual.crc.nd.edu'
+]
 
 
 # Application definition

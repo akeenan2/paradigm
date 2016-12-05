@@ -8,6 +8,7 @@
 <style>
 .half {
     width: 300px;
+    margin: auto;
 }
 .right {
     text-align: right;
@@ -15,23 +16,26 @@
 .left {
     text-align: left;
 }
+.center {
+    text-align: center;
+}
 #t0 {
-    background-color: #447304;
+    background-color: #bbd29b;
 }
 #t1 {
-    background-color: #4c8105;
+    background-color: #aac782;
 }
 #t2 {
-    background-color: #559006;
+    background-color: #99bc69;
 }
 #t3 {
-    background-color: #669b1e;
+    background-color: #88b150;
 }
 #t4 {
     background-color: #76a637;
 }
 #t5 {
-    background-color: #88b150;
+    background-color: #669b1e;
 }
 </style>
 {% endblock %}
@@ -47,6 +51,7 @@
     {% endfor %}
 {% endif %}
 
+<div class="center">
 <h3>Classification</h3>
 <hr>
 <table class="table table-bordered half">
@@ -87,6 +92,8 @@
     <input type="hidden" value="{{ species.species }}" name="update">
     <a href="" onclick="$('#update_form').submit(); return false;" class="btn btn-default">Update Information</a>
 </form>
+</div>
+
 <br>
 
 {% if list_zoos %}

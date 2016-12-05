@@ -1,5 +1,6 @@
 <!-- list_species.html -->
 {% extends "layouts/overlay.html" %}
+{% load staticfiles %}
 {% block page_title %}List of Species{% endblock %}
 {% block jumbotron_name %}List of Species{% endblock %}
 {% block jumbotron_description %}Search our database{% endblock %}
@@ -82,7 +83,7 @@
             {% for species in list_species %}
             <tr>
                 <td><a href="" onclick="change_link(this,'/species/'); return false;">{{ species.0 }}</a></td>
-                <td>{{ species.1 }}</td>
+                <td class="common_name">{{ species.1 }}</td>
             </tr>
             {% endfor %}
         </tbody>
@@ -90,5 +91,8 @@
 {% else %}
     <p>No matching records found</p>
 {% endif %}
+{% endblock %}
 
+{% block js %}
+<script src="{% static 'js/pagination.js' %}"></script>
 {% endblock %}

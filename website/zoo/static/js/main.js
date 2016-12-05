@@ -1,6 +1,8 @@
+// main.js
 function change_link(obj,baseurl) {
     var original = obj.innerHTML; // without underscores
     var fixed = original.replace(/ /g,'_'); // with underscores
+    obj.href = fixed; 
     window.location.href = baseurl+fixed+'/';
 }
 
@@ -21,9 +23,6 @@ function hide_overlay(obj) {
     document.getElementById(id).className = "overlay hide";
 }
 
-$(document).ready(function() {
-    $('#pagination').DataTable();
-});
 
 $('input.limit-habitats').on('change', function(e) {
 // limit to 10
@@ -41,12 +40,4 @@ $('input.limit-regions').on('change', function(e) {
     } else {
         $('.limit-regions').removeAttr("disabled");
     }
-});
-
-$(window).scroll(function() {
-  if ($(document).scrollTop() > 50) {
-    $('nav').addClass('shrink');
-  } else {
-    $('nav').removeClass('shrink');
-  }
 });

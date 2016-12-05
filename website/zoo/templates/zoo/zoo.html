@@ -1,5 +1,6 @@
 <!-- zoo.html -->
 {% extends "layouts/base.html" %}
+{% load staticfiles %}
 {% block page_title %}{{ zoo.zoo_name }}{% endblock %}
 {% block jumbotron_name %}{{ zoo.zoo_name }}{% endblock %}
 {% block jumbotron_description %}More information.{% endblock %}
@@ -41,7 +42,7 @@
             {% for species in list_species %}
             <tr>
                 <td><a href="" onclick="change_link(this,'/species/'); return false;">{{ species.0 }}</a></td>
-                <td>{{ species.1 }}</td>
+                <td class="common_name">{{ species.1 }}</td>
             </tr>
             {% endfor %}
         </tbody>
@@ -50,5 +51,8 @@
 
 <h3>More Information</h3>
 <a href="{{ zoo.website }}">{{ zoo.zoo_name }} Official Website</a>
+{% endblock %}
 
+{% block js %}
+<script src="{% static 'js/pagination.js' %}"></script>
 {% endblock %}

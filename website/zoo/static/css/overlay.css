@@ -1,7 +1,4 @@
 /* overlay.css */
-.overlay .hide {
-    display: none;
-}
 .overlay .box {
     position: fixed;
     border-radius: 5px;

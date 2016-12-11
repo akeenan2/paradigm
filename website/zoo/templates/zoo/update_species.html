@@ -8,6 +8,7 @@
 <br>
 <form method="post">{% csrf_token %}
     <h3>Classification</h3>
+    <hr>
     <div class="form-group row">
         <div class="col-sm-5 col-xs-12">
             <strong>Species </strong><input name="species" type="text" class="form-control" value="{{ species.species }}" maxlength="100" required>
@@ -36,6 +37,7 @@
         </div>
     </div>
     <h3>Information</h3>
+    <hr>
     <div class="form-group row">
         <div class="col-xs-12">
             <label for="regions"><strong>Region </strong></label>
@@ -82,7 +84,9 @@
     </div>
     <div class="form-group row">
         <div class="col-xs-12">
-            <input class="btn btn-default" type="submit" name="update" value="Update"/>
+            <span class="pull-right">
+                <input class="btn btn-default" type="submit" name="update" value="Update"/>
+            </span>
         </div>
     </div>
 </form>

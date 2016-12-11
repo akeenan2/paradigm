@@ -12,6 +12,12 @@ body {
     background-color: #e6e3db;
     height: 100%;
 }
+.hide {
+    display: none;
+}
+.center {
+    text-align: center;
+}
 /* navbar style */
 .navbar {
     text-transform: uppercase;

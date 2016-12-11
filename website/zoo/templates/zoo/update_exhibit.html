@@ -1,5 +1,6 @@
 <!-- update_exhibit.html -->
 {% extends "layouts/base.html" %}
+{% load staticfiles %}
 {% block page_title %}Add Species{% endblock %}
 {% block jumbotron_name %}
     {% if operation == 'add' %}
@@ -19,13 +20,6 @@
 {% block content %}
 <br>
 <form method="post">{% csrf_token %}
-    <input class="btn btn-default" type="submit" name="operation" value="
-        {% if operation == 'add' %}
-            Add Selected Species
-        {% elif operation == 'remove' %}
-            Remove Selected Species
-        {% endif %}
-    "/><br><br>
     <table id="pagination" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
@@ -39,11 +33,26 @@
             <tr>
                 <td><input type="checkbox" value="{{ species.0 }}" name="species"></td>
                 <td>{{ species.0 }}</td>
-                <td>{{ species.1 }}</td>
+                <td class="common_name">{{ species.1 }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    <span class="pull-right">
+        <input class="btn btn-default" type="submit" name="operation" value="
+            {% if operation == 'add' %}
+                Add
+            {% elif operation == 'remove' %}
+                Remove
+            {% endif %}
+        ">
+    </span>
 </form>
 
+{% endblock %}
+
+{% block js %}
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+<script src="{% static 'js/pagination.js' %}"></script>
 {% endblock %}

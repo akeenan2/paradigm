@@ -90,12 +90,6 @@ def zoo(request,_zoo_name):
     zoo_name = _zoo_name.replace("_"," ");
 # select all objects from the Zoo database with the given zoo name
     zoo = Zoo.objects.get(zoo_name=zoo_name)
-# if a post request was submitted
-    if request.method == 'POST':
-        if request.POST.get('remove'):
-            return HttpResponseRedirect('/zoo/'+_zoo_name+'/remove/')
-        elif request.POST.get('add'):
-            return HttpResponseRedirect('/zoo/'+_zoo_name+'/add/')
 # query the database for the zoo's animal exhibits
     with connection.cursor() as cursor:
         cursor.execute('SELECT Species.species,Species.common_name FROM Species,Exhibit WHERE Species.species=Exhibit.species AND Exhibit.zoo_name=%s',[zoo.zoo_name])
@@ -186,12 +180,14 @@ def list_species(request):
     regions = Region.objects.values_list('region',flat=True)
     statuses = Status.objects.order_by('level').values_list('status',flat=True)
     families = Classification.objects.values_list('family',flat=True)
+    keywords = ''
     select_habitats = []
     select_regions = []
     select_statuses = []
     select_families = []
 # empty if no conditions
     conditions = ''
+    query = 'SELECT Species.species,Species.common_name,Species.family FROM Species'
     if request.method == 'POST':
         if request.POST.get('update'):
         # retrive the information selected
@@ -199,6 +195,7 @@ def list_species(request):
             select_regions = request.POST.getlist('regions')
             select_statuses = request.POST.getlist('statuses')
             select_families = request.POST.getlist('families')
+            keywords = request.POST.get('keywords')
         # if a habitat was selected
             if select_habitats:
             # remove selected habitats from list of habitats (so as to display seperately)
@@ -239,10 +236,19 @@ def list_species(request):
                 conditions = conditions + 'Species.family="' + select_families[-1] +'")'
         # if selected conditions, add to the query
             if conditions:
-                conditions = ' WHERE' + conditions;
+                query = query + ' WHERE' + conditions
+        # if keywords entered, check against common name and family description
+            if keywords:
+                conditions = ' AND '
+                list_keywords = keywords.split(' ')
+                for keyword in list_keywords[:-1]:
+                    conditions = conditions + '(S.common_name LIKE "%' + keyword + '%" OR c.descr LIKE "%' + keyword + '%") AND'
+                conditions = conditions + ' (S.common_name LIKE "%' + list_keywords[-1] + '%" OR c.descr LIKE "%' + list_keywords[-1] + '%")'
+                query = 'SELECT S.species, S.common_name FROM Classification c, (' + query + ') S WHERE S.family=c.family' + conditions
+
 # query the database for all the selected species
     with connection.cursor() as cursor:
-        query = 'SELECT Species.species,Species.common_name FROM Species' + conditions
+        print query
         cursor.execute(query)
         list_species = cursor.fetchall()
 # descriptions
@@ -262,6 +268,7 @@ def list_species(request):
         'habitats':habitats,
         'regions':regions,
         'statuses':statuses,
+        'keywords':keywords,
         'select_families':select_families,
         'select_habitats':select_habitats,
         'select_regions':select_regions,
@@ -275,11 +282,6 @@ def list_species(request):
     return render(request,'zoo/list_species.html',context)
 
 def species(request,_species):
-    if request.method == 'POST':
-        if request.POST.get('update'):
-            species = request.POST.get('update');
-            _species = species.replace(" ","_")
-            return HttpResponseRedirect('/species/'+_species+'/update/')
     species = Species.objects.get(species=_species.replace("_"," "))
     species_name = species.common_name.split(';')[0]
     if len(species.common_name.split(';')) > 1:

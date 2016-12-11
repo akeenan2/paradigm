@@ -1,5 +1,5 @@
 <!-- update_zoo.html -->
-{% extends "layouts/navbar.html" %}
+{% extends "layouts/base.html" %}
 {% block page_title %}Update {{ zoo.zoo_name }}{% endblock %}
 {% block jumbotron_name %}Update {{ zoo.zoo_name }}{% endblock %}
 {% block jumbotron_description %}Update zoo information{% endblock %}
@@ -7,6 +7,7 @@
 {% block content %}
 <form method="post">{% csrf_token %}
     <h3>Basic Information</h3>
+    <hr>
     <div class="form-group row">
         <div class="col-lg-8 col-sm-6 col-xs-12">
             <strong>Zoo Name: </strong><input name="zoo_name" type="text" class="form-control" value="{{ zoo.zoo_name }}" maxlength="100" required>
@@ -80,6 +81,7 @@
         </div>
     </div>
     <h3>Location</h3>
+    <hr>
     <div class="form-group row">
         <div class="col-md-7 col-sm-6 col-xs-12">
             <strong>Address: </strong><input name="address" type="text" class="form-control" value="{{ zoo.address }}" maxlength="100" required>
@@ -109,6 +111,7 @@
         </div>
     </div>
     <h3>Statistics</h3>
+    <hr>
     <div class="form-group row">
         <div class="col-sm-4 col-xs-6">
             <strong>Number of Animals: </strong><input name="num_animals" type="number" class="form-control" value="{{ zoo.num_animals }}" required>
@@ -122,7 +125,9 @@
     </div>
     <div class="form-group row">
         <div class="col-sm-12">
-            <input class="btn btn-default" type="submit" name="update" value="Update"/>
+            <span class="pull-right">
+                <input class="btn btn-default" type="submit" name="update" value="Update"/>
+            </span>
         </div>
     </div>
 </form>

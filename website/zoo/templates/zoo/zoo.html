@@ -7,49 +7,56 @@
 
 {% block content %}
 <br>
+<div class="center">
 <h3>Basic Information</h3>
+<hr>
 {{ zoo.address }}<br>
 {{ zoo.city }}, {{ zoo.state.abbrv }}<br>
 <strong>Hours:</strong> {{ time_open }} - {{ time_close }}<br>
 
 <h3>Statistics</h3>
+<hr>
 <strong>Number of Animals:</strong> {{ zoo.num_animals }}<br>
 <strong>Annual Visitors:</strong> {{ zoo.annual_visitors }}<br>
 <strong>Acres:</strong> {{ zoo.acres }}<br>
 
 <br>
-<a href="" onclick="change_button('/zoo/','{{ zoo.zoo_name }}','/update/'); return false;" class="btn btn-default">Update</a>
+<a href="update/" class="btn btn-default">Update</a>
+</div>
+
 <br>
 
 {% if list_species %}
-    <h3>Species Exhibits</h3>
-    <form method="post" id="species_form">{% csrf_token %}
-        <input class="btn btn-default" type="submit" name="add" value="Add Species"/>
-        <input class="btn btn-default" type="submit" name="remove" value="Remove Species"/><br><br>
-    </form>
-    {% if use_pagination == 1 %}
-    <table id="pagination" class="table table-striped table-bordered" cellspacing="0" width="100%">
-    {% else %}
-    <table class="table table-striped table-bordered" cellspacing="0" width="100%">
-    {% endif %}
-        <thead>
-            <tr>
-                <th>Scientific Name</th>
-                <th>Common Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for species in list_species %}
-            <tr>
-                <td><a href="" onclick="change_link(this,'/species/'); return false;">{{ species.0 }}</a></td>
-                <td class="common_name">{{ species.1 }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<h3>Species Exhibits</h3>
+<hr>
+{% if use_pagination == 1 %}
+<table id="pagination" class="table table-striped table-bordered" cellspacing="0" width="100%">
+{% else %}
+<table class="table table-striped table-bordered hide" cellspacing="0" width="100%">
+{% endif %}
+    <thead>
+        <tr>
+            <th>Scientific Name</th>
+            <th>Common Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for species in list_species %}
+        <tr>
+            <td><a href="" class="species-link">{{ species.0 }}</a></td>
+            <td class="common_name">{{ species.1 }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    <span class="pull-right">
+        <a href="add/" class="btn btn-default">Add</a>
+        <a href="remove/" class="btn btn-default">Remove</a>
+    </span>
 {% endif %}
 
 <h3>More Information</h3>
+<hr>
 <a href="{{ zoo.website }}">{{ zoo.zoo_name }} Official Website</a>
 {% endblock %}
 

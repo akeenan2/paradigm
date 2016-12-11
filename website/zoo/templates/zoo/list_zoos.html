@@ -7,7 +7,7 @@
 
 {% block content %}
 <br>
-<table id="pagination" class="table table-striped table-bordered" cellspacing="0" width="100%">
+<table id="pagination" class="table table-striped table-bordered hide" cellspacing="0" width="100%">
     <thead>
         <tr>
             <th>Name</th>
@@ -17,10 +17,10 @@
     <tbody>
         {% for zoo in list_zoos %}
         <tr>
-            <td><a href="" onclick="change_link(this,'/zoo/'); return false;">{{ zoo.zoo_name }}</a></td>
+            <td><a href="" class="zoo-link">{{ zoo.zoo_name }}</a></td>
             <td>
                 {{ zoo.address }}<br>
-                {{ zoo.city }}, {{ zoo.state }}
+                {{ zoo.city }}, {{ zoo.state.state }}
             </td>
         </tr>
         {% endfor %}

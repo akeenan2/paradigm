@@ -1,8 +1,8 @@
 <!-- list_species.html -->
 {% extends "layouts/overlay.html" %}
 {% load staticfiles %}
-{% block page_title %}List of Species{% endblock %}
-{% block jumbotron_name %}List of Species{% endblock %}
+{% block page_title %}Species{% endblock %}
+{% block jumbotron_name %}Species{% endblock %}
 {% block jumbotron_description %}Search our database{% endblock %}
 
 {% block content %}
@@ -97,6 +97,9 @@
 {% else %}
     <p>No matching records found</p>
 {% endif %}
+    <span class="pull-right">
+        <a href="/add/species/" class="btn btn-primary">Add</a>
+    </span>
 {% endblock %}
 
 {% block js %}

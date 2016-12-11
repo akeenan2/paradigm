@@ -248,7 +248,6 @@ def list_species(request):
 
 # query the database for all the selected species
     with connection.cursor() as cursor:
-        print query
         cursor.execute(query)
         list_species = cursor.fetchall()
 # descriptions
@@ -433,7 +432,6 @@ def add_species(request):
 # add the species based on user input
     if request.method == 'POST':
         if request.POST.get('submit-add-region'):
-            print 'add region'
         # add the new region
             with connection.cursor() as cursor:
                 cursor.execute('INSERT INTO Region(region,descr) values(%s,%s)',[request.POST.get('new-region'),request.POST.get('region-descr')])

@@ -150,7 +150,7 @@ def update_zoo(request,_zoo_name):
             with connection.cursor() as cursor:
                 cursor.execute('UPDATE Zoo SET zoo_name=%s,city=%s,state=%s,address=%s,latitude=%s,longitude=%s,num_animals=%s,acres=%s,time_open=%s,time_close=%s,annual_visitors=%s,website=%s WHERE zoo_name=%s',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("latitude"),request.POST.get("longitude"),request.POST.get("num_animals"),request.POST.get("acres"),time_open,time_close,request.POST.get("annual_visitors"),request.POST.get("website").lower(),zoo_name])
         # redirect back to the zoo detail page
-            return HttpResponseRedirect('/zoo/'+_zoo_name+'/')
+            return HttpResponseRedirect('/zoo/'+[request.POST.get("zoo_name").replace("_"," ")+'/')
     states = State.objects.values_list('abbrv',flat=True)
     time_open = convert_time(zoo.time_open)
     time_close = convert_time(zoo.time_close)

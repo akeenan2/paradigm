@@ -150,11 +150,11 @@ def update_zoo(request,_zoo_name):
             try:
                 with connection.cursor() as cursor:
                     if zoo_name == request.POST.get("zoo_name"):
-                        cursor.execute('UPDATE Zoo SET zoo_name=%s,city=%s,state=%s,address=%s,latitude=%s,longitude=%s,num_animals=%s,acres=%s,time_open=%s,time_close=%s,annual_visitors=%s,website=%s WHERE zoo_name=%s',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("num_animals"),request.POST.get("acres"),time_open,time_close,request.POST.get("annual_visitors"),request.POST.get("website").lower(),zoo_name])
+                        cursor.execute('UPDATE Zoo SET zoo_name=%s,city=%s,state=%s,address=%s,num_animals=%s,acres=%s,time_open=%s,time_close=%s,annual_visitors=%s,website=%s WHERE zoo_name=%s',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("num_animals"),request.POST.get("acres"),time_open,time_close,request.POST.get("annual_visitors"),request.POST.get("website").lower(),zoo_name])
                 # handle foreign key constraint + unique values
                     else:
                         cursor.execute('UPDATE Zoo SET address=NULL,website=NULL WHERE zoo_name=%s',[zoo_name])
-                        cursor.execute('INSERT INTO Zoo (zoo_name,city,state,address,latitude,longitude,num_animals,acres,time_open,time_close,annual_visitors,website) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("num_animals"),request.POST.get("acres"),time_open,time_close,request.POST.get("annual_visitors"),request.POST.get("website").lower()])
+                        cursor.execute('INSERT INTO Zoo (zoo_name,city,state,address,num_animals,acres,time_open,time_close,annual_visitors,website) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("num_animals"),request.POST.get("acres"),time_open,time_close,request.POST.get("annual_visitors"),request.POST.get("website").lower()])
                         cursor.execute('UPDATE Exhibit SET zoo_name=%s WHERE zoo_name=%s',[request.POST.get("zoo_name"),zoo_name])
                         cursor.execute('DELETE FROM Zoo WHERE zoo_name=%s',[zoo_name])
             except:

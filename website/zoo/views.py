@@ -147,18 +147,15 @@ def update_zoo(request,_zoo_name):
         # convert time to database format
             time_open = revert_time(request.POST.get("open_hour"),request.POST.get("open_minute"),request.POST.get("open_period"))
             time_close = revert_time(request.POST.get("close_hour"),request.POST.get("close_minute"),request.POST.get("close_period"))
-            try:
-                with connection.cursor() as cursor:
-                    if zoo_name == request.POST.get("zoo_name"):
-                        cursor.execute('UPDATE Zoo SET zoo_name=%s,city=%s,state=%s,address=%s,num_animals=%s,acres=%s,time_open=%s,time_close=%s,annual_visitors=%s,website=%s WHERE zoo_name=%s',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("num_animals"),request.POST.get("acres"),time_open,time_close,request.POST.get("annual_visitors"),request.POST.get("website").lower(),zoo_name])
-                # handle foreign key constraint + unique values
-                    else:
-                        cursor.execute('UPDATE Zoo SET address=NULL,website=NULL WHERE zoo_name=%s',[zoo_name])
-                        cursor.execute('INSERT INTO Zoo (zoo_name,city,state,address,num_animals,acres,time_open,time_close,annual_visitors,website) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("num_animals"),request.POST.get("acres"),time_open,time_close,request.POST.get("annual_visitors"),request.POST.get("website").lower()])
-                        cursor.execute('UPDATE Exhibit SET zoo_name=%s WHERE zoo_name=%s',[request.POST.get("zoo_name"),zoo_name])
-                        cursor.execute('DELETE FROM Zoo WHERE zoo_name=%s',[zoo_name])
-            except:
-                return HttpResponseRedirect('/zoo/'+zoo_name+'/')
+            with connection.cursor() as cursor:
+                if zoo_name == request.POST.get("zoo_name"):
+                    cursor.execute('UPDATE Zoo SET zoo_name=%s,city=%s,state=%s,address=%s,num_animals=%s,acres=%s,time_open=%s,time_close=%s,annual_visitors=%s,website=%s WHERE zoo_name=%s',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("num_animals"),request.POST.get("acres"),time_open,time_close,request.POST.get("annual_visitors"),request.POST.get("website").lower(),zoo_name])
+            # handle foreign key constraint + unique values
+                else:
+                    cursor.execute('UPDATE Zoo SET address=NULL,website=NULL WHERE zoo_name=%s',[zoo_name])
+                    cursor.execute('INSERT INTO Zoo (zoo_name,city,state,address,num_animals,acres,time_open,time_close,annual_visitors,website) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("num_animals"),request.POST.get("acres"),time_open,time_close,request.POST.get("annual_visitors"),request.POST.get("website").lower()])
+                    cursor.execute('UPDATE Exhibit SET zoo_name=%s WHERE zoo_name=%s',[request.POST.get("zoo_name"),zoo_name])
+                    cursor.execute('DELETE FROM Zoo WHERE zoo_name=%s',[zoo_name])
         # redirect back to the zoo detail page
             return HttpResponseRedirect('/zoo/'+request.POST.get("zoo_name").replace(" ","_") +'/')
     states = State.objects.values_list('abbrv',flat=True)
@@ -407,17 +404,14 @@ def update_species(request,_species):
                 regions = regions + region + ';'
             regions = regions + select_regions[-1]
         # update the species with a query
-            try:
-                with connection.cursor() as cursor:
-                    if species.species == request.POST.get("species"):
-                        cursor.execute('UPDATE Species SET species=%s,common_name=%s,genus=%s,family=%s,region=%s,habitat=%s,status=%s WHERE species=%s',[request.POST.get("species").lower(),request.POST.get("common_name"),request.POST.get("genus").lower(),request.POST.get("family"),regions,habitats,request.POST.get("update-status"),_species.replace("_"," ")])
-                # handle foreign key constraint
-                    else:
-                        cursor.execute('INSERT INTO Species (species,common_name,genus,family,region,habitat,status) VALUES (%s,%s,%s,%s,%s,%s,%s)',[request.POST.get("species").lower(),request.POST.get("common_name"),request.POST.get("genus").lower(),request.POST.get("family"),regions,habitats,request.POST.get("update-status")])
-                        cursor.execute('UPDATE Exhibit SET species=%s WHERE species=%s',[request.POST.get("species"),species.species])
-                        cursor.execute('DELETE FROM Species WHERE species=%s',[species.species])
-            except:
-                return HttpResponseRedirect('/species/'+species.species.replace(" ","_")+'/')
+            with connection.cursor() as cursor:
+                if species.species == request.POST.get("species"):
+                    cursor.execute('UPDATE Species SET species=%s,common_name=%s,genus=%s,family=%s,region=%s,habitat=%s,status=%s WHERE species=%s',[request.POST.get("species").lower(),request.POST.get("common_name"),request.POST.get("genus").lower(),request.POST.get("family"),regions,habitats,request.POST.get("update-status"),_species.replace("_"," ")])
+            # handle foreign key constraint
+                else:
+                    cursor.execute('INSERT INTO Species (species,common_name,genus,family,region,habitat,status) VALUES (%s,%s,%s,%s,%s,%s,%s)',[request.POST.get("species").lower(),request.POST.get("common_name"),request.POST.get("genus").lower(),request.POST.get("family"),regions,habitats,request.POST.get("update-status")])
+                    cursor.execute('UPDATE Exhibit SET species=%s WHERE species=%s',[request.POST.get("species"),species.species])
+                    cursor.execute('DELETE FROM Species WHERE species=%s',[species.species])
         # redirect back to the species information page
             return HttpResponseRedirect('/species/'+request.POST.get('species').replace(" ","_")+'/')
 # fetch the current data

@@ -94,8 +94,8 @@ def zoo(request,_zoo_name):
     with connection.cursor() as cursor:
         cursor.execute('SELECT Species.species,Species.common_name FROM Species,Exhibit WHERE Species.species=Exhibit.species AND Exhibit.zoo_name=%s',[zoo.zoo_name])
         list_species = cursor.fetchall()
-# only use pagination if more than 10 entries
-    if len(list_species) > 10:
+# only use pagination if more than 1 entry
+    if len(list_species) > 1:
         use_pagination = 1
     else:
         use_pagination = 0
@@ -262,8 +262,8 @@ def list_species(request):
     regions_descr = Region.objects.all()
     statuses_descr = Status.objects.order_by('level').all()
     families_descr = Classification.objects.all()
-# only use pagination if more than 10 entries
-    if len(list_species) > 10:
+# only use pagination if more than 1 entry
+    if len(list_species) > 1:
         use_pagination = 1
     else:
         use_pagination = 0
@@ -336,8 +336,8 @@ def species(request,_species):
         query = 'SELECT Species.species FROM Species' + conditions + ' ORDER BY RAND() LIMIT 5'
         cursor.execute(query)
         similar_species = cursor.fetchall()
-# only use pagination if more than 10 entries
-    if len(list_zoos) > 10:
+# only use pagination if more than 1 entry
+    if len(list_zoos) > 1:
         use_pagination = 1
     else:
         use_pagination = 0

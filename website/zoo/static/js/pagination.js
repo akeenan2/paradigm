@@ -19,7 +19,9 @@ $(document).ready(function() {
 });
 // load table after links/names are set
 $(document).ready(function() {
-    $('#pagination').DataTable();
+    $('#pagination').DataTable({
+        "iDisplayLength": 25
+    });
 });
 // ensure table is fully loaded before displaying
 $(document).ready(function() {

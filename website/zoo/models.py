@@ -82,8 +82,6 @@ class Zoo(models.Model):
     city = models.CharField(max_length=50, blank=True, null=True)
     state = models.ForeignKey(State, models.DO_NOTHING, db_column='state', blank=True, null=True)
     address = models.CharField(unique=True, max_length=100, blank=True, null=True)
-    latitude = models.FloatField(blank=True, null=True)
-    longitude = models.FloatField(blank=True, null=True)
     num_animals = models.IntegerField(blank=True, null=True)
     acres = models.IntegerField(blank=True, null=True)
     time_open = models.CharField(max_length=5, blank=True, null=True)
@@ -94,4 +92,3 @@ class Zoo(models.Model):
     class Meta:
         managed = False
         db_table = 'Zoo'
-

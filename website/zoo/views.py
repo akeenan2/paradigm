@@ -160,7 +160,7 @@ def update_zoo(request,_zoo_name):
             except:
                 return HttpResponseRedirect('/zoo/'+zoo_name+'/')
         # redirect back to the zoo detail page
-            return HttpResponseRedirect('/zoo/'+request.POST.get("zoo_name").replace("_"," ") +'/')
+            return HttpResponseRedirect('/zoo/'+request.POST.get("zoo_name").replace(" ","_") +'/')
     states = State.objects.values_list('abbrv',flat=True)
     time_open = convert_time(zoo.time_open)
     time_close = convert_time(zoo.time_close)
@@ -407,16 +407,19 @@ def update_species(request,_species):
                 regions = regions + region + ';'
             regions = regions + select_regions[-1]
         # update the species with a query
-            with connection.cursor() as cursor:
-                if species.species == request.POST.get("species"):
-                    cursor.execute('UPDATE Species SET species=%s,common_name=%s,genus=%s,family=%s,region=%s,habitat=%s,status=%s WHERE species=%s',[request.POST.get("species").lower(),request.POST.get("common_name"),request.POST.get("genus").lower(),request.POST.get("family"),regions,habitats,request.POST.get("update-status"),_species.replace("_"," ")])
-            # handle foreign key constraint
-                else:
-                    cursor.execute('INSERT INTO Species (species,common_name,genus,family,region,habitat,status) VALUES (%s,%s,%s,%s,%s,%s,%s)',[request.POST.get("species").lower(),request.POST.get("common_name"),request.POST.get("genus").lower(),request.POST.get("family"),regions,habitats,request.POST.get("update-status")])
-                    cursor.execute('UPDATE Exhibit SET species=%s WHERE species=%s',[request.POST.get("species"),species.species])
-                    cursor.execute('DELETE FROM Species WHERE species=%s',[species.species])
-            # redirect back to the species information page
-                return HttpResponseRedirect('/species/'+request.POST.get('species').replace(" ","_")+'/')
+            try:
+                with connection.cursor() as cursor:
+                    if species.species == request.POST.get("species"):
+                        cursor.execute('UPDATE Species SET species=%s,common_name=%s,genus=%s,family=%s,region=%s,habitat=%s,status=%s WHERE species=%s',[request.POST.get("species").lower(),request.POST.get("common_name"),request.POST.get("genus").lower(),request.POST.get("family"),regions,habitats,request.POST.get("update-status"),_species.replace("_"," ")])
+                # handle foreign key constraint
+                    else:
+                        cursor.execute('INSERT INTO Species (species,common_name,genus,family,region,habitat,status) VALUES (%s,%s,%s,%s,%s,%s,%s)',[request.POST.get("species").lower(),request.POST.get("common_name"),request.POST.get("genus").lower(),request.POST.get("family"),regions,habitats,request.POST.get("update-status")])
+                        cursor.execute('UPDATE Exhibit SET species=%s WHERE species=%s',[request.POST.get("species"),species.species])
+                        cursor.execute('DELETE FROM Species WHERE species=%s',[species.species])
+            except:
+                return HttpResponseRedirect('/species/'+species.species.replace(" ","_")+'/')
+        # redirect back to the species information page
+            return HttpResponseRedirect('/species/'+request.POST.get('species').replace(" ","_")+'/')
 # fetch the current data
     all_habitats = Habitat.objects.values_list('habitat',flat=True)
     all_regions = Region.objects.values_list('region',flat=True)

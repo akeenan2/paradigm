@@ -1,4 +1,3 @@
-drop table Exhibit;
 drop table Species;
 drop table Zoo;
 drop table Region;
@@ -42,8 +41,6 @@ create table Zoo (
     city varchar(50),
     state char(2),
     address varchar(100) unique,
-    latitude float(10,6),
-    longitude float(10,6),
     num_animals int(10),
     acres int(10),
     time_open char(5),
@@ -101,7 +98,7 @@ load data local infile 'region.csv' into table Region
 load data local infile 'zoo.csv' into table Zoo
     fields terminated by ','
     lines terminated by '\n'
-    (zoo_name,city,state,address,latitude,longitude,num_animals,acres,time_open,time_close,annual_visitors,website);
+    (zoo_name,city,state,address,num_animals,acres,time_open,time_close,annual_visitors,website);
 
 load data local infile 'species.csv' into table Species
     fields terminated by ','

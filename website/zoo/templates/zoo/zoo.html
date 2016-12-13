@@ -10,15 +10,16 @@
 <div class="center">
 <h3>Basic Information</h3>
 <hr>
+<strong>Address</strong><br>
 {{ zoo.address }}<br>
 {{ zoo.city }}, {{ zoo.state.abbrv }}<br>
-<strong>Hours:</strong> {{ time_open }} - {{ time_close }}<br>
+<br><strong>Hours</strong><br> {{ time_open }} - {{ time_close }}<br>
 
 <h3>Statistics</h3>
 <hr>
-<strong>Number of Animals:</strong> {{ zoo.num_animals }}<br>
-<strong>Annual Visitors:</strong> {{ zoo.annual_visitors }}<br>
-<strong>Acres:</strong> {{ zoo.acres }}<br>
+<strong>Number of Animals</strong><br> {{ zoo.num_animals }}<br>
+<br><strong>Annual Visitors</strong><br> {{ zoo.annual_visitors }}<br>
+<br><strong>Acres</strong><br> {{ zoo.acres }}<br>
 
 <br>
 <a href="update/" class="btn btn-default">Update</a>

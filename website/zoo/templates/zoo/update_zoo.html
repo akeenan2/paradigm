@@ -5,6 +5,7 @@
 {% block jumbotron_description %}Update zoo information{% endblock %}
 
 {% block content %}
+<br>
 <form method="post">{% csrf_token %}
     <h3>Basic Information</h3>
     <hr>
@@ -80,6 +81,7 @@
             <strong>Website: </strong><input name="website" type="text" class="form-control" value="{{ zoo.website }}" maxlength="100" required>
         </div>
     </div>
+    <br>
     <h3>Location</h3>
     <hr>
     <div class="form-group row">
@@ -102,14 +104,7 @@
             </select>            
         </div>
     </div>
-    <div class="form-group row">
-        <div class="col-xs-6">
-            <strong>Latitude: </strong><input name="latitude" type="number" class="form-control" value="{{ zoo.latitude }}" required>
-        </div>
-        <div class="col-xs-6">
-            <strong>Longitude: </strong><input name="longitude" type="number" class="form-control" value="{{ zoo.longitude }}" required>
-        </div>
-    </div>
+    <br>
     <h3>Statistics</h3>
     <hr>
     <div class="form-group row">

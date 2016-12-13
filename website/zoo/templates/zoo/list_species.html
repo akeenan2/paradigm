@@ -71,9 +71,10 @@
         </div>
     </div>
 </form>
-<h3>Species</h3>
-<hr>
+
 {% if list_species %}
+    <h3>Species</h3>
+    <hr>
     {% if use_pagination == 1 %}
     <table id="pagination" class="table table-striped table-bordered hide" cellspacing="0" width="100%">
     {% else %}
@@ -97,9 +98,11 @@
 {% else %}
     <p>No matching records found</p>
 {% endif %}
-    <span class="pull-right">
-        <a href="/add/species/" class="btn btn-primary">Add</a>
-    </span>
+
+<hr>
+<div class="center">
+    <a href="/add/species/" class="btn btn-primary">Add a Species</a>
+</div>
 {% endblock %}
 
 {% block js %}

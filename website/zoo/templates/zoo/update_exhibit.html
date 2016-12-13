@@ -1,7 +1,13 @@
 <!-- update_exhibit.html -->
 {% extends "layouts/base.html" %}
 {% load staticfiles %}
-{% block page_title %}Add Species{% endblock %}
+{% block page_title %}
+    {% if operation == 'add' %}
+        Add Species
+    {% elif operation == 'remove' %}
+        Remove Species
+    {% endif %}
+{% endblock %}
 {% block jumbotron_name %}
     {% if operation == 'add' %}
         Add species
@@ -11,9 +17,9 @@
 {% endblock %}
 {% block jumbotron_description %}
     {% if operation == 'add' %}
-        Add species to the exhibits of {{ zoo.zoo_name }}
+        Add species to the exhibits of The {{ zoo.zoo_name }}
     {% elif operation == 'remove' %}
-        Remove species from the exhibits of {{ zoo.zoo_name }}
+        Remove species from the exhibits of The {{ zoo.zoo_name }}
     {% endif %}
 {% endblock %}
 

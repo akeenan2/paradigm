@@ -119,6 +119,19 @@ a:active:focus {
     border: 1px solid #cc8400;
     color: #fff;
 }
+.btn-primary,
+.btn-primary:focus {
+    padding: 6px 24px;
+    background-color: #e59400;
+    border: 1px solid #cc8400;
+    color: #fff;
+}
+.btn-primary:hover,
+.btn-primary:active:focus {
+    background-color: #4f8907;
+    border: 1px solid #477b06;
+    color: #fff;
+}
 /* contents style */
 section {
     margin-right: 25px;

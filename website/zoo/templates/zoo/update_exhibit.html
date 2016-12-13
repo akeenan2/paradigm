@@ -8,18 +8,12 @@
         Remove Species
     {% endif %}
 {% endblock %}
-{% block jumbotron_name %}
-    {% if operation == 'add' %}
-        Add species
-    {% elif operation == 'remove' %}
-        Remove species
-    {% endif %}
-{% endblock %}
+{% block jumbotron_name %}{{ zoo.zoo_name }}{% endblock %}
 {% block jumbotron_description %}
     {% if operation == 'add' %}
-        Add species to the exhibits of The {{ zoo.zoo_name }}
+        Add species to the exhibits
     {% elif operation == 'remove' %}
-        Remove species from the exhibits of The {{ zoo.zoo_name }}
+        Remove species from the exhibits
     {% endif %}
 {% endblock %}
 
@@ -44,7 +38,8 @@
             {% endfor %}
         </tbody>
     </table>
-    <span class="pull-right">
+    <hr>
+    <div class="center">
         <input class="btn btn-default" type="submit" name="operation" value="
             {% if operation == 'add' %}
                 Add
@@ -52,7 +47,7 @@
                 Remove
             {% endif %}
         ">
-    </span>
+    </div>
 </form>
 
 {% endblock %}

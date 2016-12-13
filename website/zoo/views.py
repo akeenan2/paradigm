@@ -11,65 +11,63 @@ from django.utils.safestring import mark_safe
 import json
 
 def index(request):
-    try:
-        with connection.cursor() as cursor:
-            cursor.execute('SELECT phylm FROM Classification GROUP BY phylm')
-            phylums = cursor.fetchall()
-            phylums_dict = dict()
-            for p in phylums:
+    with connection.cursor() as cursor:
+        cursor.execute('SELECT phylm FROM Classification GROUP BY phylm')
+        phylums = cursor.fetchall()
+        phylums_dict = dict()
+        for p in phylums:
 
-                cursor.execute('SELECT clss FROM Classification WHERE phylm=%s GROUP BY clss',[p[0]])
-                classes = cursor.fetchall()
-                classes_dict = dict()
-                for c in classes:
+            cursor.execute('SELECT clss FROM Classification WHERE phylm=%s GROUP BY clss',[p[0]])
+            classes = cursor.fetchall()
+            classes_dict = dict()
+            for c in classes:
 
-                    cursor.execute('SELECT ordr FROM Classification WHERE clss=%s GROUP BY ordr',[c[0]])
-                    orders = cursor.fetchall()
-                    orders_dict = dict()
-                    for o in orders:
+                cursor.execute('SELECT ordr FROM Classification WHERE clss=%s GROUP BY ordr',[c[0]])
+                orders = cursor.fetchall()
+                orders_dict = dict()
+                for o in orders:
 
-                        cursor.execute('SELECT family FROM Classification WHERE ordr=%s GROUP BY family',[o[0]])
-                        families = cursor.fetchall()
-                        families_dict = dict()
-                        for f in families:
+                    cursor.execute('SELECT family FROM Classification WHERE ordr=%s GROUP BY family',[o[0]])
+                    families = cursor.fetchall()
+                    families_dict = dict()
+                    for f in families:
 
-                            cursor.execute('SELECT genus FROM Classification c,Species s WHERE c.family=%s AND c.family=s.family GROUP BY s.genus',[f[0]])
-                            genus = cursor.fetchall()
-                            genus_dict = dict()
-                            for g in genus:
+                        cursor.execute('SELECT genus FROM Classification c,Species s WHERE c.family=%s AND c.family=s.family GROUP BY s.genus',[f[0]])
+                        genus = cursor.fetchall()
+                        genus_dict = dict()
+                        for g in genus:
 
-                                cursor.execute('SELECT species FROM Species WHERE genus=%s',[g[0]])
-                                species = cursor.fetchall()
-                                species_children = []
-                                for s in species:
-                                    species_children.append({'name':s[0]})
-                                genus_dict[g[0]] = species_children
+                            cursor.execute('SELECT species FROM Species WHERE genus=%s',[g[0]])
+                            species = cursor.fetchall()
+                            species_children = []
+                            for s in species:
+                                species_children.append({'name':s[0]})
+                            genus_dict[g[0]] = species_children
 
-                            genus_children = []
-                            for g in genus:
-                                genus_children.append({'name':g[0],'children':genus_dict[g[0]]})
-                            families_dict[f[0]] = genus_children
+                        genus_children = []
+                        for g in genus:
+                            genus_children.append({'name':g[0],'children':genus_dict[g[0]]})
+                        families_dict[f[0]] = genus_children
 
-                        family_children = []
-                        for f in families:
-                            family_children.append({'name':f[0],'children':families_dict[f[0]]})
-                        orders_dict[o[0]] = family_children
+                    family_children = []
+                    for f in families:
+                        family_children.append({'name':f[0],'children':families_dict[f[0]]})
+                    orders_dict[o[0]] = family_children
 
-                    order_children = []
-                    for o in orders:
-                        order_children.append({'name':o[0],'children':orders_dict[o[0]]})
-                    classes_dict[c[0]] = order_children
+                order_children = []
+                for o in orders:
+                    order_children.append({'name':o[0],'children':orders_dict[o[0]]})
+                classes_dict[c[0]] = order_children
 
-                class_children = []
-                for c in classes:  
-                    class_children.append({'name':c[0],'children':classes_dict[c[0]]})
-                phylums_dict[p[0]] = class_children
+            class_children = []
+            for c in classes:  
+                class_children.append({'name':c[0],'children':classes_dict[c[0]]})
+            phylums_dict[p[0]] = class_children
 
-            phylum_children = []
-            for p in phylums:
-                phylum_children.append({'name':p[0],'children':phylums_dict[p[0]]})
-    except:
         phylum_children = []
+        for p in phylums:
+            phylum_children.append({'name':p[0],'children':phylums_dict[p[0]]})
+
     classification = {"name":"animalia","children":phylum_children}
     classification_json = json.dumps(classification)
 
@@ -152,13 +150,12 @@ def update_zoo(request,_zoo_name):
             try:
                 with connection.cursor() as cursor:
                     if zoo_name == request.POST.get("zoo_name"):
-                        cursor.execute('UPDATE Zoo SET zoo_name=%s,city=%s,state=%s,address=%s,latitude=%s,longitude=%s,num_animals=%s,acres=%s,time_open=%s,time_close=%s,annual_visitors=%s,website=%s WHERE zoo_name=%s',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("latitude"),request.POST.get("longitude"),request.POST.get("num_animals"),request.POST.get("acres"),time_open,time_close,request.POST.get("annual_visitors"),request.POST.get("website").lower(),zoo_name])
+                        cursor.execute('UPDATE Zoo SET zoo_name=%s,city=%s,state=%s,address=%s,latitude=%s,longitude=%s,num_animals=%s,acres=%s,time_open=%s,time_close=%s,annual_visitors=%s,website=%s WHERE zoo_name=%s',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("num_animals"),request.POST.get("acres"),time_open,time_close,request.POST.get("annual_visitors"),request.POST.get("website").lower(),zoo_name])
                 # handle foreign key constraint + unique values
                     else:
                         cursor.execute('UPDATE Zoo SET address=NULL,website=NULL WHERE zoo_name=%s',[zoo_name])
-                        cursor.execute('INSERT INTO Zoo (zoo_name,city,state,address,latitude,longitude,num_animals,acres,time_open,time_close,annual_visitors,website) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("latitude"),request.POST.get("longitude"),request.POST.get("num_animals"),request.POST.get("acres"),time_open,time_close,request.POST.get("annual_visitors"),request.POST.get("website").lower()])
+                        cursor.execute('INSERT INTO Zoo (zoo_name,city,state,address,latitude,longitude,num_animals,acres,time_open,time_close,annual_visitors,website) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',[request.POST.get("zoo_name"),request.POST.get("city"),request.POST.get("state"),request.POST.get("address"),request.POST.get("num_animals"),request.POST.get("acres"),time_open,time_close,request.POST.get("annual_visitors"),request.POST.get("website").lower()])
                         cursor.execute('UPDATE Exhibit SET zoo_name=%s WHERE zoo_name=%s',[request.POST.get("zoo_name"),zoo_name])
-                        cursor.execute('DELETE FROM Exhibit WHERE zoo_name=%s',[zoo_name])
                         cursor.execute('DELETE FROM Zoo WHERE zoo_name=%s',[zoo_name])
             except:
                 return HttpResponseRedirect('/zoo/'+zoo_name+'/')
@@ -417,8 +414,7 @@ def update_species(request,_species):
                 else:
                     cursor.execute('INSERT INTO Species (species,common_name,genus,family,region,habitat,status) VALUES (%s,%s,%s,%s,%s,%s,%s)',[request.POST.get("species").lower(),request.POST.get("common_name"),request.POST.get("genus").lower(),request.POST.get("family"),regions,habitats,request.POST.get("update-status")])
                     cursor.execute('UPDATE Exhibit SET species=%s WHERE species=%s',[request.POST.get("species"),species.species])
-                    cursor.execute('DELETE FROM Exhibit WHERE species=%s',[species.species])
-                    cursor.execute('DELETE FROM Zoo WHERE species=%s',[species.species])
+                    cursor.execute('DELETE FROM Species WHERE species=%s',[species.species])
             # redirect back to the species information page
                 return HttpResponseRedirect('/species/'+request.POST.get('species').replace(" ","_")+'/')
 # fetch the current data

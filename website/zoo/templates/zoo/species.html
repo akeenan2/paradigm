@@ -44,6 +44,7 @@
 
 <div class="center">
 {% if other_names %}
+    <br>
     <h3>Other Common Names</h3>
     <hr>
     {% for name in other_names %}
@@ -51,6 +52,7 @@
     {% endfor %}
 {% endif %}
 
+<br>
 <h3>Classification</h3>
 <hr>
 <table class="table table-bordered half">
@@ -83,15 +85,16 @@
 <br>
 <h3>Information</h3>
 <hr>
-<strong>Region:</strong><br>
+<strong>Region</strong><br>
 {% for region in regions %}
 {{ region }}<br>
 {% endfor %}
-<br><strong>Habitat:</strong><br> 
+<br><strong>Habitat</strong><br> 
 {% for habitat in habitats %}
 {{ habitat }}<br>
 {% endfor %}
-<br><strong>Status:</strong> {{ species.status.status }}<br>
+<br><strong>Status</strong><br>
+{{ species.status.status }}<br>
 
 <br>
 <input type="hidden" value="{{ species.species }}" name="update">

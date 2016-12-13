@@ -11,10 +11,10 @@
     <hr>
     <div class="form-group row">
         <div class="col-lg-8 col-sm-6 col-xs-12">
-            <strong>Zoo Name: </strong><input name="zoo_name" type="text" class="form-control" value="{{ zoo.zoo_name }}" maxlength="100" required>
+            <strong>Zoo Name </strong><input name="zoo_name" type="text" class="form-control" value="{{ zoo.zoo_name }}" maxlength="100" required>
         </div>
         <div class="col-lg-2 col-sm-3 col-xs-6">
-            <label><strong>Opens At: </strong></label><br>
+            <label><strong>Opens </strong></label><br>
             <select name="open_hour">
             {% for hour in hours %}
                 {% if hour != open_hour %}
@@ -24,7 +24,7 @@
                 {% endif %}
             {% endfor %}
             </select>
-            :
+            
             <select name="open_minute">
             {% for minute in minutes %}
                 {% if minute != open_minute %}
@@ -45,7 +45,7 @@
             </select>
         </div>
         <div class="col-lg-2 col-sm-3 col-xs-6">
-            <label><strong>Closes At: </strong></label><br>
+            <label><strong>Closes </strong></label><br>
             <select name="close_hour">
             {% for hour in hours %}
                 {% if hour != close_hour %}
@@ -55,7 +55,7 @@
                 {% endif %}
             {% endfor %}
             </select>
-            :
+            
             <select name="close_minute">
             {% for minute in minutes %}
                 {% if minute != close_minute %}
@@ -78,7 +78,7 @@
     </div>
     <div class="form-group row">
         <div class="col-xs-12">
-            <strong>Website: </strong><input name="website" type="text" class="form-control" value="{{ zoo.website }}" maxlength="100" required>
+            <strong>Website </strong><input name="website" type="text" class="form-control" value="{{ zoo.website }}" maxlength="100" required>
         </div>
     </div>
     <br>
@@ -86,13 +86,13 @@
     <hr>
     <div class="form-group row">
         <div class="col-md-7 col-sm-6 col-xs-12">
-            <strong>Address: </strong><input name="address" type="text" class="form-control" value="{{ zoo.address }}" maxlength="100" required>
+            <strong>Address </strong><input name="address" type="text" class="form-control" value="{{ zoo.address }}" maxlength="100" required>
         </div>
         <div class="col-sm-4 col-xs-10">
-            <strong>City: </strong><input name="city" type="text" class="form-control" value="{{ zoo.city }}" maxlength="50" required>
+            <strong>City </strong><input name="city" type="text" class="form-control" value="{{ zoo.city }}" maxlength="50" required>
         </div>
         <div class="col-sm-1 col-xs-2">
-            <label><strong>State: </strong></label><br>
+            <label><strong>State </strong></label><br>
             <select name="state">
             {% for state in states %}
                 {% if state != zoo.state.abbrv %}
@@ -109,13 +109,13 @@
     <hr>
     <div class="form-group row">
         <div class="col-sm-4 col-xs-6">
-            <strong>Number of Animals: </strong><input name="num_animals" type="number" class="form-control" value="{{ zoo.num_animals }}" required>
+            <strong>Number of Animals </strong><input name="num_animals" type="number" class="form-control" value="{{ zoo.num_animals }}" required>
         </div>
         <div class="col-sm-4 col-xs-6">
-            <strong>Number of Annual Visitors: </strong><input name="annual_visitors" type="number" class="form-control" value="{{ zoo.annual_visitors }}" required>
+            <strong>Number of Annual Visitors </strong><input name="annual_visitors" type="number" class="form-control" value="{{ zoo.annual_visitors }}" required>
         </div>
         <div class="col-sm-4 col-xs-12">
-            <strong>Acres: </strong><input name="acres" type="number" class="form-control" value="{{ zoo.acres }}" required>
+            <strong>Acres </strong><input name="acres" type="number" class="form-control" value="{{ zoo.acres }}" required>
         </div>
     </div>
     <div class="form-group row">

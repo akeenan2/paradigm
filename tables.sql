@@ -1,3 +1,4 @@
+drop table Exhibit;
 drop table Species;
 drop table Zoo;
 drop table Region;
@@ -45,7 +46,7 @@ create table Zoo (
     acres int(10),
     time_open char(5),
     time_close char(5),
-    annual_visitors int,
+    annual_visitors int(10),
     website varchar(100) unique,
     foreign key (state) references State(abbrv)
 );

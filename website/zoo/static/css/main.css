@@ -119,17 +119,17 @@ a:active:focus {
     border: 1px solid #cc8400;
     color: #fff;
 }
-.btn-primary,
-.btn-primary:focus {
+.btn-secondary,
+.btn-secondary:focus {
     padding: 6px 24px;
-    background-color: #e59400;
-    border: 1px solid #cc8400;
+    background-color: #72a038;
+    border: 1px solid #60941f;
     color: #fff;
 }
-.btn-primary:hover,
-.btn-primary:active:focus {
-    background-color: #4f8907;
-    border: 1px solid #477b06;
+.btn-secondary:hover,
+.btn-secondary:active:focus {
+    background-color: #eaa932;
+    border: 1px solid #e79e19;
     color: #fff;
 }
 /* contents style */

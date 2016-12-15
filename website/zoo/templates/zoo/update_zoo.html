@@ -1,3 +1,4 @@
+
 <!-- update_zoo.html -->
 {% extends "layouts/base.html" %}
 {% block page_title %}Update {{ zoo.zoo_name }}{% endblock %}
@@ -118,12 +119,9 @@
             <strong>Acres </strong><input name="acres" type="number" class="form-control" value="{{ zoo.acres }}" required>
         </div>
     </div>
-    <div class="form-group row">
-        <div class="col-sm-12">
-            <span class="pull-right">
-                <input class="btn btn-default" type="submit" name="update" value="Update"/>
-            </span>
-        </div>
+    <br><hr>
+    <div class="center">
+        <input class="btn btn-primary" type="submit" name="update" value="Update"/>
     </div>
 </form>
 {% endblock %}
